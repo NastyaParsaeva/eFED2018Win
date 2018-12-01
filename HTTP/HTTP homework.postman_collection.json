@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "1c022741-6429-4ea5-a2a7-bff1cb902234",
+		"name": "HTTP homework",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "5-days-weather-Izhevsk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Izhevsk,ru&mode=xml&appid=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Izhevsk,ru"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-days-weather-Paris",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Paris,fr&mode=xml&appid=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Paris,fr"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5-days-weather-Washington",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/forecast?q=Washington,us&mode=xml&appid=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Washington,us"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current-weather-Izhevsk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Izhevsk,ru&mode=xml&appid=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Izhevsk,ru"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current-weather-Paris",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Paris,fr&mode=xml&appid=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Paris,fr"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "current-weather-Washington",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "api.openweathermap.org/data/2.5/weather?q=Washington,us&mode=xml&appid=cbb3210df49fdf1c3c675a785e42454b",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"2.5",
+						"weather"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Washington,us"
+						},
+						{
+							"key": "mode",
+							"value": "xml"
+						},
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "air-pillution-current-date-Izhevsk",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/co/56,53/current.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"co",
+						"56,53",
+						"current.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "air-pollution-current-date-Washington",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/co/39,77/current.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"co",
+						"39,77",
+						"current.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "air-pillution-current-date-Paris",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/pollution/v1/co/48,2/current.json?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"pollution",
+						"v1",
+						"co",
+						"48,2",
+						"current.json"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "wind-speed-gather-5-meters-Izhevsk",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type: application/json",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"time_period\":{\r\n      \"start\":{\r\n         \"expression\":\"after\",\r\n         \"amount\":132000000\r\n      },\r\n      \"end\":{\r\n         \"expression\":\"after\",\r\n         \"amount\":432000000\r\n      }\r\n   },\r\n   \"conditions\":[\r\n      {\r\n         \"name\":\"wind_speed\",\r\n         \"expression\":\"$gt\",\r\n         \"amount\":5\r\n      }\r\n   ],\r\n   \"area\":[\r\n      {\r\n         \"type\":\"Point\",\r\n         \"coordinates\":[\r\n            53,\r\n            56\r\n         ]\r\n      }\r\n   ]\r\n}"
+				},
+				"url": {
+					"raw": "http://api.openweathermap.org/data/3.0/triggers?appid=cbb3210df49fdf1c3c675a785e42454b",
+					"protocol": "http",
+					"host": [
+						"api",
+						"openweathermap",
+						"org"
+					],
+					"path": [
+						"data",
+						"3.0",
+						"triggers"
+					],
+					"query": [
+						{
+							"key": "appid",
+							"value": "cbb3210df49fdf1c3c675a785e42454b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
