@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
+        <title>Прогноз погоды от Анастасии</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Подробный прогноз погоды на сегодня, 7 дней и история погоды">
+        <meta name="keywords" content="прогноз, погода, дождь, вероятность осадков, осадки, скорость ветра, загрязнение воздуха, влажность воздуха">
+        <meta name="author" content="Anastasia Parsaeva">
+        <meta name="robots" content="index,nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="menu">
@@ -10,82 +17,81 @@
         </div>
         <div>            
             <p>Загрязнение воздуха: 8.67864657654</p>
-            <form>
-                <input placeholder="Поиск"/>
-            </form>
+
+            <label for="search-field" style="display: none">Поиск</label>
+            <input id="search-field" type="text" placeholder="Поиск"/>
         </div>
-        <div class = "main-info">
-            <div class="city">
+        <main>
+            <section class="city">
                 <h1>Ижевск, Россия</h1>
                 <h1>среда</h1>
                 <h1>облачно</h1>
-                <img src="assets\Sunny Weather.png">
+                <img src="assets\Sunny Weather@3x.png" alt="Солнечно">
                 <h1>22°C</h1>
-            </div>
-            <div class="main-info">
+            </section>
+            <section class="main-info">
                 <h1>Вероятность осадков: 20%</h1>
                 <h1>Влажность: 45%</h1>
                 <h1>Ветер: 11 км/ч</h1>
-                <div>
+                <section>
                     <button>Температура</button>
                     <button>Вероятность осадков</button>
                     <button>Ветер</button>
+                </section>
+            </section>
+            <section>
+                <div class="temperature graph">
                 </div>
-            </div>
-            <div class="temperature graph">
-            </div>
-            <div class="precipitation graph">
-            </div>
-            <div class="wind graph">
-            </div>
-            <div class="week-forecast">
+                <div class="precipitation graph">
+                </div>
+                <div class="wind graph">
+                </div>
+            </section>
+            <section class="week-forecast">
                 <div class="day">
                     <div class="day-name">ср</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">чт</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">пт</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">сб</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">вс</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">пн</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">вт</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
                 <div class="day">
                     <div class="day-name">ср</div>
-                    <img src="assets\Cloudy Weather.png">
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>2018  Copyright</p>
-        </div>
-
+            </section>
+        </main>
+        <footer>
+            <p land="en">2018 © Copyright</p>
+        </footer>
     </body>
 </html>
