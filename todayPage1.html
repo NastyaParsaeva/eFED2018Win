@@ -12,23 +12,24 @@
     </head>
     <body>
         <header>
-            <a href="#">Сегодня</a>
-            <a href="#">5 дней</a>
-            <a href="#">История погоды</a>
-        </header>
-        <main>
+            <nav>
+                <a href="#">Сегодня</a>
+                <a href="#">5 дней</a>
+                <a href="#">История погоды</a>
+            </nav>        
             <section>            
-                <p>Загрязнение воздуха: 8.67864657654</p>
-
+                <p class="air-pollution">Загрязнение воздуха: 8.67864657654</p>
                 <label for="search-field" style="display: none">Поиск</label>
                 <input id="search-field" type="text" placeholder="Поиск"/>
             </section>
+        </header>
+        <main>
             <section class="city">
                 <h1>Ижевск, Россия</h1>
                 <h1>среда</h1>
                 <h1>облачно</h1>
-                <img src="assets\Sunny Weather@3x.png" alt="Солнечно">
-                <h1>22°C</h1>
+                <img src="assets\Sunny Weather@2x.png" alt="Солнечно">
+                <h1 class="temperature">22°C</h1>
             </section>
             <section class="main-info">
                 <h1>Вероятность осадков: 20%</h1>
@@ -47,83 +48,85 @@
                 <div class="precipitation graph">
                 </div>
                 <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>17:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>20:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>23:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>2:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>5:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>8:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>11:00</div>
-                </div>
-                <div class="wind graph">
-                    <div>7 м/с</div>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                    <div>14:00</div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
+                    <div class="wind graph item">
+                        <div>7 м/с</div>
+                        <img src="assets\wind_direction.png" alt="направление ветра">
+                        <div>17:00</div>
+                    </div>
                 </div>
             </section>
             <section class="week-forecast">
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">ср</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">чт</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">пт</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">сб</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">вс</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">пн</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">вт</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
                 </div>
-                <div class="day">
+                <div class="week-forecast item">
                     <div class="day-name">ср</div>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <div class="future-temp">22 ° 13 °</div>
