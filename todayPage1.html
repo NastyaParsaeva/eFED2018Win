@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
     <head>
         <title>Прогноз погоды от Анастасии</title>
@@ -8,20 +8,21 @@
         <meta name="author" content="Anastasia Parsaeva">
         <meta name="robots" content="index,nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles\style.css">
     </head>
     <body>
-        <div class="menu">
+        <header>
             <a href="#">Сегодня</a>
             <a href="#">5 дней</a>
             <a href="#">История погоды</a>
-        </div>
-        <div>            
-            <p>Загрязнение воздуха: 8.67864657654</p>
-
-            <label for="search-field" style="display: none">Поиск</label>
-            <input id="search-field" type="text" placeholder="Поиск"/>
-        </div>
+        </header>
         <main>
+            <section>            
+                <p>Загрязнение воздуха: 8.67864657654</p>
+
+                <label for="search-field" style="display: none">Поиск</label>
+                <input id="search-field" type="text" placeholder="Поиск"/>
+            </section>
             <section class="city">
                 <h1>Ижевск, Россия</h1>
                 <h1>среда</h1>
@@ -41,10 +42,49 @@
             </section>
             <section>
                 <div class="temperature graph">
+                    
                 </div>
                 <div class="precipitation graph">
                 </div>
                 <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>17:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>20:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>23:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>2:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>5:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>8:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>11:00</div>
+                </div>
+                <div class="wind graph">
+                    <div>7 м/с</div>
+                    <img src="assets\wind_direction.png" alt="направление ветра">
+                    <div>14:00</div>
                 </div>
             </section>
             <section class="week-forecast">
@@ -91,7 +131,7 @@
             </section>
         </main>
         <footer>
-            <p land="en">2018 © Copyright</p>
+            <p lang="en">2018 © Copyright</p>
         </footer>
     </body>
 </html>
