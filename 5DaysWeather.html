@@ -1,28 +1,292 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <link rel="stylesheet" type="text/css" href="styles\5DaysStyles.css">
     </head>
     <body>
+        <header>
             <nav>
-                <a href="#">Сегодня</a>
-                <a href="#">5 дней</a>
-                <a href="#">История погоды</a>
+                <p class="menu-link"><a href="#">Сегодня</a></p>
+                <p class="menu-link"><a href="#">5 дней</a></p>
+                <p class="menu-link"><a href="#">История погоды</a></p>     
             </nav>
-            <section>
-                <img src="" alt="облачно">
+            <section class="current-location">
+                <img class="current-weather" src="assets\cloud-image.png" alt="облачно">
                 <p>34° Ижевск, Россия</p>
                 <label for="search-field" style="display: none">Поиск</label>
                 <input id="search-field" type="text" placeholder="Поиск"/>
             </section>
-            <main>
-
-            </main>
-            <aside>
+        </header>
+        <main>
+            <section class="five-days-weather">
+                <section class = "day-weather">
+                    <p>Пт, 18 мая</p>
+                    <section class = "part-day weather">
+                        <span>Ночь</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+8</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Утро</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+16</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>День</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+21</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Вечер</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+17</span>
+                    </section>
+                </section>
+                <section class = "day-weather">
+                    <p>Сб, 19 мая</p>
+                    <section class = "part-day weather">
+                        <span>Ночь</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+8</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Утро</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+16</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>День</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+21</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Вечер</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+17</span>
+                    </section>
+                </section>
+                <section class = "day-weather">
+                    <p>Вс, 20 мая</p>
+                    <section class = "part-day weather">
+                        <span>Ночь</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+8</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Утро</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+16</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>День</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+21</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Вечер</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+17</span>
+                    </section>
+                </section>
+                <section class = "day-weather">
+                    <p>Пн, 21 мая</p>
+                    <section class = "part-day weather">
+                        <span>Ночь</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+8</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Утро</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+16</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>День</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+21</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Вечер</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+17</span>
+                    </section>
+                </section>
+                <section class = "day-weather">
+                    <p>Вт, 22 мая</p>
+                    <section class = "part-day weather">
+                        <span>Ночь</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+8</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Утро</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+16</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>День</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+21</span>
+                    </section>
+                    <section class = "part-day weather">
+                        <span>Вечер</span>
+                        <img src = "" alt = "облачно">
+                        <span class = "temperature">+17</span>
+                    </section>
+                </section>
+            </section>
                 
-            </aside>
-            <footer>
-                <p lang="en">2018 © Copyright</p>
-            </footer>
+            
+            <p>Максимальная скорость ветра, м/с</p>
+            <section class = "">
+                <section class = "day wind">
+                    <p class = "part-day wind">2</p>
+                    <p class = "part-day wind">5</p>
+                    <p class = "part-day wind">4</p>
+                    <p class = "part-day wind">2</p>
+                </section>
+                <section class = "day wind">
+                    <p class = "part-day wind">2</p>
+                    <p class = "part-day wind">5</p>
+                    <p class = "part-day wind">4</p>
+                    <p class = "part-day wind">2</p>
+                </section>
+                <section class = "day wind">
+                    <p class = "part-day wind">2</p>
+                    <p class = "part-day wind">5</p>
+                    <p class = "part-day wind">4</p>
+                    <p class = "part-day wind">2</p>
+                </section>
+                <section class = "day wind">
+                    <p class = "part-day wind">2</p>
+                    <p class = "part-day wind">5</p>
+                    <p class = "part-day wind">4</p>
+                    <p class = "part-day wind">2</p>
+                </section>
+                <section class = "day wind">
+                    <p class = "part-day wind">2</p>
+                    <p class = "part-day wind">5</p>
+                    <p class = "part-day wind">4</p>
+                    <p class = "part-day wind">2</p>
+                </section>
+            </section>
+            <p>Осадки, мм</p>
+            <section class="5-days precepitation">
+                <section class = "day precepitation">
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Небольшой дождь">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Дождь">
+                        <p>0</p>
+                    </section>
+                </section>
+                <section class = "day precepitation">
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Небольшой дождь">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Дождь">
+                        <p>0</p>
+                    </section>
+                </section>
+                <section class = "day precepitation">
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Небольшой дождь">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Дождь">
+                        <p>0</p>
+                    </section>
+                </section>
+                <section class = "day precepitation">
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Небольшой дождь">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Дождь">
+                        <p>0</p>
+                    </section>
+                </section>
+                <section class = "day precepitation">
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Без осадков">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Небольшой дождь">
+                        <p>0</p>
+                    </section>
+                    <section class = "part-day precipitation">
+                        <img src="" alt="Дождь">
+                        <p>0</p>
+                    </section>
+                </section>
+            </section>
+        </main>
+        <aside>
+            <section>
+                <dsiv>
+                    <img src="">
+                    <p>Долгота дня - 16 ч 43 мин</p>
+                    <p>Восход - 4:02</p>
+                    <p>Заход - 20:45</p>
+                </div>
+                <p>Сегодня день на 2 минуты длиннее, чем вчера</p>
+            </section>
+            <section>
+                <div>
+                    <img src="">
+                    <p>Луна растущая - 19%</p>
+                    <p>Восход - 7:40</p>
+                    <p>Заход - 10:58</p>
+                </div>
+                <p>Полнолуние - 28 июня, через 23 дня</p>
+            </section>
+            
+        </aside>
+        <footer>
+            <p lang="en">2018 © Copyright</p>
+        </footer>
     </body>
 </html>
