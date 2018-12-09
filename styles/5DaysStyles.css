@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -41,6 +46,86 @@ nav {
     margin: 5px;
 }
 
+
+.weather-container {
+    text-align: center;
+    width: 977px;
+    margin: 0px auto;
+    border-collapse: collapse;
+}
+
+.five-days-weather {
+    text-align: center;
+    border-collapse: collapse;
+}
+
 .day-weather {
-    display: inline-block;
+    border: #979797 solid 1px;
+    display: table-cell;
+}
+
+.day-name {
+    border-bottom: #979797 solid 1px;
+    padding: 10px;    
+}
+.part-day-weather {
+    display: inline-block;    
+    width: 45px;
+}
+
+.part-day-name {
+    padding: 5px 0;
+    text-align: center;
+}
+
+.temperature {
+    margin: 20px 4px;
+    background-color: #baeb87;
+    border: 1px solid #979797;
+}
+
+.additional-weather-parameter {
+    background-color: #d9d9d9;
+    padding: 10px; 
+}
+
+.item {
+    width: 45px;
+    display: inline-block; 
+}
+
+.day-wind,
+.day-precepitation {
+    display: table-cell;
+    border: 1px solid #979797;
+    
+}
+
+.day-wind .item {
+    background-color: #d9d9d9;
+    margin: 10px 0;
+}
+
+.day-precepitation .item .middle {
+    background-image:url("../assets/Group.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-top: 90px;
+}
+
+.day-precepitation .item .high {
+    background-image:url("../assets/Group_2.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-top: 90px;
+}
+
+footer {
+    background-color: #d7d7d7;
+    text-align: center;
+    border: 1px solid #979797;
+}
+
+footer p {
+    margin: 10px;
 }
