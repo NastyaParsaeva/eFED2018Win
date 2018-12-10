@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" type="text/css" href="styles/weather-details.css">
     </head>
     <body>
         <header>
             <nav>
-                <a href="#">Сегодня</a>
-                <a href="#">5 дней</a>
-                <a href="#">История погоды</a>
+                <p class="menu-link"><a href="#">Сегодня</a></p>
+                <p class="menu-link"><a href="#">5 дней</a></p>
+                <p class="menu-link selected"><a href="#">История погоды</a></p>
             </nav>
-            <section>            
-                <p>Ижевск, Россия</p>
+            <section class="location">
+                <span class="current-location">Ижевск, Россия</span>
                 <label for="search-field" style="display: none">Поиск</label>
                 <input id="search-field" type="text" placeholder="Поиск"/>
             </section>
         </header>
         <main>
-            <section>
-                <span></span>
+            <section class="table-row">
+                <span> </span>
                 <span>Январь</span>
                 <span>Февраль</span>
                 <span>Март</span>
@@ -32,7 +32,7 @@
                 <span>Ноябрь</span>
                 <span>Декабрь</span>
             </section>
-            <section>
+            <section class="table-row">
                 <span>Средний максимум</span>
                 <span>-9°</span>
                 <span>-8°</span>
@@ -47,7 +47,7 @@
                 <span>-2°</span>
                 <span>-7°</span>
             </section>
-            <section>
+            <section class="table-row">
                 <span>Средний минимум</span>
                 <span>-16°</span>
                 <span>-15°</span>
@@ -62,7 +62,7 @@
                 <span>-7°</span>
                 <span>-13°</span>
             </section>
-            <section>
+            <section class="table-row">
                 <span>Рекордный максимум</span>
                 <span>3°</span>
                 <span>3°</span>
@@ -77,7 +77,7 @@
                 <span>12°</span>
                 <span>4°</span>
             </section>
-            <section>
+            <section class="table-row">
                 <span>Рекордный минимум</span>
                 <span>-39°</span>
                 <span>-39°</span>
