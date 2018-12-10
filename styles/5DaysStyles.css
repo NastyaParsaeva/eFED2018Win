@@ -5,10 +5,17 @@
 
 html {
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    width: 1000px;
+    margin: 0px auto;
+    border: 2px solid #979797;
+    
 }
 
 nav {
     background-color: #d9d9d9;
+    text-align: left;
+    -webkit-margin-collapse: collapse;
 }
 
 .menu-link {
@@ -17,6 +24,7 @@ nav {
     background-color: #f7f8f8;
     display: inline-block;
     border: 1px solid #979797;
+    
 }
 
 .menu-link a {
@@ -28,6 +36,7 @@ nav {
     background-color: #f2f3f2;
     border-top: 1px solid #979797;
     border-bottom: 1px solid #979797;
+    margin-bottom: 20px;
 }
 
 .current-weather {
@@ -48,14 +57,13 @@ nav {
 
 
 .weather-container {
-    text-align: center;
     width: 977px;
     margin: 0px auto;
     border-collapse: collapse;
+    border: 1px solid #979797;
 }
 
 .five-days-weather {
-    text-align: center;
     border-collapse: collapse;
 }
 
@@ -66,7 +74,7 @@ nav {
 
 .day-name {
     border-bottom: #979797 solid 1px;
-    padding: 10px;    
+    padding: 10px; 
 }
 .part-day-weather {
     display: inline-block;    
@@ -75,13 +83,22 @@ nav {
 
 .part-day-name {
     padding: 5px 0;
-    text-align: center;
+    
 }
 
 .temperature {
     margin: 20px 4px;
-    background-color: #baeb87;
     border: 1px solid #979797;
+}
+
+.normal {
+    background-color:#baeb87;
+}
+.warm {
+    background-color: #f7e638;
+}
+.hot {
+    background-color: #f3a633;
 }
 
 .additional-weather-parameter {
@@ -92,6 +109,7 @@ nav {
 .item {
     width: 45px;
     display: inline-block; 
+    font-size: 0.95em;
 }
 
 .day-wind,
@@ -104,6 +122,12 @@ nav {
 .day-wind .item {
     background-color: #d9d9d9;
     margin: 10px 0;
+    width: 30px;
+    transform: skewX(-40deg) ;
+}
+
+.day-wind .item p {
+    transform: skewX(40deg);
 }
 
 .day-precepitation .item .middle {
@@ -120,12 +144,42 @@ nav {
     padding-top: 90px;
 }
 
+.moon-calendar-header {
+    background-color: #f1f1f1;
+    border: 1px solid #979797;
+    width: 977px;
+    margin: 15px auto;
+    height: 40px;
+}
+
+.moon-calendar-header p {
+    display: inline-block;
+}
+
+.moon-calendar-component {
+    width: 49%;
+    display: inline-block;
+}
+
+.moon-calendar-component figure {
+    display: inline-block;
+}
+
+.details {
+    display: inline-block;
+}
+
+.details p {
+    margin-bottom: 30px;
+}
+
 footer {
     background-color: #d7d7d7;
-    text-align: center;
-    border: 1px solid #979797;
+    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
 }
 
 footer p {
     margin: 10px;
+    background-color: #d7d7d7;
 }
