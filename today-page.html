@@ -8,19 +8,27 @@
         <meta name="author" content="Anastasia Parsaeva">
         <meta name="robots" content="index,nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url("styles/main.css");
+        </style>
         <link rel="stylesheet" type="text/css" href="styles\today-page.css">
     </head>
     <body>
         <header>
                 <nav>
-                    <p class="menu-link selected"><a href="#">Сегодня</a></p>
-                    <p class="menu-link"><a href="#">5 дней</a></p>
-                    <p class="menu-link"><a href="#">История погоды</a></p>
+                    <ul>
+                        <li class="menu-link selected"><a href="today-page.html">Сегодня</a></li>
+                        <li class="menu-link"><a href="five-days-weather.html">5 дней</a></li>
+                        <li class="menu-link"><a href="weather-history.html">История погоды</a></li>
+                    </ul>
                 </nav>
                 <section class="location">
                     <span class="current-location">Загрязнение воздуха: 2,168363052618588е-8</span>
-                    <label for="search-field" style="display: none">Поиск</label>
-                    <input id="search-field" type="text" placeholder="Поиск"/>
+                    <section class="search">
+                        <label for="search-field" style="display: none">Поиск</label>
+                        <span class="magnifier">&nbsp;</span>
+                        <input id="search-field" type="text" placeholder="Поиск"/>
+                    </section>
                 </section>
             </header>
         <main>

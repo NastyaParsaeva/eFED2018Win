@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="styles\5DaysStyles.css">
+        <link rel="stylesheet" type="text/css" href="styles\five-days.css">
+        <style>
+            @import url("styles/main.css");
+        </style>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <header>
             <nav>
-                <p class="menu-link"><a href="#">Сегодня</a></p>
-                <p class="menu-link selected"><a href="#">5 дней</a></p>
-                <p class="menu-link"><a href="#">История погоды</a></p>
+                <ul>
+                    <li class="menu-link"><a href="today-page.html">Сегодня</a></li>
+                    <li class="menu-link selected"><a href="five-days-weather.html">5 дней</a></li>
+                    <li class="menu-link"><a href="weather-history.html">История погоды</a></li>
+                </ul>
             </nav>
             <section class="location">
                 <section class="current-location">
-                    <figure>
-                        <img class="current-weather" src="assets\cloud-image.png" alt="облачно">    
+                    <figure class="current-weather">
+                        <img  src="assets\cloud-image.png" alt="Облачно">    
                     </figure>
                     <span>34° Ижевск, Россия</span>
                 </section>
-                <label for="search-field" style="display: none">Поиск</label>
-                <input id="search-field" type="text" placeholder="Поиск"/>
+                <section class="search">
+                    <label for="search-field" style="display: none">Поиск</label>
+                    <span class="magnifier">&nbsp;</span>
+                    <input id="search-field" type="text" placeholder="Поиск"/>
+                </section>
             </section>
         </header>
         <main>
