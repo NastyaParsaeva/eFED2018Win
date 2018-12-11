@@ -3,44 +3,6 @@ figure {
     display: inline-block;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    width: 1040px;
-    margin: 0px auto;
-    border: 2px solid #979797;
-    
-}
-
-nav {
-    background-color: #d9d9d9;
-    text-align: left;
-    -webkit-margin-collapse: collapse;
-}
-
-.menu-link {
-    padding: 5px 15px;
-    margin: 5px 15px;
-    background-color: #f7f8f8;
-    display: inline-block;
-    border: 1px solid #979797;
-    
-}
-
-.menu-link a {
-    color: black;
-    text-decoration: none;
-}
-
-.selected {
-    background-color: #9c9c9c;
-}
-
 .location {
     background-color: #f2f3f2;
     border-top: 1px solid #979797;
@@ -49,29 +11,16 @@ nav {
     text-align: right;
 }
 
-.current-location {
-    display: inline-block;
+.current-weather {
     float: left;
+    margin: -10px 20px 0 0;
 }
-
-.current-location p {
-    display: inline-block;
-    margin: 5px;
-}
-
-#search-field {
-    width: 300px;
-    height: 26px;
-    margin: 5px;
-}
-
 
 .arrow {
     display: inline-block;
 }
 
 .weather-container {
-   /* width: 977px;*/
     margin: 0px auto;
     border-collapse: collapse;
     border: 1px solid #979797;
@@ -98,7 +47,6 @@ nav {
 
 .part-day-name {
     padding: 5px 0;
-    
 }
 
 .temperature {
@@ -134,15 +82,16 @@ nav {
     
 }
 
-.day-wind .item {
+.day-wind .item p {
     background-color: #d9d9d9;
-    margin: 10px 0;
+    margin: 10px 7px;
     width: 30px;
-    transform: skewX(-40deg) ;
+    transform: skewX(-40deg);
 }
 
-.day-wind .item p {
+.day-wind .item span {
     transform: skewX(40deg);
+    display: inline-block;
 }
 
 .day-precepitation .item .middle {
