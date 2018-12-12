@@ -86,6 +86,10 @@ button {
     margin-left: 33px;
 }
 
+.precipitation-graph {
+    margin-top: 30px;
+}
+
 .precipitation-graph .item {
     width: 35px;
     margin: 0;
@@ -100,6 +104,11 @@ button {
     display: block;
     border-top: 2px solid #257feb;
     margin: 0;
+}
+
+.precipitation-graph .item:nth-child(odd):after {
+    margin-top: 21px;
+    height: 21px;
 }
 
 .air-pollution {
