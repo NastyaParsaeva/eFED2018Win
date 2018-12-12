@@ -77,7 +77,6 @@ button {
     margin-bottom: 0px;
 }
 
-
 .temp-graph .item:after {
     content: "";
     background-color: #d9d9d9;
@@ -85,6 +84,22 @@ button {
     width: 20px;
     display: block;
     margin-left: 33px;
+}
+
+.precipitation-graph .item {
+    width: 35px;
+    margin: 0;
+    color: #257feb;
+}
+
+.precipitation-graph .item:after {
+    content: "";
+    background-color: #e8f1fc;
+    height: 42px;
+    width: 40px;
+    display: block;
+    border-top: 2px solid #257feb;
+    margin: 0;
 }
 
 .air-pollution {
