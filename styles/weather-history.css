@@ -2,10 +2,10 @@
 @import url('main.css');
 
 main {
-    display: table;
-    margin: 70px 0;
+    
+    margin-top: 70px;
+    height: 600px;
 }
-
 
 main .table-row:nth-child(2n) span:nth-child(2n),
 main  .table-row:nth-child(2n+1) span:nth-child(2n+1) {
