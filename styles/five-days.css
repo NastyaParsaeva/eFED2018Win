@@ -1,0 +1,159 @@
+
+figure {
+    display: inline-block;
+}
+
+.location {
+    background-color: #f2f3f2;
+    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.current-weather {
+    float: left;
+    margin: -10px 20px 0 0;
+}
+
+.arrow {
+    display: inline-block;
+}
+
+.weather-container {
+    margin: 0px auto;
+    border-collapse: collapse;
+    border: 1px solid #979797;
+    display: inline-block;
+}
+
+.five-days-weather {
+    border-collapse: collapse;
+}
+
+.day-weather {
+    border: #979797 solid 1px;
+    display: table-cell;
+}
+
+.day-name {
+    border-bottom: #979797 solid 1px;
+    padding: 10px; 
+}
+.part-day-weather {
+    display: inline-block;    
+    width: 45px;
+}
+
+.part-day-name {
+    padding: 5px 0;
+}
+
+.temperature {
+    margin: 20px 4px;
+    border: 1px solid #979797;
+}
+
+.normal {
+    background-color:#baeb87;
+}
+.warm {
+    background-color: #f7e638;
+}
+.hot {
+    background-color: #f3a633;
+}
+
+.additional-weather-parameter {
+    background-color: #d9d9d9;
+    padding: 10px; 
+}
+
+.item {
+    width: 45px;
+    display: inline-block; 
+    font-size: 0.95em;
+}
+
+.day-wind,
+.day-precepitation {
+    display: table-cell;
+    border: 1px solid #979797;
+    
+}
+
+.day-wind .item p {
+    background-color: #d9d9d9;
+    margin: 10px 7px;
+    width: 30px;
+    transform: skewX(-40deg);
+}
+
+.day-wind .item span {
+    transform: skewX(40deg);
+    display: inline-block;
+}
+
+.day-precepitation .item .middle {
+    background-image:url("../assets/Group.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-top: 90px;
+}
+
+.day-precepitation .item .high {
+    background-image:url("../assets/Group_2.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-top: 90px;
+}
+
+.moon-calendar-header {
+    background-color: #f1f1f1;
+    border: 1px solid #979797;
+    width: 977px;
+    margin: 15px auto;
+    height: 40px;
+}
+
+.moon-calendar-header p {
+    display: inline-block;
+    padding: 11px;
+}
+
+.today {
+    float: left;
+}
+.moon-calendar-component {
+    width: 49%;
+    display: inline-block;
+}
+
+.moon-calendar-component figure {
+    display: inline-block;
+    margin: 15px;
+}
+
+.details {
+    display: inline-block;
+    text-align: left;
+}
+
+.details p {
+    margin-bottom: 30px;
+}
+
+.addition {
+    font-size: 0.95em;
+}
+
+footer {
+    background-color: #d7d7d7;
+    border-top: 1px solid #979797;
+    border-bottom: 1px solid #979797;
+}
+
+footer p {
+    margin: 10px;
+    background-color: #d7d7d7;
+}

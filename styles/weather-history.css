@@ -1,0 +1,22 @@
+
+@import url('main.css');
+
+main {
+    
+    margin-top: 70px;
+    height: 600px;
+}
+
+main .table-row:nth-child(2n) span:nth-child(2n),
+main  .table-row:nth-child(2n+1) span:nth-child(2n+1) {
+    background-color: #c5c5c5;
+}
+
+
+main span {
+    display: table-cell;
+    width: 80px;
+    height: 40px;
+    font-size: 0.95em;
+    vertical-align: middle;
+}

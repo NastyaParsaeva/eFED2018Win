@@ -1,0 +1,27 @@
+.city {
+    display: inline-block;
+    width: 40%;
+}
+
+.main-info {
+    display: inline-block;
+    width: 50%;
+}
+
+.item {
+    display: inline-block;
+}
+
+.temperature {
+    display: inline-block;
+}
+
+.air-pollution {
+    display: inline-block;
+    width: 65%;
+}
+
+.search-field {
+    display: inline-block;
+    width: 25%;
+}

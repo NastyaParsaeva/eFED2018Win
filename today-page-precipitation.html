@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <title>Прогноз погоды от Анастасии</title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Подробный прогноз погоды на сегодня, 7 дней и история погоды">
+        <meta name="keywords" content="прогноз, погода, дождь, вероятность осадков, осадки, скорость ветра, загрязнение воздуха, влажность воздуха">
+        <meta name="author" content="Anastasia Parsaeva">
+        <meta name="robots" content="index,nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url("styles/main.css");
+        </style>
+        <link rel="stylesheet" type="text/css" href="styles\today-page.css">
+    </head>
+    <body>
+        <header>
+                <nav>
+                    <ul>
+                        <li class="menu-link selected"><a href="today-page.html">Сегодня</a></li>
+                        <li class="menu-link"><a href="five-days-weather.html">5 дней</a></li>
+                        <li class="menu-link"><a href="weather-history.html">История погоды</a></li>
+                    </ul>
+                </nav>
+                <section class="location">
+                    <span class="current-location">Загрязнение воздуха: 2,168363052618588е-8</span>
+                    <section class="search">
+                        <label for="search-field" style="display: none">Поиск</label>
+                        <span class="magnifier">&nbsp;</span>
+                        <input id="search-field" type="text" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
+                    </section>
+                </section>
+            </header>
+        <main>
+            <article class="info-container">
+                <section class="info">
+                    <p>Ижевск, Россия</p>
+                    <p>среда</p>
+                    <p>облачно</p>
+                    <figure>
+                        <img src="assets\Sunny Weather@2x.png" alt="Солнечно">
+                    </figure>
+                    <p class="temperature">22°C</p>
+                </section>
+                <section class="info">
+                    <p>Вероятность осадков: 20%</p>
+                    <p>Влажность: 45%</p>
+                    <p>Ветер: 11 км/ч</p>
+                    <section class="graph-controller">
+                        <nav>
+                            <ul>
+                                <li class="menu-link"><a href="today-page-temeprature.html">Температура</a></li>
+                                <li class="menu-link selected"><a href="today-page-precipitation.html">Вероятность осадков</a></li>
+                                <li class="menu-link"><a href="today-page.html">Ветер</a></li>
+                            </ul>
+                        </nav>
+                    </section>
+                </section>
+            </article>
+            <article class="precipitation-graph">
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">24%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">30%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">24%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">8%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">4%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">6%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">0%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+                <p class="precipitation-graph item">1%</p>
+                <p class="precipitation-graph item">&nbsp;</p>
+            </article>
+            <article class="wind-graph">
+            </article>
+            <article class="week-forecast">
+                <section class="item">
+                    <p>17:00</p>
+                    <p class="day-name">ср</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>20:00</p>
+                    <p class="day-name">чт</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>23:00</p>
+                    <p class="day-name">пт</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>2:00</d>
+                    <p class="day-name">сб</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>5:00</d>
+                    <p class="day-name">вс</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>8:00</d>
+                    <p class="day-name">пн</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>11:00</p>
+                    <p class="day-name">вт</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+                <section class="item">
+                    <p>14:00</p>
+                    <p class="day-name">ср</p>
+                    <img src="assets\Cloudy Weather.png" alt="Облачно">
+                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
+                </section>
+            </article>
+        </main>
+        <footer>
+            <p lang="en">2018 © Copyright</p>
+        </footer>
+    </body>
+</html>

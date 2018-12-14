@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="История погоды по месяцам">
+        <meta name="keywords" content="прогноз, погода, дождь, история температурных показателей">
+        <meta name="author" content="Anastasia Parsaeva">
+        <meta name="robots" content="index,nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url("styles/main.css");
+        </style>
+        <link rel="stylesheet" type="text/css" href="styles/weather-history.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="menu-link"><a href="today-page.html">Сегодня</a></li>
+                    <li class="menu-link"><a href="five-days-weather.html">5 дней</a></li>
+                    <li class="menu-link selected"><a href="weather-history.html">История погоды</a></li>
+                </ul>
+            </nav>
+            <section class="location">
+                <span class="current-location">Ижевск, Россия</span>
+                <section class="search">
+                    <label for="search-field" style="display: none">Поиск</label>
+                    <span class="magnifier">&nbsp;</span>
+                    <input id="search-field" type="text" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
+                </section>
+            </section>
+        </header>
+        <main>
+            <section class="table-row">
+                <span>&nbsp;</span>
+                <span>Январь</span>
+                <span>Февраль</span>
+                <span>Март</span>
+                <span>Апрель</span>
+                <span>Май</span>
+                <span>Июнь</span>
+                <span>Июль</span>
+                <span>Август</span>
+                <span>Сентябрь</span>
+                <span>Октябрь</span>
+                <span>Ноябрь</span>
+                <span>Декабрь</span>
+            </section>
+            <section class="table-row">
+                <span>Средний максимум</span>
+                <span>-9°</span>
+                <span>-8°</span>
+                <span>-1°</span>
+                <span>7°</span>
+                <span>18°</span>
+                <span>23°</span>
+                <span>25°</span>
+                <span>22°</span>
+                <span>15°</span>
+                <span>7°</span>
+                <span>-2°</span>
+                <span>-7°</span>
+            </section>
+            <section class="table-row">
+                <span>Средний минимум</span>
+                <span>-16°</span>
+                <span>-15°</span>
+                <span>-9°</span>
+                <span>-1°</span>
+                <span>7°</span>
+                <span>12°</span>
+                <span>14°</span>
+                <span>12°</span>
+                <span>7°</span>
+                <span>0°</span>
+                <span>-7°</span>
+                <span>-13°</span>
+            </section>
+            <section class="table-row">
+                <span>Рекордный максимум</span>
+                <span>3°</span>
+                <span>3°</span>
+                <span>9°</span>
+                <span>24°</span>
+                <span>30°</span>
+                <span>36°</span>
+                <span>38°</span>
+                <span>37°</span>
+                <span>30°</span>
+                <span>22°</span>
+                <span>12°</span>
+                <span>4°</span>
+            </section>
+            <section class="table-row">
+                <span>Рекордный минимум</span>
+                <span>-39°</span>
+                <span>-39°</span>
+                <span>-30°</span>
+                <span>-22°</span>
+                <span>-7°</span>
+                <span>0°</span>
+                <span>4°</span>
+                <span>1°</span>
+                <span>-4°</span>
+                <span>-21°</span>
+                <span>-29°</span>
+                <span>-40°</span>
+            </section>
+
+        </main>
+        <footer>
+            <p lang="en">2018 © Copyright</p>  
+        </footer>
+    </body>
+</html>
