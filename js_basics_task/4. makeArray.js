@@ -15,7 +15,7 @@
 [10, 8, 6, 4, 2]
 */
 
-function makeArray(start, end, step) {
+function makeArray(start, end, step = 1) {
     let returnArray = [];
     if (!step) {
         step = 1;
