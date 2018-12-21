@@ -17,9 +17,6 @@
 
 function makeArray(start, end, step = 1) {
     let returnArray = [];
-    if (!step) {
-        step = 1;
-    }
     
     if (start > end) {
         step = -step;
