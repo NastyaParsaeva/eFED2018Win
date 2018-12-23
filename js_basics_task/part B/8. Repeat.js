@@ -14,11 +14,13 @@ function multiplyOrThrow(a, b) {
 }
 */
 
+class MultiplicatorUnitFailure extends Error {}
+
 function multiplyOrThrow(a, b) {
   if (Math.random() < 0.5) {
     return a * b;
   } else {
-    throw 'MultiplicatorUnitFailure';
+    throw new MultiplicatorUnitFailure;
   }
 }
 
@@ -26,7 +28,7 @@ function repeat(a, b) {
   try {
     return multiplyOrThrow(a, b);
   } catch(err) {
-    if (err instanceof 'MultiplicatorUnitFailure') {
+    if (err instanceof MultiplicatorUnitFailure) {
       return repeat(a, b);
     } else {
       throw err;
