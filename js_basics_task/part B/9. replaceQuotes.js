@@ -18,11 +18,7 @@ I’m the “hero”
 */
 
 function replaceQuotes(inputString) {
-    return inputString.replace(/'/g, '"');
+    return inputString.replace(/'(\w+)'/g, '"$1"');
 }
 
 console.log(replaceQuotes(`I'm the 'hero'`));
-
-var str = 'Twas the night before Xmas...';
-var newstr = str.replace(/xmas/i, 'Christmas');
-console.log(newstr); 
