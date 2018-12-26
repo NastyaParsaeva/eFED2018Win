@@ -8,8 +8,14 @@
 I’m the “hero” 
 */
 
-function replaceQuotes(inputString) { 
-    return inputString.replace(/'(\w+)'/g, '"$1"'); 
+function replaceQuotes(inputStr) {
+   // inputStr.replace(regexp|substr, newSubStr|function[, flags])
+    inputStr.replace(/'(?![А-ЯЁ][а-яё])/, `”`);
+
+/*
+    Сопоставлется с x, только если за x не следует y. Например, шаблон /\d+(?!\.)/ сопоставляется с числом только если за ним не следует десятичная запятая.
+
+Выражение /\d+(?!\.)/.exec('3.141') сопоставится с «141» но не с «3.141».*/
 }
 
-console.log(replaceQuotes `I'm the 'hero'`);
+console.log(replaceQuotes `I’m the ‘hero’`);
