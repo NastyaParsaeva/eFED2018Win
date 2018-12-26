@@ -15,19 +15,11 @@
 function chessBoard(width, height) {
     let returnString = '';
     for (let rowNumber = 0; rowNumber < height; rowNumber++) {
-        for (let cellNumber=0; cellNumber < width; cellNumber++) {
-            if (rowNumber%2 === 0) {
-                if (cellNumber%2 === 0) {
-                    returnString += '#';
-                } else {
-                    returnString += ' ';
-                }
+        for (let cellNumber = 0; cellNumber < width; cellNumber++) {
+            if ((rowNumber + cellNumber) % 2 === 0) {
+                returnString += '#';
             } else {
-                if (cellNumber%2 ===0) {
-                    returnString += ' ';
-                } else {
-                    returnString += '#';
-                }
+                returnString += ' ';
             }
         }
         returnString += '\n';
@@ -35,4 +27,4 @@ function chessBoard(width, height) {
     return returnString;
 }
 
-console.log(chessBoard(8, 4));
+console.log(chessBoard(18, 10));

@@ -13,20 +13,16 @@ true
 */
 
 function deepCompare(first, second) {
-    let areEqual = true;
-
     for (let prop in first) {
         if (second.hasOwnProperty(prop)) {
             if (first[prop] !== second[prop]) {
-                areEqual = false;
-                break;
+                return false;
             }
         } else {
-            areEqual = false;
-            break;
+            return false;
         };
       }
-    return areEqual;
+    return true;
 }
 
 console.log(deepCompare({ one: 1, two: '2' }, { one: 1, two: '2' }));
