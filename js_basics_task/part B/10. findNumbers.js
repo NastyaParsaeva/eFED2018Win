@@ -14,8 +14,12 @@
 
 function findNumbers(inputArray) {
     return inputArray.filter((element) => {
-        console.log(element + ' match function result is ' + element.match(/(-|\+)?(\d+)?.?(\d+)?\W+/));
-        if (element.match(/(-|\+)?(\d+)?.?(\d+)?\W+/) !== null) {
+        let a = element.match(/(\+|-)?((\d+)?.?(\de)?((\+|-)?(\d+)?))[^a-zA-Z]/g);
+
+
+        console.log(element + ' match function result is ' + a);
+
+        if (a[0] === element) {
             return element;
         }
     });
