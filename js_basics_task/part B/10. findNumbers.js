@@ -13,20 +13,19 @@
 */
 
 function findNumbers(inputArray) {
-    return inputArray.filter((element) => {
-        let a = element.match(/(\+|-)?((\d+)?.?(\de)?((\+|-)?(\d+)?))[^a-zA-Z]/g);
 
+    let returnArray = inputArray.filter((element) => {
+        //number with + or - : ^(\+|-)?\d+$
+        //dotted numbers: ^([0-9]+\.)?(\.[0-9]+)?$
+        //numbers with e : ^([0-9]+)?\.?\d[eE](\+|-)?\d+$
 
-        console.log(element + ' match function result is ' + a);
-
-        if (a[0] === element) {
+        var myReg = /^(\+|-)?\d+$/g;
+        if (myReg.test(element)) {
             return element;
         }
     });
+    return returnArray;
 }
 
-
-
 console.log(findNumbers(["1", "-1", "+15", "1.55dfgdfg", ".5", "5.", "1", "1.3e2", "1E-4", "1e+12"]));
-
 console.log(findNumbers(["1a", "+-1", "1.2.3", "1+1", "1e4.5", ".5.", "1f5", "."]));
