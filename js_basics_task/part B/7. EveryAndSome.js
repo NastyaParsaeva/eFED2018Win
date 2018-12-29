@@ -34,6 +34,15 @@ function every(inputArray, inputFunc) {
     }
 }
 
+function newEvery(inputArray, inputFunc) {
+    for (let i = 0; i < inputArray.length; i++) {
+        if (!inputFunc(inputArray[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
 function some(inputArray, inputFunc) {
 
      if (inputArray.findIndex(inputFunc) >= 0) {
@@ -45,7 +54,7 @@ function some(inputArray, inputFunc) {
 }
 
 
-console.log(every([NaN, 4, 6, NaN], Number.isNaN));
-console.log(every([NaN, NaN], Number.isNaN));
+console.log(newEvery([NaN, 4, 6, NaN], Number.isNaN));
+console.log(newEvery([NaN, NaN], Number.isNaN));
 console.log(some([1, 2, 6], Number.isNaN));
 console.log(some([15, 4, 8, NaN], Number.isNaN));
