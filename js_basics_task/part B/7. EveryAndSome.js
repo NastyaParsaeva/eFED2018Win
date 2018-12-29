@@ -20,20 +20,6 @@ false
 true
 */
 
-function every(inputArray, inputFunc) {
-
-    //find for how many elements input function is true
-    let elemsCount = inputArray.reduce((accumulator, current) => {
-        return accumulator + inputFunc(current);
-    }, 0)
-
-    if (elemsCount === inputArray.length) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
 function newEvery(inputArray, inputFunc) {
     for (let i = 0; i < inputArray.length; i++) {
         if (!inputFunc(inputArray[i])) {
