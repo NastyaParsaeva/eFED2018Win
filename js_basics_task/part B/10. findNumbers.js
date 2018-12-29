@@ -10,6 +10,9 @@
 ["1", "-1", "+15", "1.55", ".5", "5.", "1.3e2", "1E-4", "1e+12"]
 > console.log(findNumbers(["1a", "+-1", "1.2.3", "1+1", "1e4.5", ".5.", "1f5", "."]));
 []
+
+
+["1", "-1", "+15", "1.55dfgdfg", ".5", "5.", "1", "1.3e2", "1E-4", "1e+12", "1.5", "-.6"]
 */
 
 function findNumbers(inputArray) {
@@ -25,8 +28,6 @@ function findNumbers(inputArray) {
 
         //dotted numbers with e: 
 
-
-
         var myReg = /^(\+|-)?([0-9]+\.?(([0-9][eE])?[0-9]+?)?|\.[0-9]+|[0-9]+|([0-9][eE](\+|-)?\d+)?)$/g;
         if (myReg.test(element)) {
             return element;
@@ -35,5 +36,5 @@ function findNumbers(inputArray) {
     return returnArray;
 }
 
-console.log(findNumbers(["1", "-1", "+15", "1.55dfgdfg", ".5", "5.", "1", "1.3e2", "1E-4", "1e+12", "1.5", "-.6"]));
+console.log(findNumbers(["1", "-1", "+15", "1.55", ".5", "5.", "1.3e2", "1E-4", "1e+12"]));
 console.log(findNumbers(["1a", "+-1", "1.2.3", "1+1", "1e4.5", ".5.", "1f5", "."]));

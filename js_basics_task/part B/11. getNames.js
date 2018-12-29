@@ -79,4 +79,9 @@ function getNames(inputDate) {
     return returnStr;
 }
 
-console.log(getNames(new Date()));
+
+function newGetNames(inputDate) {
+    //let options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
+    return inputDate.toLocaleDateString('ru-RU', {weekday: 'String'});
+}
+console.log(newGetNames(new Date()));
