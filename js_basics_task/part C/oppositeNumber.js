@@ -11,3 +11,7 @@ But can you do it in 1 line of code and without any conditionals?
 function opposite(number) {
     return -number;
 }
+
+console.log(opposite(1));
+console.log(opposite(14));
+console.log(opposite(-34));
