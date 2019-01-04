@@ -110,3 +110,9 @@ function zero(func) {
         return Math.floor(left / right);
     }
   }
+
+
+  console.log(seven(times(five())));
+  console.log(four(plus(nine())));
+  console.log(eight(minus(three())));
+  console.log(six(dividedBy(two())));

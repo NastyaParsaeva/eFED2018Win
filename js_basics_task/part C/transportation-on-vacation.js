@@ -21,5 +21,8 @@ function rentalCarCost(d) {
     } else {
       return d * 40;
     }
-// Your solution here
 }
+
+console.log(rentalCarCost(15));
+console.log(rentalCarCost(5));
+console.log(rentalCarCost(1));
