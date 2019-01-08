@@ -4,7 +4,6 @@ function deepCount(a){
     } else {
         let arrayLength = a.length;
         a.forEach(elem => {
-            //console.log(elem);
             if (Array.isArray(elem)) {
                 arrayLength += deepCount(elem);
             }
