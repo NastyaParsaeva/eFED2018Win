@@ -82,6 +82,6 @@ function getNames(inputDate) {
 
 function newGetNames(inputDate) {
     //let options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-    return inputDate.toLocaleDateString('ru-RU', {weekday: 'String'});
+    return `${inputDate.toLocaleString('en-US', { month: 'long'})}, ${inputDate.toLocaleString('en-US', { weekday: 'long'})}`;
 }
 console.log(newGetNames(new Date()));
