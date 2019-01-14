@@ -15,7 +15,7 @@
     </head>
     <body>
         <header>
-            <nav>
+            <nav class = "navigation">
                 <ul>
                     <li class="menu-link"><a href="today-page.html">Сегодня</a></li>
                     <li class="menu-link selected"><a href="five-days-weather.html">5 дней</a></li>
@@ -42,7 +42,7 @@
             </figure>
             <section class="weather-container">
                 <section class="five-days-weather">
-                    <section class = "day-weather">
+                    <section class = "day-weather shown">
                         <p class="day-name">Пт, 18 мая</p>
                         <section class = "part-day-weather item">
                             <p class="part-day-name">Ночь</p>
@@ -157,6 +157,15 @@
                             <p class = "temperature warm">+17</p>
                         </section>
                     </section>
+                    <nav class = "day-switcher">
+                        <ul>
+                            <li class="day">пт</li>
+                            <li class="day selected">сб</li>
+                            <li class="day">вс</li>
+                            <li class="day">пн</li>
+                            <li class="day">вт</li>
+                        </ul>
+                    </nav>
                 </section>
 
 
@@ -343,5 +352,6 @@
         <footer>
             <p lang="en">2018 © Copyright</p>
         </footer>
+        <script src="js\index.js"></script>
     </body>
 </html>
