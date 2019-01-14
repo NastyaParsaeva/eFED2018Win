@@ -37,11 +37,11 @@
             </section>
         </header>
         <main>
-            <figure class="arrow">
-                <img src="assets\left-arrow.png" alt="Предыдущий день"> 
-            </figure>
             <section class="weather-container">
                 <section class="five-days-weather">
+                    <figure class="arrow">
+                        <img id="prev-day" src="assets\left-arrow.png" alt="Предыдущий день"> 
+                    </figure>
                     <section class = "day-weather shown">
                         <p class="day-name">Пт, 18 мая</p>
                         <section class = "part-day-weather item">
@@ -157,15 +157,19 @@
                             <p class = "temperature warm">+17</p>
                         </section>
                     </section>
+                    <figure class="arrow">
+                        <img id = "next-day" src="assets\right-arrow.png" alt="Следующий день">
+                    </figure>
                     <nav class = "day-switcher">
                         <ul>
-                            <li class="day">пт</li>
-                            <li class="day selected">сб</li>
-                            <li class="day">вс</li>
-                            <li class="day">пн</li>
-                            <li class="day">вт</li>
+                            <li class="menu-link selected">пт</li>
+                            <li class="menu-link">сб</li>
+                            <li class="menu-link">вс</li>
+                            <li class="menu-link">пн</li>
+                            <li class="menu-link">вт</li>
                         </ul>
                     </nav>
+                    
                 </section>
 
 
@@ -316,9 +320,6 @@
                     </section>
                 </section>
             </section>
-            <figure class="arrow">
-                <img src="assets\right-arrow.png" alt="Следующий день">
-            </figure>
         </main>
         <aside>
             <section class="moon-calendar-header">
