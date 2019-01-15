@@ -4,7 +4,6 @@ let current = 0;
 let slideNav = document.querySelectorAll('.day-switcher .menu-link');
 
 function changeSlide(index) {
-  console.log(index);
     slides[current].className = 'day-weather';
     slideNav[current].className = 'menu-link';
     current = index;
