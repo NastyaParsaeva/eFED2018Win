@@ -33,7 +33,11 @@ figure {
 
 .day-weather {
     border: #979797 solid 1px;
-    display: table-cell;
+    display: none;
+}
+
+.shown {
+    display: inline-block;
 }
 
 .day-name {

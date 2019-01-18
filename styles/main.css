@@ -12,7 +12,7 @@ body {
     border: 2px solid #979797;   
 }
 
-header nav {
+header .navigation {
     background-color: #d9d9d9;
     text-align: left;
     -webkit-margin-collapse: collapse;

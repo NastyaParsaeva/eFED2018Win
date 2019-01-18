@@ -15,7 +15,7 @@
     </head>
     <body>
         <header>
-                <nav>
+                <nav class="navigation">
                     <ul>
                         <li class="menu-link selected"><a href="today-page.html">Сегодня</a></li>
                         <li class="menu-link"><a href="five-days-weather.html">5 дней</a></li>
@@ -40,30 +40,59 @@
                     <figure>
                         <img src="assets\Sunny Weather@2x.png" alt="Солнечно">
                     </figure>
-                    <p class="temperature">22°C</p>
+                    <p class="current-temperature">22°C</p>
                 </section>
                 <section class="info">
                     <p>Вероятность осадков: 20%</p>
                     <p>Влажность: 45%</p>
                     <p>Ветер: 11 км/ч</p>
-                    <section class="graph-controller">
-                        <nav>
-                            <ul>
-                                <li class="menu-link"><a href="today-page-temeprature.html">Температура</a></li>
-                                <li class="menu-link"><a href="today-page-precipitation.html">Вероятность осадков</a></li>
-                                <li class="menu-link selected"><a href="today-page.html">Ветер</a></li>
-                            </ul>
-                        </nav>
-                    </section>
+                    <nav class="graph-controller">
+                        <ul>
+                            <li class="menu-link selected">Температура</li>
+                            <li class="menu-link">Вероятность осадков</li>
+                            <li class="menu-link">Ветер</li>
+                        </ul>
+                    </nav>
                 </section>
             </article>
 
-            <article class="temperature graph">
-                
+            <article class="temperature graph shown">
+                <p class="item">14</p>
+                <p class="item">14</p>
+                <p class="item">14</p>
+                <p class="item">12</p>
+                <p class="item">11</p>
+                <p class="item">13</p>
+                <p class="item">14</p>
+                <p class="item">14</p>
             </article>
             <article class="precipitation graph">
+                <p class="item">&nbsp;</p>
+                <p class="item">24%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">30%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">24%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">8%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">4%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">6%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">0%</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">&nbsp;</p>
+                <p class="item">1%</p>
+                <p class="item">&nbsp;</p>
             </article>
-            <article class="wind-graph">
+            <article class="wind graph">
                 <section class="item">
                     <p>7 м/с</p>
                     <img src="assets\wind_direction.png" alt="направление ветра">
@@ -152,5 +181,6 @@
         <footer>
             <p lang="en">2018 © Copyright</p>
         </footer>
+        <script src="js/today-page.js"></script>
     </body>
 </html>
