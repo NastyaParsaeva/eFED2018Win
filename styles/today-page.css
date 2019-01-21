@@ -23,7 +23,7 @@ figure {
     margin: 20px;
 }
 
-.info .current-temperature {
+.info #current-temperature {
     display: inline-block;
 }
 
