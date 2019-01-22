@@ -37,8 +37,8 @@
             </section>
         </header>
         <main>
-            <section class="weather-container">
-                <section class="five-days-weather">
+            <section id="weather-container" class="weather-container">
+                <section id="five-days-container" class="five-days-weather">
                     <figure class="arrow">
                         <img id="prev-day" src="assets\left-arrow.png" alt="Предыдущий день"> 
                     </figure>
@@ -157,24 +157,18 @@
                             <p class = "temperature warm">+17</p>
                         </section>
                     </section>
-                    <figure class="arrow">
+                    <figure id = "next-day-container" class="arrow">
                         <img id = "next-day" src="assets\right-arrow.png" alt="Следующий день">
                     </figure>
-                    <nav class = "day-switcher">
-                        <ul>
-                            <li class="menu-link selected">пт</li>
-                            <li class="menu-link">сб</li>
-                            <li class="menu-link">вс</li>
-                            <li class="menu-link">пн</li>
-                            <li class="menu-link">вт</li>
-                        </ul>
+                    <nav id = "day-switcher">
+                        
                     </nav>
                     
                 </section>
 
 
-                <p class="additional-weather-parameter">Максимальная скорость ветра, м/с</p>
-                <section class = "">
+                <p id = "wind-forecast-label" class="additional-weather-parameter">Максимальная скорость ветра, м/с</p>
+                <section id = "wind-forecast">
                     <section class = "day-wind">
                         <span class = "item">
                             <p><span>2</span></p>
@@ -246,7 +240,7 @@
                         </span>
                     </section>
                 </section>
-                <p class="additional-weather-parameter">Осадки, мм</p>
+                <p id = "precepitation-forecast-label" class="additional-weather-parameter">Осадки, мм</p>
                 <section class="5-days-precepitation">
                     <section class = "day-precepitation">
                         <section class = "item">
@@ -353,6 +347,8 @@
         <footer>
             <p lang="en">2018 © Copyright</p>
         </footer>
+        
+        <script src="js\five-days-api-calls.js"></script>
         <script src="js\five-days.js"></script>
     </body>
 </html>
