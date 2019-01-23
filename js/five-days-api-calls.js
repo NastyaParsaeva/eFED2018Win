@@ -32,18 +32,18 @@ const page = {
         let daySwitcher = document.createElement('ul');
         let windForecast = document.createElement('section');
         let dayWind;
-        let dailyForecast = document.createElement('section');
-        let dayWeather;
+        // let dailyForecast = document.createElement('section');
+        // let dayWeather;
 
         for (let i = 0; i < data.list.length; i += 2) {
             console.log(new Date(data.list[i].dt * 1000));
-            let newNode = document.createElement(`li`);
+            let newSliderSwitcher = document.createElement(`li`);
             let isNewDay = true;
-            newNode.classList.add('menu-link');
-            newNode.innerHTML = `${new Date(data.list[i].dt * 1000).toLocaleString('ru-RU', {weekday: "short"})}`;
-            if (!newNode.isEqualNode(daySwitcher.lastChild))  {
+            newSliderSwitcher.classList.add('menu-link');
+            newSliderSwitcher.innerHTML = `${new Date(data.list[i].dt * 1000).toLocaleString('ru-RU', {weekday: "short"})}`;
+            if (!newSliderSwitcher.isEqualNode(daySwitcher.lastChild))  {
                 isNewDay = true;
-                daySwitcher.appendChild(newNode);
+                daySwitcher.appendChild(newSliderSwitcher);
             } else {
                 isNewDay = false;
             }
@@ -51,29 +51,29 @@ const page = {
             if (isNewDay) {
                 dayWind = document.createElement(`section`);
                 dayWind.classList.add('day-wind');
-                dayWeather = document.createElement('section');
-                dayWeather.classList.add('day-weather');
+                // dayWeather = document.createElement('section');
+                // dayWeather.classList.add('day-weather');
                 //TODO: replace first letter of weekday by capital letter
-                let dayNameNode = document.createElement(`p`);
-                dayNameNode.classList.add(`day-name`);
-                dayNameNode.innerHTML = `${new Date(data.list[i].dt * 1000).toLocaleString('ru-RU', {weekday: "short"})}, 
-                                    ${new Date(data.list[i].dt * 1000).toLocaleString('ru-RU', {day: 'numeric', month: 'long'})}`;
-                dayWeather.appendChild(dayNameNode);
+                // let dayNameNode = document.createElement(`p`);
+                // dayNameNode.classList.add(`day-name`);
+                // dayNameNode.innerHTML = `${new Date(data.list[i].dt * 1000).toLocaleString('ru-RU', {weekday: "short"})}, 
+                //                     ${new Date(data.list[i].dt * 1000).toLocaleString('ru-RU', {day: 'numeric', month: 'long'})}`;
+                // dayWeather.appendChild(dayNameNode);
             } else {
                 dayWind = windForecast.lastChild;
-                dayWeather = dailyForecast.lastChild;
+                // dayWeather = dailyForecast.lastChild;
             }
             let windItemNode = document.createElement(`span`);
             windItemNode.classList.add(`item`);
             windItemNode.innerHTML = `<p><span>${Math.round(data.list[i].wind.speed)}</span></p>`;
             dayWind.appendChild(windItemNode);
             windForecast.appendChild(dayWind);
-            dayWeather.appendChild()
+            // dayWeather.appendChild()
         }
         daySwitcher.firstChild.classList.add('selected');
         document.getElementById('day-switcher').appendChild(daySwitcher);
         document.getElementById('weather-container').insertBefore(windForecast, document.getElementById('precepitation-forecast-label'));
-        document.getElementById('five-days-container').insertBefore(dailyForecast, document.getElementById('next-day-container'));
+        // document.getElementById('five-days-container').insertBefore(dailyForecast, document.getElementById('next-day-container'));
         
         // DOM manipulation 
     },
