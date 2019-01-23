@@ -1,28 +1,56 @@
 const APP_ID = 'cbb3210df49fdf1c3c675a785e42454b';
-const 5_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ru&APPID=${ APP_ID }&q=`;
+const FIVE_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ru&APPID=${ APP_ID }&q=`;
+const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&APPID=${ APP_ID }&q=`;
 const defaultCity = 'izhevsk';
 const page = {
     init: function() {
-        this.getWeatherDetails(defaultCity, this.render);
-
+        //this.getFiveDaysForecast(defaultCity, this.render);
+        this.getWeatherDetails(defaultCity, this.renderMoonAndSun);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
             console.log(this);
-            this.getWeatherDetails(city, this.render);
+            //this.getFiveDaysForecast(city, this.render);
+            this.getWeatherDetails(city, this.renderMoonAndSun);
         });
     },
-    getWeatherDetails(city, callback) {
-        const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
+
+    getData(url, callbacks) {
         const xhr = new XMLHttpRequest();
+        console.log(callbacks);
         xhr.onload = function() {
             if (this.readyState === 4 && this.status === 200) {
-                callback(JSON.parse(xhr.responseText));
+                let response = JSON.parse(xhr.responseText);
+                callbacks.forEach(callback => {
+                    callback(response);
+                })
             }
         }
         xhr.open('GET', url, true);
         xhr.send();
     },
+
+    getFiveDaysForecast(city, ...callbacks) {
+        const url = `${ FIVE_DAY_WEATHER_ENDPOINT }${ city }`;
+        this.getData(url, callbacks);
+    },
+
+    getWeatherDetails(city, ...callbacks) {
+        const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
+        this.getData(url, callbacks);
+    },
+
+    renderMoonAndSun(data) {
+        console.log(data);
+        let sunrise = new Date(data.sys.sunrise * 1000);
+        let sunset = new Date(data.sys.sunset * 1000);
+
+        insertElement('sunrise', `Восход - ${sunrise.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
+        insertElement('sunset', `Заход - ${sunset.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
+        //insertElement('day-length', `Долгота дня - ${Math.floor((sunset - sunrise) / (60 * 60 * 1000))} ч ${Math.floor((sunset - sunrise) / (60 * 1000))} мин`)
+        
+    },
+
     render(data) {        
         console.log(data);
         data.list.forEach(element => {
@@ -77,6 +105,12 @@ const page = {
         
         // DOM manipulation 
     },
+
+
 };
 
 page.init();
+
+function insertElement(destinationId, data) {
+    document.getElementById(destinationId).innerHTML = data;
+}
