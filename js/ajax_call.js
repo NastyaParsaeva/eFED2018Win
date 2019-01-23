@@ -67,8 +67,6 @@ const page = {
             }
         });
         document.getElementById('air-pollution').innerHTML = `Загрязнение воздуха: ${element.value}`;
-        console.log(element);
-        console.log(data);
     }
 };
 
