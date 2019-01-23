@@ -36,7 +36,6 @@ figure {
 .graph-controller .menu-link {
     padding: 0px 15px;
     margin: 5px 5px;
-    /*background-color: #f7f8f8;*/
     display: inline-block;
     border: 1px solid #979797;
     font-size: 1em;
@@ -119,6 +118,10 @@ figure {
 .precipitation .item:nth-child(odd):after {
     margin-top: 21px;
     height: 21px;
+}
+
+.wind .item img {
+    width: 50%;
 }
 
 .air-pollution {
