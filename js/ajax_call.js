@@ -3,6 +3,7 @@ const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather
 const AIR_POLLUTION_ENDPOINT = [`http://api.openweathermap.org/pollution/v1/co/`, `/current.json?appid=${ APP_ID}`];
 const defaultCity = 'izhevsk';
 let defaultCoords = `56,53`;
+let coords;
 const page = {
     init: function() {
         this.getWeatherDetails(defaultCity, this.renderWeatherDetails);
@@ -12,6 +13,7 @@ const page = {
             
             const city = event.target.value;
             this.getWeatherDetails(city, this.renderWeatherDetails);
+            this.getAirPollution(coords, this.renderAirPollution);
             
         });
     },
@@ -67,6 +69,8 @@ const page = {
             }
         });
         document.getElementById('air-pollution').innerHTML = `Загрязнение воздуха: ${element.value}`;
+        console.log(element);
+        console.log(data);
     }
 };
 
