@@ -1,5 +1,5 @@
 const APP_ID = 'cbb3210df49fdf1c3c675a785e42454b';
-const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ru&APPID=${ APP_ID }&q=`;
+const 5_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ru&APPID=${ APP_ID }&q=`;
 const defaultCity = 'izhevsk';
 const page = {
     init: function() {
