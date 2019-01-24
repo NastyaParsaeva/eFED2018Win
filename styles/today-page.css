@@ -75,10 +75,8 @@ figure {
 }
 
 .temperature {
-    
-    border-bottom: 0.5px black solid;
+    /* border-bottom: 0.5px black solid; */
     margin-top: 30px;
-    
 }
 
 .tempemperature .item {
@@ -86,13 +84,16 @@ figure {
     margin-bottom: 0px;
 }
 
-.temperature .item:after {
-    content: "";
+.temperature .column {
     background-color: #d9d9d9;
-    height: 42px;
+    height: 50px;
     width: 20px;
     display: block;
     margin-left: 33px;
+}
+
+.temperature .above-zero {
+    border-bottom: 0.5px black solid;
 }
 
 .precipitation {
@@ -100,16 +101,25 @@ figure {
 }
 
 .precipitation .item {
-    width: 35px;
+    width: 120px;
     margin: 0;
     color: #257feb;
+    height: 70px;
+    vertical-align: bottom;
+    display: table-cell;
 }
 
-.precipitation .item:after {
+.precipitation .item p,
+.temperature .item p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.precipitation .column {
     content: "";
     background-color: #e8f1fc;
-    height: 42px;
-    width: 40px;
+    height: 50px;
+    width: 120px;
     display: block;
     border-top: 2px solid #257feb;
     margin: 0;

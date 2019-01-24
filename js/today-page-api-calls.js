@@ -100,10 +100,18 @@ const page = {
             graphSignatures += `<section class="item">
                                     <p>${element.time}</p>
                                 </section>`;
-            tempGraph += `<p class="item">${element.temp}</p>`;
-            precipitationGraph += `<p class="item">&nbsp;</p>
-                                <p class="item">${element.precipitation}%</p>
-                                    <p class="item">&nbsp;</p>`;
+            tempGraph += `<section class="item">
+                            <p class="value">${element.temp}</p>
+                            <p class="column" style="height:${50 / 70 * element.temp}px;"></p>
+                            
+                        </section>`;
+
+     
+            precipitationGraph += `<section class="item">
+                                        <p class="value">${element.precipitation} мм</p>
+                                        <p class="column" style="height:${50 / 500 * element.precipitation}px"></p>
+                                    </section>`;
+                                    
             windGraph += `<section class="item">
                             <p>${element.windSpeed} м/с</p>
                             <img src="assets/${element.windDirection}.png" alt="направление ветра">
@@ -169,6 +177,13 @@ function extractGraphsData(data) {
         let newGraphItem = {};
         newGraphItem.time = new Date(element.dt * 1000).toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});
         newGraphItem.temp = Math.round(element.main.temp);
+        if (Math.round(element.main.temp) >= 0) {
+            newGraphItem.aboveZeroTemp = Math.round(element.main.temp);
+            newGraphItem.belowZeroTemp = 0;
+        } else {
+            newGraphItem.aboveZeroTemp = 0;
+            newGraphItem.belowZeroTemp = -Math.round(element.main.temp);;
+        }
         newGraphItem.precipitation = Math.round(getPrecipitationVolume(element) * 100);
         newGraphItem.windSpeed = Math.round(element.wind.speed);
         newGraphItem.windDirection = getWindDirection(element.wind.deg);
