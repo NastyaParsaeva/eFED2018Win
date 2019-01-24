@@ -167,7 +167,7 @@ function extractGraphsData(data) {
     data.forEach(element => {        
         
         let newGraphItem = {};
-        newGraphItem.time = new Date(element.dt * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+        newGraphItem.time = new Date(element.dt * 1000).toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});
         newGraphItem.temp = Math.round(element.main.temp);
         newGraphItem.precipitation = Math.round(getPrecipitationVolume(element) * 100);
         newGraphItem.windSpeed = Math.round(element.wind.speed);
