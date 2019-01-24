@@ -105,13 +105,10 @@ const page = {
                             <p class="column" style="height:${50 / 70 * element.temp}px;"></p>
                             
                         </section>`;
-
-     
             precipitationGraph += `<section class="item">
                                         <p class="value">${element.precipitation} мм</p>
-                                        <p class="column" style="height:${50 / 500 * element.precipitation}px"></p>
+                                        <p class="column" style="height:${ element.precipitation * 10 }px"></p>
                                     </section>`;
-                                    
             windGraph += `<section class="item">
                             <p>${element.windSpeed} м/с</p>
                             <img src="assets/${element.windDirection}.png" alt="направление ветра">
@@ -184,7 +181,7 @@ function extractGraphsData(data) {
             newGraphItem.aboveZeroTemp = 0;
             newGraphItem.belowZeroTemp = -Math.round(element.main.temp);;
         }
-        newGraphItem.precipitation = Math.round(getPrecipitationVolume(element) * 100);
+        newGraphItem.precipitation = getPrecipitationVolume(element).toFixed(1);
         newGraphItem.windSpeed = Math.round(element.wind.speed);
         newGraphItem.windDirection = getWindDirection(element.wind.deg);
         graphsItems.push(newGraphItem);
