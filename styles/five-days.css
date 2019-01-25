@@ -27,6 +27,9 @@ figure {
     display: inline-block;
 }
 
+#daily-weather-container {
+    display: inline-block;
+}
 .five-days-weather {
     border-collapse: collapse;
 }
@@ -98,11 +101,18 @@ figure {
     display: inline-block;
 }
 
-.day-precepitation .item .middle {
+.day-precepitation .item p{
+    height: 110px;
+    vertical-align: bottom;
+    display: table-cell;
+    width: 45px;
+}
+
+.middle {
     background-image:url("../assets/Group.png");
     background-position: bottom;
     background-repeat: no-repeat;
-    padding-top: 90px;
+    /* padding-top: 90px; */
 }
 
 .day-precepitation .item .high {

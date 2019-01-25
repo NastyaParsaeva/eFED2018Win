@@ -23,7 +23,7 @@
                     </ul>
                 </nav>
                 <section class="location">
-                    <span class="current-location">Загрязнение воздуха: 2,168363052618588е-8</span>
+                    <span id="air-pollution" class="current-location"></span>
                     <section class="search">
                         <label for="search-field" style="display: none">Поиск</label>
                         <span class="magnifier">&nbsp;</span>
@@ -34,65 +34,105 @@
         <main>
             <article class="info-container">
                 <section class="info">
-                    <p>Ижевск, Россия</p>
-                    <p>среда</p>
-                    <p>облачно</p>
+                    <p id="chosen-location"></p>
+                    <p id="today-weekday"></p>
+                    <p id="weather-description"></p>
                     <figure>
-                        <img src="assets\Sunny Weather@2x.png" alt="Солнечно">
+                        <img id = "weather-icon">
                     </figure>
-                    <p class="current-temperature">22°C</p>
+                    <p id="current-temperature"></p>
                 </section>
                 <section class="info">
-                    <p>Вероятность осадков: 20%</p>
-                    <p>Влажность: 45%</p>
-                    <p>Ветер: 11 км/ч</p>
+                    <p id="today-precipitation"></p>
+                    <p id="today-humidity"></p>
+                    <p id="today-wind-speed"></p>
                     <nav class="graph-controller">
                         <ul>
                             <li class="menu-link selected">Температура</li>
-                            <li class="menu-link">Вероятность осадков</li>
+                            <li class="menu-link">Осадки</li>
                             <li class="menu-link">Ветер</li>
                         </ul>
                     </nav>
                 </section>
             </article>
 
-            <article class="temperature graph shown">
-                <p class="item">14</p>
-                <p class="item">14</p>
-                <p class="item">14</p>
-                <p class="item">12</p>
-                <p class="item">11</p>
-                <p class="item">13</p>
-                <p class="item">14</p>
-                <p class="item">14</p>
+            <article id="temperature-graph-container" class="temperature graph shown">
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
+                <section class="item">
+                    <p class="value">14</p>
+                    <p class="column"></p>
+                </section>
             </article>
-            <article class="precipitation graph">
-                <p class="item">&nbsp;</p>
-                <p class="item">24%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">30%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">24%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">8%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">4%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">6%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">0%</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">&nbsp;</p>
-                <p class="item">1%</p>
-                <p class="item">&nbsp;</p>
+            <article id="precipitation-graph-container" class="precipitation graph">
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section>  
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> 
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> 
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> 
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> 
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> 
+                <section class="item">
+                    <p class="value">24 мм</p>
+                    <p class="column above-zero"></p>
+                    <p class="column below-zero"></p>
+                </section> 
             </article>
-            <article class="wind graph">
+            <article id="wind-graph-container" class="wind graph">
                 <section class="item">
                     <p>7 м/с</p>
                     <img src="assets\wind_direction.png" alt="направление ветра">
@@ -127,51 +167,69 @@
                 </section>
             </article>
     
-            <article class="week-forecast">
+            <article id="graph-signatures-container" class="graph-signatures">
                 <section class="item">
                     <p>17:00</p>
+                </section>
+                <section class="item">
+                    <p>20:00</p>
+                </section>
+                <section class="item">
+                    <p>23:00</p>
+                </section>
+                <section class="item">
+                    <p>02:00</p>
+                </section>
+                <section class="item">
+                    <p>05:00</p>
+                </section>
+                <section class="item">
+                    <p>08:00</p>
+                </section>
+                <section class="item">
+                    <p>11:00</p>
+                </section>
+                <section class="item">
+                    <p>14:00</p>
+                </section>
+            </article>
+            <article id = "week-forecast-container" class="week-forecast">
+                <section class="item">
                     <p class="day-name">ср</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>20:00</p>
                     <p class="day-name">чт</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>23:00</p>
                     <p class="day-name">пт</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>2:00</d>
                     <p class="day-name">сб</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>5:00</d>
                     <p class="day-name">вс</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>8:00</d>
                     <p class="day-name">пн</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>11:00</p>
                     <p class="day-name">вт</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
                 </section>
                 <section class="item">
-                    <p>14:00</p>
                     <p class="day-name">ср</p>
                     <img src="assets\Cloudy Weather.png" alt="Облачно">
                     <p class="future-temp"><span class="max">22 °</span> 13 °</p>
@@ -182,5 +240,6 @@
             <p lang="en">2018 © Copyright</p>
         </footer>
         <script src="js/today-page.js"></script>
+        <script src="js/today-page-api-calls.js"></script>
     </body>
 </html>
