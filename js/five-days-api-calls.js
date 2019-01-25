@@ -156,7 +156,7 @@ function extractForcastParameters(list) {
     console.log(list);
     let daylyWeather = [];
 
-    for (let i = 0; i < list.length; i += 1) {
+    for (let i = 0; i < list.length; i += 2) {
         let dayPartWeather = {};
 
         dayPart = definePartOfDay(new Date(list[i].dt * 1000).getHours());
