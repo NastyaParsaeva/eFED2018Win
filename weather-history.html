@@ -22,7 +22,7 @@
                 </ul>
             </nav>
             <section class="location">
-                <span class="current-location">Ижевск, Россия</span>
+                <span id="location" class="current-location">Ижевск, Россия</span>
                 <section class="search">
                     <label for="search-field" style="display: none">Поиск</label>
                     <span class="magnifier">&nbsp;</span>
@@ -46,7 +46,7 @@
                 <span>Ноябрь</span>
                 <span>Декабрь</span>
             </section>
-            <section class="table-row">
+            <section id="average-max" class="table-row">
                 <span>Средний максимум</span>
                 <span>-9°</span>
                 <span>-8°</span>
@@ -61,7 +61,7 @@
                 <span>-2°</span>
                 <span>-7°</span>
             </section>
-            <section class="table-row">
+            <section id="average-min" class="table-row">
                 <span>Средний минимум</span>
                 <span>-16°</span>
                 <span>-15°</span>
@@ -76,7 +76,7 @@
                 <span>-7°</span>
                 <span>-13°</span>
             </section>
-            <section class="table-row">
+            <section id="highest-max" class="table-row">
                 <span>Рекордный максимум</span>
                 <span>3°</span>
                 <span>3°</span>
@@ -91,7 +91,7 @@
                 <span>12°</span>
                 <span>4°</span>
             </section>
-            <section class="table-row">
+            <section id="lowest-min" class="table-row">
                 <span>Рекордный минимум</span>
                 <span>-39°</span>
                 <span>-39°</span>
@@ -109,7 +109,10 @@
 
         </main>
         <footer>
-            <p lang="en">2018 © Copyright</p>  
+            <p lang="en">2019 © Copyright</p>  
         </footer>
+        <script src="js/utils.js"></script>
+        <script src="mocks/HistoricalReviewMock.js"></script>
+        <script src="js/history-page-ali-calls.js"></script>
     </body>
 </html>
