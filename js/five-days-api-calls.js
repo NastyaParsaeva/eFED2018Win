@@ -17,14 +17,14 @@ const page = {
         });
     },
 
-    getFiveDaysForecast(city, ...callbacks) {
+    getFiveDaysForecast(city, callback) {
         const url = `${ FIVE_DAY_WEATHER_ENDPOINT }${ city }`;
-        getDataFromApi(url, callbacks);
+        getDataFromApi(url, callback);
     },
 
-    getWeatherDetails(city, ...callbacks) {
+    getWeatherDetails(city, callback) {
         const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
-        getDataFromApi(url, callbacks);
+        getDataFromApi(url, callback);
     },
 
     renderMoonAndSun(data) {

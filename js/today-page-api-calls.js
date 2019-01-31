@@ -21,19 +21,19 @@ const page = {
         });
     },  
 
-    getWeatherDetails(city, ...callbacks) {
+    getWeatherDetails(city, callback) {
         const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
-        getDataFromApi(url, callbacks);
+        getDataFromApi(url, callback);
     },
     
-    getAirPollution(coords, ...callbacks) {
+    getAirPollution(coords, callback) {
         const url = `${ AIR_POLLUTION_ENDPOINT[0] }${ coords }${ AIR_POLLUTION_ENDPOINT[1] }`;
-        getDataFromApi(url, callbacks);
+        getDataFromApi(url, callback);
     },
 
-    getFiveDaysWeather(city, ...callbacks) {
+    getFiveDaysWeather(city, callback1, callback2) {
         url = `${FIVE_DAY_WEATHER_ENDPOINT }${ city }`;
-        getDataFromApi(url, callbacks);
+        getDataFromApi(url, callback1, callback2);
     },
 
     renderWeatherDetails(data) {

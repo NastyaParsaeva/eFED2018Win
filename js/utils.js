@@ -1,12 +1,14 @@
-function getDataFromApi(url, callbacks) {
+function getDataFromApi(url, callback1, callback2) {
     const xhr = new XMLHttpRequest();
-    console.log(callbacks);
     xhr.onload = function() {
         if (this.readyState === 4 && this.status === 200) {
             let response = JSON.parse(xhr.responseText);
-            callbacks.forEach(callback => {
-                callback(response);
-            })
+            if (callback1) {
+                callback1(response);
+            }
+            if (callback2) {
+                callback2(response);
+            }
         }
     }
     xhr.open('GET', url, true);
