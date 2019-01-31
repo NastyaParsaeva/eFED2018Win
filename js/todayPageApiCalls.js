@@ -7,15 +7,15 @@ let defaultCoords = `56,53`;
 let coords;
 const indexPage = {
     init: function() {
-        this.getFullWeatherInfo(defaultCity, defaultCoords);
+        this.getWeatherInfoForCurrentPage(defaultCity, defaultCoords);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
-            this.getFullWeatherInfo(city, coords);
+            this.getWeatherInfoForCurrentPage(city, coords);
         });
     },  
 
-    getFullWeatherInfo(city, coords) {
+    getWeatherInfoForCurrentPage(city, coords) {
         this.getWeatherDetails(city, this.renderWeatherDetails);
         this.getAirPollution(coords, this.renderAirPollution);
         this.getFiveDaysWeather(city, this.renderWeatherForecast, this.renderGrahps);
@@ -59,16 +59,16 @@ const indexPage = {
 
     renderWeatherForecast(jsonData) {
         const fiveDaysForecastArray = extractFiveDaysForecastData(jsonData);
-        let daysForecastHTMLString = '';
+        let daysForecastHTML = '';
         fiveDaysForecastArray.forEach(day => {
             const dayHtml = `<section class="item">
                                 <p class="day-name">${day.dayName}</p>
                                 <img src="${day.icon}" alt="${day.description}">
                                 <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
                                 </section>`;
-           daysForecastHTMLString += dayHtml;
+           daysForecastHTML += dayHtml;
         });
-        insertElementIntoDom('week-forecast-container', daysForecastHTMLString);
+        insertElementIntoDom('week-forecast-container', daysForecastHTML);
     },
 
     renderGrahps(data) {
