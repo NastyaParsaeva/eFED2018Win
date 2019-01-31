@@ -15,13 +15,13 @@ function getDataFromApi(url, callback1, callback2) {
     xhr.send();
 }
 
-function setAttributes(element, attributes) {
+function setAttributesForDomElement(element, attributes) {
     for(var key in attributes) {
         element.setAttribute(key, attributes[key]);
     }
 }
 
-function insertElement(destinationId, data) {
+function insertElementIntoDom(destinationId, data) {
     document.getElementById(destinationId).innerHTML = data;
 }
 

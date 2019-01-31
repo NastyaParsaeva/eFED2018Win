@@ -5,21 +5,21 @@ const FIVE_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/foreca
 const defaultCity = 'izhevsk';
 let defaultCoords = `56,53`;
 let coords;
-const page = {
+const indexPage = {
     init: function() {
-        this.getWeatherDetails(defaultCity, this.renderWeatherDetails);
-        this.getAirPollution(defaultCoords, this.renderAirPollution);
-        this.getFiveDaysWeather(defaultCity, this.renderWeatherForecast, this.renderGrahps);
+        this.getFullWeatherInfo(defaultCity, defaultCoords);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
-            
             const city = event.target.value;
-            this.getWeatherDetails(city, this.renderWeatherDetails);
-            this.getAirPollution(coords, this.renderAirPollution);
-            this.getFiveDaysWeather(city, this.renderWeatherForecast, this.renderGrahps);
-            
+            this.getFullWeatherInfo(city, coords);
         });
     },  
+
+    getFullWeatherInfo(city, coords) {
+        this.getWeatherDetails(city, this.renderWeatherDetails);
+        this.getAirPollution(coords, this.renderAirPollution);
+        this.getFiveDaysWeather(city, this.renderWeatherForecast, this.renderGrahps);
+    },
 
     getWeatherDetails(city, callback) {
         const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
@@ -36,132 +36,136 @@ const page = {
         getDataFromApi(url, callback1, callback2);
     },
 
-    renderWeatherDetails(data) {
-        coords = `${ Math.floor(data.coord.lat) },${ Math.floor(data.coord.lon) }`;
-        insertElement('chosen-location', `${data.name}, ${data.sys.country}`);
-        insertElement('today-weekday', capitalizeFirstLetter(new Date(data.dt * 1000).toLocaleString('ru-RU', {weekday: "long"})));
-        insertElement('weather-description', capitalizeFirstLetter(data.weather[0].description));
-        setAttributes(document.getElementById('weather-icon'), {'src' : `http://openweathermap.org/img/w/${data.weather[0].icon}.png`, 'alt' : data.weather[0].description});
-        insertElement('current-temperature', `${Math.round(data.main.temp)} °C`);
-        insertElement('today-humidity', `Влажность: ${data.main.humidity} %`);
-        insertElement('today-wind-speed', `Ветер: ${data.wind.speed.toFixed(1)} м/с`);
-        insertElement('today-precipitation', `Осадки: ${getPrecipitationVolume(data)} мм`);
-        // DOM manipulation 
+    renderWeatherDetails(jsonData) {
+        coords = `${ Math.floor(jsonData.coord.lat) },${ Math.floor(jsonData.coord.lon) }`;
+        insertElementIntoDom('chosen-location', `${jsonData.name}, ${jsonData.sys.country}`);
+        insertElementIntoDom('today-weekday', capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', {weekday: "long"})));
+        insertElementIntoDom('weather-description', capitalizeFirstLetter(jsonData.weather[0].description));
+        setAttributesForDomElement(document.getElementById('weather-icon'), {'src' : `http://openweathermap.org/img/w/${jsonData.weather[0].icon}.png`, 'alt' : jsonData.weather[0].description});
+        insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)} °C`);
+        insertElementIntoDom('today-humidity', `Влажность: ${jsonData.main.humidity} %`);
+        insertElementIntoDom('today-wind-speed', `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`);
+        insertElementIntoDom('today-precipitation', `Осадки: ${getPrecipitationVolume(jsonData)} мм`);
     },
 
-    renderAirPollution(data) {
-        let element = data.data.find((element) => {
-            if (Math.floor(element.pressure) === 215) {
-                return element;    
+    renderAirPollution(jsonData) {
+        let airPollutionObject = jsonData.data.find((airPollutionObject) => {
+            if (Math.floor(airPollutionObject.pressure) === 215) {
+                return airPollutionObject;    
             }
         });
-        insertElement('air-pollution', `Загрязнение воздуха: ${element.value}`);
+        insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
     },
 
-    renderWeatherForecast(data) {
-        console.log(data);
-        let daysArray = extractFiveDaysForecastData(data);
+    renderWeatherForecast(jsonData) {
+        const fiveDaysForecastArray = extractFiveDaysForecastData(jsonData);
         let daysForecastHTMLString = '';
-        daysArray.forEach(day => {
-            let dayItem = `<section class="item">
+        fiveDaysForecastArray.forEach(day => {
+            const dayHtml = `<section class="item">
                                 <p class="day-name">${day.dayName}</p>
                                 <img src="${day.icon}" alt="${day.description}">
                                 <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
                                 </section>`;
-           daysForecastHTMLString += dayItem;
+           daysForecastHTMLString += dayHtml;
         });
-        document.getElementById('week-forecast-container').innerHTML = daysForecastHTMLString;
+        insertElementIntoDom('week-forecast-container', daysForecastHTMLString);
     },
 
     renderGrahps(data) {
-        let graphsDataArray = extractGraphsData(data);
+        const graphsDataArray = extractGraphsData(data);
 
-        let graphSignatures = '';
-        let tempGraph = '';
-        let precipitationGraph = '';
-        let windGraph = '';
+        let graphSignaturesHtml = '';
+        let tempGraphHtml = '';
+        let precipitationGraphHtml = '';
+        let windGraphHtml = '';
         
-        graphsDataArray.forEach(element => {
-            graphSignatures += `<section class="item">
-                                    <p>${element.time}</p>
+        graphsDataArray.forEach(graphDataItem => {
+            graphSignaturesHtml += `<section class="item">
+                                    <p>${graphDataItem.time}</p>
                                 </section>`;
-            tempGraph += `<section class="item">
-                            <p class="value">${element.temp}</p>
-                            <p class="column" style="height:${50 / 70 * element.temp}px;"></p>
-                            
-                        </section>`;
-            precipitationGraph += `<section class="item">
-                                        <p class="value">${element.precipitation} мм</p>
-                                        <p class="column" style="height:${ element.precipitation * 10 }px"></p>
+            tempGraphHtml += `<section class="item">
+                            <p class="value">${graphDataItem.temp}</p>
+                            <p class="column" style="height:${50 / 70 * graphDataItem.temp}px;"></p>
+                          </section>`;
+            precipitationGraphHtml += `<section class="item">
+                                        <p class="value">${graphDataItem.precipitation} мм</p>
+                                        <p class="column" style="height:${ graphDataItem.precipitation * 10 }px"></p>
                                     </section>`;
-            windGraph += `<section class="item">
-                            <p>${element.windSpeed} м/с</p>
-                            <img src="assets/${element.windDirection}.png" alt="направление ветра">
+            windGraphHtml += `<section class="item">
+                            <p>${graphDataItem.windSpeed} м/с</p>
+                            <img src="assets/${graphDataItem.windDirection}.png" alt="направление ветра">
                         </section>`
         });
-        insertElement('graph-signatures-container', graphSignatures);
-        insertElement('temperature-graph-container', tempGraph);
-        insertElement('precipitation-graph-container', precipitationGraph);
-        insertElement('wind-graph-container', windGraph);
+        insertElementIntoDom('graph-signatures-container', graphSignaturesHtml);
+        insertElementIntoDom('temperature-graph-container', tempGraphHtml);
+        insertElementIntoDom('precipitation-graph-container', precipitationGraphHtml);
+        insertElementIntoDom('wind-graph-container', windGraphHtml);
 
     }
 };
 
-page.init();
+indexPage.init();
 
 function extractFiveDaysForecastData(data) {
-    let daysArray = [];
+    console.log(data);
+    let daysForecastArray = [];
 
-    data.list.forEach(element => {
-        let elementDayName = new Date(element.dt * 1000).toLocaleString('ru-RU', {weekday: "short"});
-        if (!daysArray.find(day => {
-            if (day.dayName === elementDayName) {
-                if (day.maxTemp < element.main.temp) {
-                    day.maxTemp = Math.round(element.main.temp);
-                    day.description = element.weather[0].description;
-                    day.icon = `http://openweathermap.org/img/w/${element.weather[0].icon}.png`;
+    data.list.forEach(weatherObject => {
+        let weatherObjectDayName = new Date(weatherObject.dt * 1000).toLocaleString('ru-RU', {weekday: "short"});
+        if (!daysForecastArray.find(day => {
+            if (day.dayName === weatherObjectDayName) {
+                if (day.maxTemp < weatherObject.main.temp) {
+                    day.maxTemp = Math.round(weatherObject.main.temp);
+                    day.description = weatherObject.weather[0].description;
+                    day.icon = `http://openweathermap.org/img/w/${weatherObject.weather[0].icon}.png`;
                 }
-                if (day.minTemp > element.main.temp) {
-                    day.minTemp = Math.round(element.main.temp);
+                if (day.minTemp > weatherObject.main.temp) {
+                    day.minTemp = Math.round(weatherObject.main.temp);
                 }
                 return day;
             }
         })) 
         {
             let newDay = {};
-            newDay.dayName = elementDayName;
-            console.log(element.weather[0].icon);
-            newDay.icon = `http://openweathermap.org/img/w/${element.weather[0].icon}.png`;
-            newDay.maxTemp = Math.round(element.main.temp);
-            newDay.minTemp = Math.round(element.main.temp);
-            newDay.description = element.weather[0].description;
-            daysArray.push(newDay);
+            newDay.dayName = weatherObjectDayName;
+            console.log(weatherObject.weather[0].icon);
+            newDay.icon = `http://openweathermap.org/img/w/${weatherObject.weather[0].icon}.png`;
+            newDay.maxTemp = Math.round(weatherObject.main.temp);
+            newDay.minTemp = Math.round(weatherObject.main.temp);
+            newDay.description = weatherObject.weather[0].description;
+            daysForecastArray.push(newDay);
         }
     });
-    return daysArray;
+    return daysForecastArray;
 }
 
 function extractGraphsData(data) {
-    let graphsItems = [];
-    data = data.list.slice(0, 8);
-    console.log(data);
-    data.forEach(element => {        
-        
+    let graphItems = [];
+    weatherFor24Hours = data.list.slice(0, 8);
+    weatherFor24Hours.forEach(element => {  
         let newGraphItem = {};
         newGraphItem.time = new Date(element.dt * 1000).toLocaleTimeString('ru-RU', {hour: '2-digit', minute:'2-digit'});
         newGraphItem.temp = Math.round(element.main.temp);
-        if (Math.round(element.main.temp) >= 0) {
-            newGraphItem.aboveZeroTemp = Math.round(element.main.temp);
-            newGraphItem.belowZeroTemp = 0;
-        } else {
-            newGraphItem.aboveZeroTemp = 0;
-            newGraphItem.belowZeroTemp = -Math.round(element.main.temp);;
-        }
         newGraphItem.precipitation = getPrecipitationVolume(element).toFixed(1);
         newGraphItem.windSpeed = Math.round(element.wind.speed);
         newGraphItem.windDirection = getWindDirection(element.wind.deg);
-        graphsItems.push(newGraphItem);
+        graphItems.push(newGraphItem);
     })
-    console.log(graphsItems);
-    return graphsItems;
+    return graphItems;
 }
+
+// function isDayExistInDaysForecastArray(daysForecastArray, dayName, weatherObject) {
+//     if (!daysForecastArray.find(day => {
+//         if (day.dayName === elementDayName) {
+//             if (day.maxTemp < element.main.temp) {
+//                 day.maxTemp = Math.round(element.main.temp);
+//                 day.description = element.weather[0].description;
+//                 day.icon = `http://openweathermap.org/img/w/${element.weather[0].icon}.png`;
+//             }
+//             if (day.minTemp > element.main.temp) {
+//                 day.minTemp = Math.round(element.main.temp);
+//             }
+//             return day;
+//         }
+//         })) 
+// }
