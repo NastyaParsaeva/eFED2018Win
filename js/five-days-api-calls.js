@@ -3,48 +3,6 @@ const FIVE_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/foreca
 const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&APPID=${ APP_ID }&q=`;
 const defaultCity = 'izhevsk';
 
-const slider = {
-
-    next: document.getElementById('next-day'),
-    prev: document.getElementById('prev-day'),
-
-    
-    initializeArrowEventListeners() {
-        this.next.addEventListener('click', () => {
-            this.nextSlide();
-          });
-        this.prev.addEventListener('click', () => {
-          this.previousSlide();
-        });
-    },
-
-    reinitializeSlider() {
-      this.slides = document.getElementsByClassName('day-weather');
-      this.slideNav = document.querySelectorAll('#day-switcher .menu-link');
-      this.current = 0;
-      
-      for (let i = 0; i < this.slideNav.length; i++) {
-        this.slideNav[i].addEventListener('click', () => {
-          this.changeSlide(i);
-        });
-  }
-    },
-    changeSlide(index) {
-      this.slides[this.current].classList.remove('shown');
-      console.log(this.slides[this.current].classList);
-      this.slideNav[this.current].classList.remove('selected');
-      this.current = index;
-      this.slides[this.current].classList.add('shown');
-      this.slideNav[this.current].classList.add('selected');
-    },
-    nextSlide() {
-      this.changeSlide((this.current + 1) % this.slides.length);
-    },
-    previousSlide() {
-      (this.current !== 0) ? this.changeSlide(this.current - 1) : this.changeSlide(this.slides.length - 1);
-    }
-  }
-
 const page = {
     init: function() {
         this.getFiveDaysForecast(defaultCity, this.renderFiveDaysForecast);
@@ -59,38 +17,22 @@ const page = {
         });
     },
 
-    getData(url, callbacks) {
-        const xhr = new XMLHttpRequest();
-        console.log(callbacks);
-        xhr.onload = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                let response = JSON.parse(xhr.responseText);
-                callbacks.forEach(callback => {
-                    callback(response);
-                })
-            }
-        }
-        xhr.open('GET', url, true);
-        xhr.send();
-    },
-
-    getFiveDaysForecast(city, ...callbacks) {
+    getFiveDaysForecast(city, callback) {
         const url = `${ FIVE_DAY_WEATHER_ENDPOINT }${ city }`;
-        this.getData(url, callbacks);
+        getDataFromApi(url, callback);
     },
 
-    getWeatherDetails(city, ...callbacks) {
+    getWeatherDetails(city, callback) {
         const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
-        this.getData(url, callbacks);
+        getDataFromApi(url, callback);
     },
 
     renderMoonAndSun(data) {
         console.log(data);
-        let sunrise = new Date(data.sys.sunrise * 1000);
-        let sunset = new Date(data.sys.sunset * 1000);
-        let hoursDiff = Math.floor((sunset - sunrise) / (60 * 60 * 1000));
-        let minutesDiff = Math.floor((sunset - sunrise) / (60 * 1000) - hoursDiff * 60);
-        
+        const sunrise = new Date(data.sys.sunrise * 1000);
+        const sunset = new Date(data.sys.sunset * 1000);
+        const hoursDiff = Math.floor((sunset - sunrise) / (60 * 60 * 1000));
+        const minutesDiff = Math.floor((sunset - sunrise) / (60 * 1000) - hoursDiff * 60);
         
         insertElement('sunrise', `Восход - ${sunrise.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
         insertElement('sunset', `Заход - ${sunset.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`);
@@ -103,7 +45,7 @@ const page = {
 
     renderFiveDaysForecast(data) {        
         
-        let dailyWeather = extractForcastParameters(data.list);
+        const dailyWeather = extractForcastParameters(data.list);
 
         let dayWeather = '';
         let wind = '';
@@ -148,10 +90,6 @@ const page = {
 
 page.init();
 
-function insertElement(destinationId, data) {
-    document.getElementById(destinationId).innerHTML = data;
-}
-
 function extractForcastParameters(list) {
     console.log(list);
     let daylyWeather = [];
@@ -185,41 +123,7 @@ function extractForcastParameters(list) {
     
 }
 
-function definePartOfDay(hours) {
-    if (hours < 6) {
-        return 'night';
-    } else if (hours < 12) {
-        return 'morning';
-    } else if (hours < 18) {
-        return 'day';
-    } else if (hours < 24) {
-        return 'evening';
-    }
-}
-
-function getPrecipitationVolume(data) {
-    if (data.rain) {
-        if (data.rain['1h']) {
-            return data.rain['1h'];
-        }
-        if (data.rain['3h']) {
-            return data.rain['3h'];
-        }
-    } else {
-        if (data.snow) {
-            if (data.snow['1h']) {
-                return data.snow['1h'];
-            }
-            if (data.snow['3h']) {
-                return data.snow['3h'];
-            }
-        } 
-    }
-    return 0;
-}
-
 function createPartDayWeatherHtml(name, weatherData) {
-    
     if (weatherData) {
         return `<section class = "part-day-weather item">
                     <p class="part-day-name">${name}</p>
@@ -246,20 +150,4 @@ function createPartDayPrecipitationHtml(weatherData) {
                 </section>`
     }
     return '';
-}
-
-function getPrecipitationLevel(prec) {
-    if (prec < 1) {
-        return 'low';
-    } else if (prec < 2) {
-        return 'middle';
-    } else {
-        return 'high';
-    }
-}
-
-function setAttributes(element, attributes) {
-    for(var key in attributes) {
-        element.setAttribute(key, attributes[key]);
-    }
 }

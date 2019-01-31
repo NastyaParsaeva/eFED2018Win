@@ -21,41 +21,26 @@ const page = {
         });
     },  
 
-    getData(url, callbacks) {
-        const xhr = new XMLHttpRequest();
-        console.log(callbacks);
-        xhr.onload = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                let response = JSON.parse(xhr.responseText);
-                callbacks.forEach(callback => {
-                    callback(response);
-                })
-            }
-        }
-        xhr.open('GET', url, true);
-        xhr.send();
-    },
-
-    getWeatherDetails(city, ...callbacks) {
+    getWeatherDetails(city, callback) {
         const url = `${ WEATHER_DETAILS_ENDPOINT }${ city }`;
-        this.getData(url, callbacks);
+        getDataFromApi(url, callback);
     },
     
-    getAirPollution(coords, ...callbacks) {
+    getAirPollution(coords, callback) {
         const url = `${ AIR_POLLUTION_ENDPOINT[0] }${ coords }${ AIR_POLLUTION_ENDPOINT[1] }`;
-        this.getData(url, callbacks);
+        getDataFromApi(url, callback);
     },
 
-    getFiveDaysWeather(city, ...callbacks) {
+    getFiveDaysWeather(city, callback1, callback2) {
         url = `${FIVE_DAY_WEATHER_ENDPOINT }${ city }`;
-        this.getData(url, callbacks);
+        getDataFromApi(url, callback1, callback2);
     },
 
     renderWeatherDetails(data) {
         coords = `${ Math.floor(data.coord.lat) },${ Math.floor(data.coord.lon) }`;
         insertElement('chosen-location', `${data.name}, ${data.sys.country}`);
-        insertElement('today-weekday', new Date(data.dt * 1000).toLocaleString('ru-RU', {weekday: "long"}));
-        insertElement('weather-description', data.weather[0].description);
+        insertElement('today-weekday', capitalizeFirstLetter(new Date(data.dt * 1000).toLocaleString('ru-RU', {weekday: "long"})));
+        insertElement('weather-description', capitalizeFirstLetter(data.weather[0].description));
         setAttributes(document.getElementById('weather-icon'), {'src' : `http://openweathermap.org/img/w/${data.weather[0].icon}.png`, 'alt' : data.weather[0].description});
         insertElement('current-temperature', `${Math.round(data.main.temp)} °C`);
         insertElement('today-humidity', `Влажность: ${data.main.humidity} %`);
@@ -80,7 +65,7 @@ const page = {
         daysArray.forEach(day => {
             let dayItem = `<section class="item">
                                 <p class="day-name">${day.dayName}</p>
-                                <img src="http://openweathermap.org/img/w/${day.icon}.png" alt="${day.description}">
+                                <img src="${day.icon}" alt="${day.description}">
                                 <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
                                 </section>`;
            daysForecastHTMLString += dayItem;
@@ -124,16 +109,6 @@ const page = {
 
 page.init();
 
-function setAttributes(element, attributes) {
-    for(var key in attributes) {
-        element.setAttribute(key, attributes[key]);
-    }
-}
-
-function insertElement(destinationId, data) {
-    document.getElementById(destinationId).innerHTML = data;
-}
-
 function extractFiveDaysForecastData(data) {
     let daysArray = [];
 
@@ -144,7 +119,7 @@ function extractFiveDaysForecastData(data) {
                 if (day.maxTemp < element.main.temp) {
                     day.maxTemp = Math.round(element.main.temp);
                     day.description = element.weather[0].description;
-                    day.icon = element.weather[0].icon;
+                    day.icon = `http://openweathermap.org/img/w/${element.weather[0].icon}.png`;
                 }
                 if (day.minTemp > element.main.temp) {
                     day.minTemp = Math.round(element.main.temp);
@@ -155,7 +130,8 @@ function extractFiveDaysForecastData(data) {
         {
             let newDay = {};
             newDay.dayName = elementDayName;
-            newDay.icon = element.weather[0].icon;
+            console.log(element.weather[0].icon);
+            newDay.icon = `http://openweathermap.org/img/w/${element.weather[0].icon}.png`;
             newDay.maxTemp = Math.round(element.main.temp);
             newDay.minTemp = Math.round(element.main.temp);
             newDay.description = element.weather[0].description;
@@ -188,45 +164,4 @@ function extractGraphsData(data) {
     })
     console.log(graphsItems);
     return graphsItems;
-}
-
-function getPrecipitationVolume(data) {
-    if (data.rain) {
-        if (data.rain['1h']) {
-            return data.rain['1h'];
-        }
-        if (data.rain['3h']) {
-            return data.rain['3h'];
-        }
-    } else {
-        if (data.snow) {
-            if (data.snow['1h']) {
-                return data.snow['1h'];
-            }
-            if (data.snow['3h']) {
-                return data.snow['3h'];
-            }
-        } 
-    }
-    return 0;
-}
-
-function getWindDirection(degree) {
-    if (degree <= 23 || degree > 338) {
-        return 'north';
-    } else if (degree > 23 && degree <= 68) {
-        return 'northeast';
-    } else if (degree > 68 && degree <= 113) {
-        return 'east';
-    } else if (degree > 113 && degree <= 158) {
-        return 'southeast';
-    } else if (degree > 158 && degree <= 203) {
-        return 'south';
-    } else if (degree > 203 && degree <= 248) {
-        return 'southwest';
-    } else if (degree > 248 && degree <= 293) {
-        return 'west';
-    } else if (degree > 293 && degree <= 338) {
-        return 'northwest';
-    } 
 }
