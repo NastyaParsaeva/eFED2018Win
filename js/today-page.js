@@ -1,4 +1,4 @@
-const graphs = document.querySelectorAll(".graph");
+const graphs = document.querySelectorAll('.graph');
 const buttons = document.querySelectorAll('.graph-controller .menu-link');
 let currentGraphNumber = 0;
 

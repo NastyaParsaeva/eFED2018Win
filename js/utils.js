@@ -1,8 +1,8 @@
 function getDataFromApi(url, callback1, callback2) {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = function () {
         if (this.readyState === 4 && this.status === 200) {
-            let response = JSON.parse(xhr.responseText);
+            const response = JSON.parse(xhr.responseText);
             if (callback1) {
                 callback1(response);
             }
@@ -10,13 +10,13 @@ function getDataFromApi(url, callback1, callback2) {
                 callback2(response);
             }
         }
-    }
+    };
     xhr.open('GET', url, true);
     xhr.send();
 }
 
 function setAttributesForDomElement(element, attributes) {
-    for(var key in attributes) {
+    for (const key in attributes) {
         element.setAttribute(key, attributes[key]);
     }
 }
@@ -33,15 +33,13 @@ function getPrecipitationVolume(data) {
         if (data.rain['3h']) {
             return data.rain['3h'];
         }
-    } else {
-        if (data.snow) {
-            if (data.snow['1h']) {
-                return data.snow['1h'];
-            }
-            if (data.snow['3h']) {
-                return data.snow['3h'];
-            }
-        } 
+    } else if (data.snow) {
+        if (data.snow['1h']) {
+            return data.snow['1h'];
+        }
+        if (data.snow['3h']) {
+            return data.snow['3h'];
+        }
     }
     return 0;
 }
@@ -49,31 +47,32 @@ function getPrecipitationVolume(data) {
 function getWindDirection(degree) {
     if (degree <= 23 || degree > 338) {
         return 'north';
-    } else if (degree > 23 && degree <= 68) {
+    } if (degree > 23 && degree <= 68) {
         return 'northeast';
-    } else if (degree > 68 && degree <= 113) {
+    } if (degree > 68 && degree <= 113) {
         return 'east';
-    } else if (degree > 113 && degree <= 158) {
+    } if (degree > 113 && degree <= 158) {
         return 'southeast';
-    } else if (degree > 158 && degree <= 203) {
+    } if (degree > 158 && degree <= 203) {
         return 'south';
-    } else if (degree > 203 && degree <= 248) {
+    } if (degree > 203 && degree <= 248) {
         return 'southwest';
-    } else if (degree > 248 && degree <= 293) {
+    } if (degree > 248 && degree <= 293) {
         return 'west';
-    } else if (degree > 293 && degree <= 338) {
+    } if (degree > 293 && degree <= 338) {
         return 'northwest';
-    } 
+    }
 }
 
-function definePartOfDay(hours) {
+function definePartOfDay(timeInSec) {
+    const hours = new Date(timeInSec * 1000).getHours();
     if (hours < 6) {
         return 'night';
-    } else if (hours < 12) {
+    } if (hours < 12) {
         return 'morning';
-    } else if (hours < 18) {
+    } if (hours < 18) {
         return 'day';
-    } else if (hours < 24) {
+    } if (hours < 24) {
         return 'evening';
     }
 }
@@ -81,11 +80,10 @@ function definePartOfDay(hours) {
 function getPrecipitationLevel(prec) {
     if (prec < 1) {
         return 'low';
-    } else if (prec < 2) {
+    } if (prec < 2) {
         return 'middle';
-    } else {
-        return 'high';
     }
+    return 'high';
 }
 
 function capitalizeFirstLetter(word) {

@@ -1,21 +1,21 @@
-defaultCity = "Izhevsk";
+defaultCity = 'Izhevsk';
 
 const page = {
-    init: function() {
+    init() {
         this.getHistoricalReviewMock(defaultCity, this.renderHistoricalReview);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             let city = capitalizeFirstLetter(event.target.value);
             if (city !== 'Izhevsk' && city !== 'London' && city !== 'Vladivostok') {
                 city = getRandomCity();
-            } 
+            }
             this.getHistoricalReviewMock(city, this.renderHistoricalReview);
         });
     },
 
     getHistoricalReviewMock(city, ...callbacks) {
         this.renderCity(city);
-        callbacks.forEach(callback => {
+        callbacks.forEach((callback) => {
             console.log(historicalReviewMock);
             callback(historicalReviewMock[city]);
         });
@@ -28,31 +28,29 @@ const page = {
     renderHistoricalReview(data) {
         console.log(data);
         const historyTableData = extractHistoryTableData(data);
-        
+
         let averageMaxHtml = '<span>Средний максимум</span>';
         let averageMinHtml = '<span>Средний минимум</span>';
         let highestMaxHtml = '<span>Рекордный максимум</span>';
         let lowestMinHtml = '<span>Рекордный минимум</span>';
 
-        historyTableData.forEach(month => {
+        historyTableData.forEach((month) => {
             averageMaxHtml += `<span>${month.averageMax}°</span>`;
             averageMinHtml += `<span>${month.averageMin}°</span>`;
             highestMaxHtml += `<span>${month.highestMax}°</span>`;
             lowestMinHtml += `<span>${month.lowestMin}°</span>`;
-        })
+        });
 
         insertElement('average-max', averageMaxHtml);
         insertElement('average-min', averageMinHtml);
         insertElement('highest-max', highestMaxHtml);
         insertElement('lowest-min', lowestMinHtml);
-        
     },
-}
+};
 
 function extractHistoryTableData(data) {
-
     const minMaxPerMonth = [];
-    
+
     const highestMax = [];
     const lowestMin = [];
     const minSummary = [];
@@ -66,7 +64,7 @@ function extractHistoryTableData(data) {
     }
 
     const minMaxPerYear = Object.values(data);
-    minMaxPerYear.forEach(year => {
+    minMaxPerYear.forEach((year) => {
         for (let i = 0; i < 12; i++) {
             minSummary[i] += (year[i].min);
             maxSummary[i] += year[i].max;
@@ -77,8 +75,8 @@ function extractHistoryTableData(data) {
                 lowestMin[i] = year[i].min;
             }
         }
-    })
-    
+    });
+
     for (let i = 0; i < 12; i++) {
         monthParameters = {};
         monthParameters.averageMin = Math.round(minSummary[i] / Object.keys(data).length);
@@ -96,8 +94,8 @@ page.init();
 function getRandomCity() {
     const cityNumber = Math.floor(Math.random() * 3);
     switch (cityNumber) {
-        case 0: return 'Izhevsk';
-        case 1: return 'London';
-        case 2: return 'Vladivostok';
+    case 0: return 'Izhevsk';
+    case 1: return 'London';
+    case 2: return 'Vladivostok';
     }
 }
