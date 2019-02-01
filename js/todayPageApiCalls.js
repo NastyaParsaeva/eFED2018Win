@@ -41,7 +41,7 @@ const indexPage = {
         insertElementIntoDom('chosen-location', `${jsonData.name}, ${jsonData.sys.country}`);
         insertElementIntoDom('today-weekday', capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', { weekday: 'long' })));
         insertElementIntoDom('weather-description', capitalizeFirstLetter(jsonData.weather[0].description));
-        setAttributesForDomElement(document.getElementById('weather-icon'), { src: `http://openweathermap.org/img/w/${jsonData.weather[0].icon}.png`, alt: jsonData.weather[0].description });
+        setAttributesForDomElement(document.getElementById('weather-icon'), { src: createIconLink(jsonData.weather[0].icon), alt: jsonData.weather[0].description });
         insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)} °C`);
         insertElementIntoDom('today-humidity', `Влажность: ${jsonData.main.humidity} %`);
         insertElementIntoDom('today-wind-speed', `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`);
@@ -50,9 +50,7 @@ const indexPage = {
 
     renderAirPollution(jsonData) {
         const airPollutionObject = jsonData.data.find((airPollutionObject) => {
-            if (Math.floor(airPollutionObject.pressure) === 215) {
-                return airPollutionObject;
-            }
+            return Math.floor(airPollutionObject.pressure) === 215;
         });
         insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
     },
@@ -61,12 +59,11 @@ const indexPage = {
         const fiveDaysForecastArray = extractFiveDaysForecastData(jsonData);
         let daysForecastHTML = '';
         fiveDaysForecastArray.forEach((day) => {
-            const dayHtml = `<section class="item">
-                                <p class="day-name">${day.dayName}</p>
-                                <img src="${day.icon}" alt="${day.description}">
-                                <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
+            daysForecastHTML += `<section class="item">
+                                    <p class="day-name">${day.dayName}</p>
+                                    <img src="${day.icon}" alt="${day.description}">
+                                    <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
                                 </section>`;
-            daysForecastHTML += dayHtml;
         });
         insertElementIntoDom('week-forecast-container', daysForecastHTML);
     },
@@ -106,64 +103,41 @@ const indexPage = {
 indexPage.init();
 
 function extractFiveDaysForecastData(data) {
-    console.log(data);
     const daysForecastArray = [];
-
     data.list.forEach((weatherObject) => {
         const weatherObjectDayName = new Date(weatherObject.dt * 1000).toLocaleString('ru-RU', { weekday: 'short' });
-        if (!daysForecastArray.find((day) => {
-            if (day.dayName === weatherObjectDayName) {
-                if (day.maxTemp < weatherObject.main.temp) {
-                    day.maxTemp = Math.round(weatherObject.main.temp);
-                    day.description = weatherObject.weather[0].description;
-                    day.icon = `http://openweathermap.org/img/w/${weatherObject.weather[0].icon}.png`;
-                }
-                if (day.minTemp > weatherObject.main.temp) {
-                    day.minTemp = Math.round(weatherObject.main.temp);
-                }
-                return day;
+        const dayIndex = daysForecastArray.findIndex(day => day.dayName === weatherObjectDayName);
+        
+        if (dayIndex >= 0) {
+            const day = daysForecastArray[dayIndex];
+            if (day.maxTemp < weatherObject.main.temp) {
+                day.maxTemp = Math.round(weatherObject.main.temp);
+                day.description = weatherObject.weather[0].description;
+                day.icon = createIconLink(weatherObject.weather[0].icon);
             }
-        })) {
-            const newDay = {};
-            newDay.dayName = weatherObjectDayName;
-            console.log(weatherObject.weather[0].icon);
-            newDay.icon = `http://openweathermap.org/img/w/${weatherObject.weather[0].icon}.png`;
-            newDay.maxTemp = Math.round(weatherObject.main.temp);
-            newDay.minTemp = Math.round(weatherObject.main.temp);
-            newDay.description = weatherObject.weather[0].description;
-            daysForecastArray.push(newDay);
+            if (day.minTemp > weatherObject.main.temp) {
+                day.minTemp = Math.round(weatherObject.main.temp);
+            }
+        } else {
+            daysForecastArray.push({
+                dayName: weatherObjectDayName,
+                icon: createIconLink(weatherObject.weather[0].icon),
+                maxTemp: Math.round(weatherObject.main.temp),
+                minTemp: Math.round(weatherObject.main.temp),
+                description: weatherObject.weather[0].description,
+            });
         }
     });
     return daysForecastArray;
 }
 
 function extractGraphsData(data) {
-    const graphItems = [];
     weatherFor24Hours = data.list.slice(0, 8);
-    weatherFor24Hours.forEach((element) => {
-        const newGraphItem = {};
-        newGraphItem.time = new Date(element.dt * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-        newGraphItem.temp = Math.round(element.main.temp);
-        newGraphItem.precipitation = getPrecipitationVolume(element).toFixed(1);
-        newGraphItem.windSpeed = Math.round(element.wind.speed);
-        newGraphItem.windDirection = getWindDirection(element.wind.deg);
-        graphItems.push(newGraphItem);
-    });
-    return graphItems;
+    return weatherFor24Hours.map((element) => ({
+        time: new Date(element.dt * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
+        temp: Math.round(element.main.temp),
+        precipitation: getPrecipitationVolume(element).toFixed(1),
+        windSpeed: Math.round(element.wind.speed),
+        windDirection: getWindDirection(element.wind.deg),
+    }));
 }
-
-// function isDayExistInDaysForecastArray(daysForecastArray, dayName, weatherObject) {
-//     if (!daysForecastArray.find(day => {
-//         if (day.dayName === elementDayName) {
-//             if (day.maxTemp < element.main.temp) {
-//                 day.maxTemp = Math.round(element.main.temp);
-//                 day.description = element.weather[0].description;
-//                 day.icon = `http://openweathermap.org/img/w/${element.weather[0].icon}.png`;
-//             }
-//             if (day.minTemp > element.main.temp) {
-//                 day.minTemp = Math.round(element.main.temp);
-//             }
-//             return day;
-//         }
-//         }))
-// }

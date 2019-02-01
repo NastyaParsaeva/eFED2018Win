@@ -27,19 +27,9 @@ function insertElementIntoDom(destinationId, data) {
 
 function getPrecipitationVolume(data) {
     if (data.rain) {
-        if (data.rain['1h']) {
-            return data.rain['1h'];
-        }
-        if (data.rain['3h']) {
-            return data.rain['3h'];
-        }
+        return data.rain['1h'] || data.rain['3h'] || 0;
     } else if (data.snow) {
-        if (data.snow['1h']) {
-            return data.snow['1h'];
-        }
-        if (data.snow['3h']) {
-            return data.snow['3h'];
-        }
+        return data.snow['1h'] || data.snow['3h'] || 0;
     }
     return 0;
 }
@@ -80,7 +70,8 @@ function definePartOfDay(timeInSec) {
 function getPrecipitationLevel(prec) {
     if (prec < 1) {
         return 'low';
-    } if (prec < 2) {
+    } 
+    if (prec < 2) {
         return 'middle';
     }
     return 'high';
@@ -88,4 +79,8 @@ function getPrecipitationLevel(prec) {
 
 function capitalizeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function createIconLink(iconId) {
+    return `http://openweathermap.org/img/w/${iconId}.png`;
 }
