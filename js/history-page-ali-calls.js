@@ -1,8 +1,8 @@
-defaultCity = 'Izhevsk';
-
 const page = {
+    defaultCity: 'Izhevsk',
+
     init() {
-        this.getHistoricalReviewMock(defaultCity, this.renderHistoricalReview);
+        this.getHistoricalReviewMock(this.defaultCity, this.renderHistoricalReview);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             let city = capitalizeFirstLetter(event.target.value);

@@ -38,7 +38,7 @@ const indexPage = {
         insertElementIntoDom('chosen-location', `${jsonData.name}, ${jsonData.sys.country}`);
         insertElementIntoDom('today-weekday', capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', { weekday: 'long' })));
         insertElementIntoDom('weather-description', capitalizeFirstLetter(jsonData.weather[0].description));
-        setAttributesForDomElement(document.getElementById('weather-icon'), { src: createIconLink(jsonData.weather[0].icon), alt: jsonData.weather[0].description });
+        setAttributesForImage('weather-icon', createIconLink(jsonData.weather[0].icon), jsonData.weather[0].description);
         insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)} °C`);
         insertElementIntoDom('today-humidity', `Влажность: ${jsonData.main.humidity} %`);
         insertElementIntoDom('today-wind-speed', `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`);

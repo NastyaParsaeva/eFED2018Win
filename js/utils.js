@@ -15,10 +15,10 @@ function getDataFromApi(url, callback1, callback2) {
     xhr.send();
 }
 
-function setAttributesForDomElement(element, attributes) {
-    for (const key in attributes) {
-        element.setAttribute(key, attributes[key]);
-    }
+function setAttributesForImage(id, iconLink, altText) {
+    const elem = document.getElementById(id);
+    elem.setAttribute('src', iconLink);
+    elem.setAttribute('alt', altText);
 }
 
 function insertElementIntoDom(destinationId, data) {

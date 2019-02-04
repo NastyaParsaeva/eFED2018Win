@@ -96,7 +96,7 @@ const page = {
         const currentParams = extractCurrentParams(data);
         insertElementIntoDom('current-location', `${currentParams.temp}° ${currentParams.city}, ${currentParams.country}`);
         insertElementIntoDom('today', `${currentParams.today}, сегодня`);
-        setAttributesForDomElement(document.getElementById('current-weather-icon'), { src: `${currentParams.weatherIcon}`, alt: currentParams.weatherDescription });
+        setAttributesForImage('current-weather-icon', currentParams.weatherIcon, currentParams.weatherDescription);
     },
 
     renderFiveDaysForecast(data) {

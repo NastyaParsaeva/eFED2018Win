@@ -58,7 +58,3 @@ function createDayPrecipitationHtml(dayPrecip) {
 function createDayNamesListHtml(date) {
     return `<li class="menu-link">${date.slice(0, 2)}</li>`;
 }
-
-function createTableDataHtml(degrees) {
-    return `<span>${degrees}°</span>`;
-}
