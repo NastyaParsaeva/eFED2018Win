@@ -25,10 +25,10 @@ const page = {
     renderHistoricalReview(data) {
         const historyTableData = extractHistoryTableData2(data);
 
-        let averageMaxHtml = '<span>Средний максимум</span>';
-        let averageMinHtml = '<span>Средний минимум</span>';
-        let highestMaxHtml = '<span>Рекордный максимум</span>';
-        let lowestMinHtml = '<span>Рекордный минимум</span>';
+        let averageMaxHtml = createSpanHtml('Средний максимум');
+        let averageMinHtml = createSpanHtml('Средний минимум');
+        let highestMaxHtml = createSpanHtml('Рекордный максимум');
+        let lowestMinHtml = createSpanHtml('Рекордный минимум');
 
         for (let i = 0; i < 12; i++) { 
             averageMaxHtml += createTableDataHtml(historyTableData.averageMax[i]);
@@ -87,10 +87,4 @@ function getRandomCity() {
     case 1: return 'London';
     case 2: return 'Vladivostok';
     }
-}
-
-
-
-function createTableDataHtml(degrees) {
-    return `<span>${degrees}°</span>`;
 }
