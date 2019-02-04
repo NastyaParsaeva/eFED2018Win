@@ -6,6 +6,7 @@ const indexPage = {
     init() {
         this.getWeatherInfoForCurrentPage(this.defaultCity, this.defaultCoords);
         const searchField = document.getElementById('search-field');
+        slider.initSlider();
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
             this.getWeatherInfoForCurrentPage(city, coords);
