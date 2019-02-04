@@ -1,13 +1,10 @@
-const APP_ID = 'f9a8867923bcc86f488c9142432dd2de';
-const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&APPID=${APP_ID}&q=`;
-const AIR_POLLUTION_ENDPOINT = ['http://api.openweathermap.org/pollution/v1/co/', `/current.json?appid=${APP_ID}`];
-const FIVE_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ru&APPID=${APP_ID}&q=`;
-const defaultCity = 'izhevsk';
-const defaultCoords = '56,53';
-let coords;
+
 const indexPage = {
+    defaultCity: 'izhevsk',
+    defaultCoords: '56,53',
+    coords: '',
     init() {
-        this.getWeatherInfoForCurrentPage(defaultCity, defaultCoords);
+        this.getWeatherInfoForCurrentPage(this.defaultCity, this.defaultCoords);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
@@ -67,28 +64,18 @@ const indexPage = {
     renderGrahps(data) {
         const graphsDataArray = extractGraphsData(data);
 
-        let graphSignaturesHtml = '';
-        let tempGraphHtml = '';
-        let precipitationGraphHtml = '';
-        let windGraphHtml = '';
+        let graphSignaturesHtml = '',
+            tempGraphHtml = '',
+            precipitationGraphHtml = '',
+            windGraphHtml = '';
 
         graphsDataArray.forEach((graphDataItem) => {
-            graphSignaturesHtml += `<section class="item">
-                                    <p>${graphDataItem.time}</p>
-                                </section>`;
-            tempGraphHtml += `<section class="item">
-                            <p class="value">${graphDataItem.temp}</p>
-                            <p class="column" style="height:${50 / 70 * graphDataItem.temp}px;"></p>
-                          </section>`;
-            precipitationGraphHtml += `<section class="item">
-                                        <p class="value">${graphDataItem.precipitation} мм</p>
-                                        <p class="column" style="height:${graphDataItem.precipitation * 10}px"></p>
-                                    </section>`;
-            windGraphHtml += `<section class="item">
-                            <p>${graphDataItem.windSpeed} м/с</p>
-                            <img src="assets/${graphDataItem.windDirection}.png" alt="направление ветра">
-                        </section>`;
+            graphSignaturesHtml += createGraphSignaturesHtml(graphDataItem.time);
+            tempGraphHtml += createTempGrapItemhHtml(graphDataItem.temp);
+            precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation);
+            windGraphHtml += createWindGraphItemHtml(graphDataItem.windSpeed, graphDataItem.windDirection);
         });
+
         insertElementIntoDom('graph-signatures-container', graphSignaturesHtml);
         insertElementIntoDom('temperature-graph-container', tempGraphHtml);
         insertElementIntoDom('precipitation-graph-container', precipitationGraphHtml);

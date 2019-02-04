@@ -1,6 +1,6 @@
 function getDataFromApi(url, callback1, callback2) {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = function() {
         if (this.readyState === 4 && this.status === 200) {
             const response = JSON.parse(xhr.responseText);
             if (callback1) {

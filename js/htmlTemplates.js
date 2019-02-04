@@ -27,16 +27,38 @@ function createPartDayPrecipitationHtml(weatherData) {
     return '';
 }
 
-function createDayForecastHtml(day) {
-    return `<section class="item">
-                <p class="day-name">${day.dayName}</p>
-                <img src="${day.icon}" alt="${day.description}">
-                <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
+function createDayWeatherHtml(dayWeather) {
+    return `<section class = "day-weather">
+                <p class="day-name">${dayWeather.date}</p>
+                ${createPartDayWeatherHtml('Ночь', dayWeather.night)}
+                ${createPartDayWeatherHtml('Утро', dayWeather.morning)}
+                ${createPartDayWeatherHtml('День', dayWeather.day)}
+                ${createPartDayWeatherHtml('Вечер', dayWeather.evening)}
             </section>`;
 }
 
-function createGraphSignatureHtml(graphDataItem) {
-    return `<section class="item">
-                <p>${graphDataItem.time}</p>
+function createDayWindHtml(dayWind) {
+    return `<section class = "day-wind">
+                ${createPartDayWindHtml(dayWind.night)}
+                ${createPartDayWindHtml(dayWind.morning)}
+                ${createPartDayWindHtml(dayWind.day)}
+                ${createPartDayWindHtml(dayWind.evening)}
             </section>`;
+}
+
+function createDayPrecipitationHtml(dayPrecip) {
+    return `<section class = "day-precepitation">
+                ${createPartDayPrecipitationHtml(dayPrecip.night)}
+                ${createPartDayPrecipitationHtml(dayPrecip.morning)}
+                ${createPartDayPrecipitationHtml(dayPrecip.day)}
+                ${createPartDayPrecipitationHtml(dayPrecip.evening)}
+            </section>`;
+} 
+
+function createDayNamesListHtml(date) {
+    return `<li class="menu-link">${date.slice(0, 2)}</li>`;
+}
+
+function createTableDataHtml(degrees) {
+    return `<span>${degrees}°</span>`;
 }

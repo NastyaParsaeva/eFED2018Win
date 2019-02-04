@@ -89,6 +89,8 @@ function getRandomCity() {
     }
 }
 
+
+
 function createTableDataHtml(degrees) {
     return `<span>${degrees}°</span>`;
 }

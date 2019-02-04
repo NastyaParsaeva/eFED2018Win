@@ -1,7 +1,4 @@
 /* eslint no-undef: 0 */
-const APP_ID = 'cbb3210df49fdf1c3c675a785e42454b';
-const FIVE_DAY_WEATHER_ENDPOINT = `http://api.openweathermap.org/data/2.5/forecast?units=metric&lang=ru&APPID=${APP_ID}&q=`;
-const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather?units=metric&lang=ru&APPID=${APP_ID}&q=`;
 const defaultCity = 'izhevsk';
 
 function createDayPartWeather(weather) {
@@ -104,32 +101,16 @@ const page = {
 
     renderFiveDaysForecast(data) {
         const dailyWeatherArray = extractForcastParameters(data.list);
-        let dayWeatherHtml = '';
-        let windHtml = '';
-        let precipitationHtml = '';
-        let dayNamesListHtml = '';
+        let dayWeatherHtml = '',
+            windHtml = '',
+            precipitationHtml = '',
+            dayNamesListHtml = '';
 
         dailyWeatherArray.forEach((weather) => {
-            dayWeatherHtml += `<section class = "day-weather">
-                                <p class="day-name">${weather.date}</p>
-                                ${createPartDayWeatherHtml('Ночь', weather.night)}
-                                ${createPartDayWeatherHtml('Утро', weather.morning)}
-                                ${createPartDayWeatherHtml('День', weather.day)}
-                                ${createPartDayWeatherHtml('Вечер', weather.evening)}
-                            </section>`;
-            windHtml += `<section class = "day-wind">
-                        ${createPartDayWindHtml(weather.night)}
-                        ${createPartDayWindHtml(weather.morning)}
-                        ${createPartDayWindHtml(weather.day)}
-                        ${createPartDayWindHtml(weather.evening)}
-                    </section>`;
-            precipitationHtml += `<section class = "day-precepitation">
-                                ${createPartDayPrecipitationHtml(weather.night)}
-                                ${createPartDayPrecipitationHtml(weather.morning)}
-                                ${createPartDayPrecipitationHtml(weather.day)}
-                                ${createPartDayPrecipitationHtml(weather.evening)}
-                            </section>`;
-            dayNamesListHtml += `<li class="menu-link">${weather.date.slice(0, 2)}</li>`;
+            dayWeatherHtml += createDayWeatherHtml(weather);
+            windHtml += createDayWindHtml(weather);
+            precipitationHtml += createDayPrecipitationHtml(weather);
+            dayNamesListHtml += createDayNamesListHtml(weather.date);
         });
         insertElementIntoDom('daily-weather-container', dayWeatherHtml);
         insertElementIntoDom('wind-container', windHtml);
@@ -141,8 +122,6 @@ const page = {
 
         slider.reinitializeSlider();
     },
-
-
 };
 
 page.init();
