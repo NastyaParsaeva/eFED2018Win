@@ -13,82 +13,71 @@ const page = {
         });
     },
 
-    getHistoricalReviewMock(city, ...callbacks) {
+    getHistoricalReviewMock(city, callback) {
         this.renderCity(city);
-        callbacks.forEach((callback) => {
-            console.log(historicalReviewMock);
-            callback(historicalReviewMock[city]);
-        });
+        callback(historicalReviewMock[city]);
     },
 
     renderCity(city) {
-        insertElement('location', city);
+        insertElementIntoDom('location', city);
     },
 
     renderHistoricalReview(data) {
-        console.log(data);
-        const historyTableData = extractHistoryTableData(data);
+        const historyTableData = extractHistoryTableData2(data);
 
         let averageMaxHtml = '<span>Средний максимум</span>';
         let averageMinHtml = '<span>Средний минимум</span>';
         let highestMaxHtml = '<span>Рекордный максимум</span>';
         let lowestMinHtml = '<span>Рекордный минимум</span>';
 
-        historyTableData.forEach((month) => {
-            averageMaxHtml += `<span>${month.averageMax}°</span>`;
-            averageMinHtml += `<span>${month.averageMin}°</span>`;
-            highestMaxHtml += `<span>${month.highestMax}°</span>`;
-            lowestMinHtml += `<span>${month.lowestMin}°</span>`;
-        });
+        for (let i = 0; i < 12; i++) { 
+            averageMaxHtml += createTableDataHtml(historyTableData.averageMax[i]);
+            averageMinHtml += createTableDataHtml(historyTableData.averageMin[i]);
+            highestMaxHtml += createTableDataHtml(historyTableData.highestMax[i]);
+            lowestMinHtml += createTableDataHtml(historyTableData.lowestMin[i]);
+        }
 
-        insertElement('average-max', averageMaxHtml);
-        insertElement('average-min', averageMinHtml);
-        insertElement('highest-max', highestMaxHtml);
-        insertElement('lowest-min', lowestMinHtml);
+        insertElementIntoDom('average-max', averageMaxHtml);
+        insertElementIntoDom('average-min', averageMinHtml);
+        insertElementIntoDom('highest-max', highestMaxHtml);
+        insertElementIntoDom('lowest-min', lowestMinHtml);
     },
 };
 
-function extractHistoryTableData(data) {
-    const minMaxPerMonth = [];
+function extractHistoryTableData2(data) {
+    const minMaxPerMonth = {
+        averageMax: [],
+        averageMin: [],
+        highestMax: [],
+        lowestMin: [],
+    };
 
-    const highestMax = [];
-    const lowestMin = [];
     const minSummary = [];
     const maxSummary = [];
 
     for (let i = 0; i < 12; i++) {
-        minSummary.push(data[Object.keys(data)[0]][i].min);
-        maxSummary.push(data[Object.keys(data)[0]][i].max);
-        highestMax.push(data[Object.keys(data)[0]][i].max);
-        lowestMin.push(data[Object.keys(data)[0]][i].min);
+        const firstYearTemp = data[Object.keys(data)[0]];
+        minSummary.push(firstYearTemp[i].min);
+        maxSummary.push(firstYearTemp[i].max);
+        minMaxPerMonth.highestMax.push(firstYearTemp[i].max);
+        minMaxPerMonth.lowestMin.push(firstYearTemp[i].min);
     }
 
-    const minMaxPerYear = Object.values(data);
-    minMaxPerYear.forEach((year) => {
+    const tempPerYear = Object.values(data);
+    tempPerYear.forEach((year) => {
         for (let i = 0; i < 12; i++) {
-            minSummary[i] += (year[i].min);
+            minSummary[i] += year[i].min;
             maxSummary[i] += year[i].max;
-            if (highestMax[i] < year[i].max) {
-                highestMax[i] = year[i].max;
-            }
-            if (lowestMin[i] > year[i].min) {
-                lowestMin[i] = year[i].min;
-            }
+            minMaxPerMonth.highestMax[i] = Math.max(minMaxPerMonth.highestMax[i], year[i].max);
+            minMaxPerMonth.highestMax[i] = Math.min(minMaxPerMonth.lowestMin[i], year[i].min);
         }
     });
-
     for (let i = 0; i < 12; i++) {
-        monthParameters = {};
-        monthParameters.averageMin = Math.round(minSummary[i] / Object.keys(data).length);
-        monthParameters.averageMax = Math.round(maxSummary[i] / Object.keys(data).length);
-        monthParameters.highestMax = highestMax[i];
-        monthParameters.lowestMin = lowestMin[i];
-        minMaxPerMonth.push(monthParameters);
+        minMaxPerMonth.averageMax[i] = Math.round(maxSummary[i] / Object.keys(data).length);
+        minMaxPerMonth.averageMin[i] = Math.round(minSummary[i] / Object.keys(data).length);
     }
-    console.log(minMaxPerMonth);
     return minMaxPerMonth;
 }
-
 page.init();
 
 function getRandomCity() {
@@ -98,4 +87,8 @@ function getRandomCity() {
     case 1: return 'London';
     case 2: return 'Vladivostok';
     }
+}
+
+function createTableDataHtml(degrees) {
+    return `<span>${degrees}°</span>`;
 }

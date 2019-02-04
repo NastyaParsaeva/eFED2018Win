@@ -5,11 +5,13 @@ const WEATHER_DETAILS_ENDPOINT = `http://api.openweathermap.org/data/2.5/weather
 const defaultCity = 'izhevsk';
 
 function createDayPartWeather(weather) {
+    const precipitation = getPrecipitationVolume(weather).toFixed(1);
     return {
         iconLink: createIconLink(weather.weather[0].icon),
         temp: Math.round(weather.main.temp),
         windSpeed: Math.round(weather.wind.speed),
-        precipitation: getPrecipitationVolume(weather).toFixed(1),
+        precipitation,
+        precipitationLevel: getPrecipitationLevel(precipitation),
         description: weather.weather[0].description,
     };
 }
@@ -17,7 +19,7 @@ function createDayPartWeather(weather) {
 function extractForcastParameters(list) {
     const daylyWeatherArray = [];
     for (let i = 0; i < list.length; i += 2) {
-        const dayPartWeather = createDayPartWeather(list[i]);;
+        const dayPartWeather = createDayPartWeather(list[i]);
         const dayPartName = definePartOfDay(list[i].dt);        
         const date = new Date(list[i].dt * 1000)
             .toLocaleString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' });
@@ -38,58 +40,26 @@ function extractForcastParameters(list) {
 function extractSunDetails(data) {
     const sunrise = new Date(data.sys.sunrise * 1000);
     const sunset = new Date(data.sys.sunset * 1000);
+    const hoursDiff = Math.floor((sunset - sunrise) / (60 * 60 * 1000));
     const options = { hour: '2-digit', minute: '2-digit' };
 
     return {
         sunrise: sunrise.toLocaleTimeString([], options),
         sunset: sunset.toLocaleTimeString([], options),
-        hoursDiff: Math.floor((sunset - sunrise) / (60 * 60 * 1000)),
-        minutesDiff: Math.floor((sunset - sunrise) / (60 * 1000) - sunDetails.hoursDiff * 60),
+        hoursDiff,
+        minutesDiff: Math.floor((sunset - sunrise) / (60 * 1000) - hoursDiff * 60),
     };
 }
 
 function extractCurrentParams(data) {
-    //TODO: return inline object
-    
-    const currentParams = {};
-    currentParams.today = new Date(data.dt * 1000).toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
-    currentParams.city = data.name;
-    currentParams.country = data.sys.country;
-    currentParams.temp = Math.round(data.main.temp);
-    currentParams.weatherIcon = createIconLink(data.weather[0].icon);
-    currentParams.weatherDescription = data.weather[0].description;
-
-    return currentParams;
-}
-
-function createPartDayWeatherHtml(name, weatherData) {
-    if (weatherData) {
-        //TODO: create template function
-        return `<section class = "part-day-weather item">
-                      <p class="part-day-name">${name}</p>
-                      <img src = "${weatherData.iconLink}" alt = "${weatherData.description}">
-                      <p class = "temperature normal">${weatherData.temp}</p>
-                  </section>`;
-    }
-    return '';
-}
-
-function createPartDayWindHtml(weatherData) {
-    if (weatherData) {
-        return `<span class = "item">
-                      <p><span>${weatherData.windSpeed}</span></p>
-                  </span>`;
-    }
-    return '';
-}
-
-function createPartDayPrecipitationHtml(weatherData) {
-    if (weatherData) {
-        return `<section class = "item">
-                      <p class="${getPrecipitationLevel(weatherData.precipitation)}">${weatherData.precipitation}</p>
-                  </section>`;
-    }
-    return '';
+    return {
+        today: new Date(data.dt * 1000).toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' }),
+        city: data.name,
+        country: data.sys.country,
+        temp: Math.round(data.main.temp),
+        weatherIcon: createIconLink(data.weather[0].icon),
+        weatherDescription: data.weather[0].description,
+    };
 }
 
 const page = {

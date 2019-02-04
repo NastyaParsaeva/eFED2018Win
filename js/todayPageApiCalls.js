@@ -59,11 +59,7 @@ const indexPage = {
         const fiveDaysForecastArray = extractFiveDaysForecastData(jsonData);
         let daysForecastHTML = '';
         fiveDaysForecastArray.forEach((day) => {
-            daysForecastHTML += `<section class="item">
-                                    <p class="day-name">${day.dayName}</p>
-                                    <img src="${day.icon}" alt="${day.description}">
-                                    <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
-                                </section>`;
+            daysForecastHTML += createDayForecastHtml(day);
         });
         insertElementIntoDom('week-forecast-container', daysForecastHTML);
     },
