@@ -66,15 +66,15 @@ function getMinMaxForMonth(monthData) {
     monthData.forEach(month=> {
         minSum += month.min;
         maxSum += month.max;
-
-        absMin = Math.min(absMin,month.min)
+        absMax = Math.max(absMax, month.max) 
+        absMin = Math.min(absMin, month.min)
     });
 
     return {
         absMax,
         absMin,
-        avMax: maxSum / monthData.length,
-        avMin: minSum / monthData.length,
+        avMax: Math.round(maxSum / monthData.length),
+        avMin: Math.round(minSum / monthData.length),
     }
 }
 
