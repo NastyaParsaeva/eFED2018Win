@@ -31,6 +31,7 @@ const slider = {
             });
         }
     },
+
     changeSlide(index) {
         this.slides[this.current].classList.remove('shown');
         this.slideNav[this.current].classList.remove('selected');
@@ -38,9 +39,11 @@ const slider = {
         this.slides[this.current].classList.add('shown');
         this.slideNav[this.current].classList.add('selected');
     },
+
     nextSlide() {
         this.changeSlide((this.current + 1) % this.slides.length);
     },
+    
     previousSlide() {
         (this.current !== 0) ? this.changeSlide(this.current - 1) : this.changeSlide(this.slides.length - 1);
     },

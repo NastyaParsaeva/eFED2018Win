@@ -1,5 +1,5 @@
 /* eslint no-undef: 0 */
-const defaultCity = 'izhevsk';
+const DEFAULT_CITY = 'izhevsk';
 
 function createDayPartWeather(weather) {
     const precipitation = getPrecipitationVolume(weather).toFixed(1);

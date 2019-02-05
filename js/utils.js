@@ -37,20 +37,22 @@ function getPrecipitationVolume(data) {
 function getWindDirection(degree) {
     if (degree <= 23 || degree > 338) {
         return 'north';
-    } if (degree > 23 && degree <= 68) {
+    } else if (degree > 23 && degree <= 68) {
         return 'northeast';
-    } if (degree > 68 && degree <= 113) {
+    } else if (degree > 68 && degree <= 113) {
         return 'east';
-    } if (degree > 113 && degree <= 158) {
+    } else if (degree > 113 && degree <= 158) {
         return 'southeast';
-    } if (degree > 158 && degree <= 203) {
+    } else if (degree > 158 && degree <= 203) {
         return 'south';
-    } if (degree > 203 && degree <= 248) {
+    } else if (degree > 203 && degree <= 248) {
         return 'southwest';
-    } if (degree > 248 && degree <= 293) {
+    } else if (degree > 248 && degree <= 293) {
         return 'west';
-    } if (degree > 293 && degree <= 338) {
+    } else if (degree > 293 && degree <= 338) {
         return 'northwest';
+    } else {
+        return null;
     }
 }
 
