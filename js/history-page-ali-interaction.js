@@ -31,10 +31,10 @@ const page = {
         let lowestMinHtml = createSpanHtml('Рекордный минимум');
 
         for (let i = 0; i < 12; i++) { 
-            averageMaxHtml += createTableDataHtml(historyTableData.averageMax[i]);
-            averageMinHtml += createTableDataHtml(historyTableData.averageMin[i]);
-            highestMaxHtml += createTableDataHtml(historyTableData.highestMax[i]);
-            lowestMinHtml += createTableDataHtml(historyTableData.lowestMin[i]);
+            averageMaxHtml += createTableDataHtml(historyTableData[i].avMax);
+            averageMinHtml += createTableDataHtml(historyTableData[i].avMin);
+            highestMaxHtml += createTableDataHtml(historyTableData[i].absMax);
+            lowestMinHtml += createTableDataHtml(historyTableData[i].absMin);
         }
 
         insertElementIntoDom('average-max', averageMaxHtml);
@@ -44,38 +44,46 @@ const page = {
     },
 };
 
-function extractHistoryTableData2(data) {
-    const minMaxPerMonth = {
-        averageMax: [],
-        averageMin: [],
-        highestMax: [],
-        lowestMin: [],
-    };
 
-    const minSummary = [];
-    const maxSummary = [];
-
-    for (let i = 0; i < 12; i++) {
-        const firstYearTemp = data[Object.keys(data)[0]];
-        minSummary.push(firstYearTemp[i].min);
-        maxSummary.push(firstYearTemp[i].max);
-        minMaxPerMonth.highestMax.push(firstYearTemp[i].max);
-        minMaxPerMonth.lowestMin.push(firstYearTemp[i].min);
-    }
-
-    const tempPerYear = Object.values(data);
-    tempPerYear.forEach((year) => {
-        for (let i = 0; i < 12; i++) {
-            minSummary[i] += year[i].min;
-            maxSummary[i] += year[i].max;
-            minMaxPerMonth.highestMax[i] = Math.max(minMaxPerMonth.highestMax[i], year[i].max);
-            minMaxPerMonth.highestMax[i] = Math.min(minMaxPerMonth.lowestMin[i], year[i].min);
+function mapToMonthData(data) {
+    const years = Object.values(data);
+    const months = [];
+    years.forEach((year)=> {
+        for(let i=0;i<12;i++) {
+            months[i] ? months[i].push(year[i]) : months[i] = [];
         }
+    })
+    console.log(months);
+    return months;
+}
+
+function getMinMaxForMonth(monthData) {
+    let absMin = monthData[0].min;
+    let absMax = monthData[0].max;
+    let minSum = 0;
+    let maxSum = 0;
+    
+    monthData.forEach(month=> {
+        minSum += month.min;
+        maxSum += month.max;
+
+        absMin = Math.min(absMin,month.min)
     });
-    for (let i = 0; i < 12; i++) {
-        minMaxPerMonth.averageMax[i] = Math.round(maxSummary[i] / Object.keys(data).length);
-        minMaxPerMonth.averageMin[i] = Math.round(minSummary[i] / Object.keys(data).length);
+
+    return {
+        absMax,
+        absMin,
+        avMax: maxSum / monthData.length,
+        avMin: minSum / monthData.length,
     }
+}
+
+function extractHistoryTableData2(data) {
+
+    const months = mapToMonthData(data);
+    const minMaxPerMonth = months.map(month => {
+        return getMinMaxForMonth(month);
+    })
     return minMaxPerMonth;
 }
 page.init();
