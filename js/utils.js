@@ -2,7 +2,7 @@ function getDataFromApi(url, callback1, callback2) {
     const xhr = new XMLHttpRequest();
     xhr.onload = function() {
         if (this.readyState === 4 && this.status === 200) {
-            let response = JSON.parse(xhr.responseText);
+            const response = JSON.parse(xhr.responseText);
             if (callback1) {
                 callback1(response);
             }
@@ -10,38 +10,26 @@ function getDataFromApi(url, callback1, callback2) {
                 callback2(response);
             }
         }
-    }
+    };
     xhr.open('GET', url, true);
     xhr.send();
 }
 
-function setAttributes(element, attributes) {
-    for(var key in attributes) {
-        element.setAttribute(key, attributes[key]);
-    }
+function setAttributesForImage(id, iconLink, altText) {
+    const elem = document.getElementById(id);
+    elem.setAttribute('src', iconLink);
+    elem.setAttribute('alt', altText);
 }
 
-function insertElement(destinationId, data) {
+function insertElementIntoDom(destinationId, data) {
     document.getElementById(destinationId).innerHTML = data;
 }
 
 function getPrecipitationVolume(data) {
     if (data.rain) {
-        if (data.rain['1h']) {
-            return data.rain['1h'];
-        }
-        if (data.rain['3h']) {
-            return data.rain['3h'];
-        }
-    } else {
-        if (data.snow) {
-            if (data.snow['1h']) {
-                return data.snow['1h'];
-            }
-            if (data.snow['3h']) {
-                return data.snow['3h'];
-            }
-        } 
+        return data.rain['1h'] || data.rain['3h'] || 0;
+    } else if (data.snow) {
+        return data.snow['1h'] || data.snow['3h'] || 0;
     }
     return 0;
 }
@@ -63,17 +51,20 @@ function getWindDirection(degree) {
         return 'west';
     } else if (degree > 293 && degree <= 338) {
         return 'northwest';
-    } 
+    } else {
+        return null;
+    }
 }
 
-function definePartOfDay(hours) {
+function definePartOfDay(timeInSec) {
+    const hours = new Date(timeInSec * 1000).getHours();
     if (hours < 6) {
         return 'night';
-    } else if (hours < 12) {
+    } if (hours < 12) {
         return 'morning';
-    } else if (hours < 18) {
+    } if (hours < 18) {
         return 'day';
-    } else if (hours < 24) {
+    } if (hours < 24) {
         return 'evening';
     }
 }
@@ -81,13 +72,17 @@ function definePartOfDay(hours) {
 function getPrecipitationLevel(prec) {
     if (prec < 1) {
         return 'low';
-    } else if (prec < 2) {
+    } 
+    if (prec < 2) {
         return 'middle';
-    } else {
-        return 'high';
     }
+    return 'high';
 }
 
 function capitalizeFirstLetter(word) {
     return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+function createIconLink(iconId) {
+    return `http://openweathermap.org/img/w/${iconId}.png`;
 }
