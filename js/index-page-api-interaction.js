@@ -40,7 +40,7 @@ const indexPage = {
         insertElementIntoDom('today-weekday', capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', { weekday: 'long' })));
         insertElementIntoDom('weather-description', capitalizeFirstLetter(jsonData.weather[0].description));
         setAttributesForImage('weather-icon', createIconLink(jsonData.weather[0].icon), jsonData.weather[0].description);
-        insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)} °C`);
+        insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)}°C`);
         insertElementIntoDom('today-humidity', `Влажность: ${jsonData.main.humidity} %`);
         insertElementIntoDom('today-wind-speed', `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`);
         insertElementIntoDom('today-precipitation', `Осадки: ${getPrecipitationVolume(jsonData)} мм`);
@@ -64,6 +64,7 @@ const indexPage = {
 
     renderGrahps(data) {
         const graphsDataArray = extractGraphsData(data);
+        const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
 
         let graphSignaturesHtml = '',
             tempGraphHtml = '',
@@ -73,7 +74,7 @@ const indexPage = {
         graphsDataArray.forEach((graphDataItem) => {
             graphSignaturesHtml += createGraphSignaturesHtml(graphDataItem.time);
             tempGraphHtml += createTempGrapItemhHtml(graphDataItem.temp);
-            precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation);
+            precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation, maxPrecLevel);
             windGraphHtml += createWindGraphItemHtml(graphDataItem.windSpeed, graphDataItem.windDirection);
         });
 

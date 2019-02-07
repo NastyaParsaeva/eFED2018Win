@@ -1,7 +1,9 @@
 function createDayForecastHtml(day) {
     return `<section class="item">
                 <p class="day-name">${day.dayName}</p>
-                <img src="${day.icon}" alt="${day.description}">
+                <figure>
+                    <img src="${day.icon}" alt="${day.description}">
+                </figure>
                 <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
             </section>`;
 }
@@ -20,17 +22,19 @@ function createTempGrapItemhHtml(temp) {
             </section>`;
 }
 
-function createPrecipitationGraphItemHtml(precipitation) {
-    const columnHeight = precipitation * 10;
+function createPrecipitationGraphItemHtml(precipitation, maxPrec = 5) {
+    const columnHeight = Math.round(precipitation * 100 / maxPrec);
     return `<section class="item">
                 <p class="value">${precipitation} мм</p>
-                <p class="column" style="height:${columnHeight}px"></p>
+                <p class="column" style="height:${columnHeight}%"></p>
             </section>`;
 }
 
 function createWindGraphItemHtml(windSpeed, windDirection) {
     return `<section class="item">
                 <p>${windSpeed} м/с</p>
-                <img src="assets/${windDirection}.png" alt="направление ветра">
+                <figure>
+                    <img src="assets/${windDirection}.png" alt="направление ветра">
+                <figure>
             </section>`;
 }

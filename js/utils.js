@@ -34,6 +34,16 @@ function getPrecipitationVolume(data) {
     return 0;
 }
 
+function findMaxPrecipitationLevelBiggerThan5(graphsDataArray) {
+    let maxPrec = 0;
+    graphsDataArray.forEach(dayData => {
+        if (dayData.precipitation > maxPrec) {
+            maxPrec = dayData.precipitation;
+        }
+    });
+    return (maxPrec > 5) ? maxPrec : undefined;
+}
+
 function getWindDirection(degree) {
     if (degree <= 23 || degree > 338) {
         return 'north';

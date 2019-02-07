@@ -9,9 +9,9 @@
         <meta name="robots" content="index,nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            @import url("styles/main.css");
+            @import url("styles/flex-main.css");
         </style>
-        <link rel="stylesheet" type="text/css" href="styles\index-page.css">
+        <link rel="stylesheet" type="text/css" href="styles\flex-index-page.css">
     </head>
     <body>
         <header>
@@ -22,7 +22,7 @@
                         <li class="menu-link"><a href="history-page.html">История погоды</a></li>
                     </ul>
                 </nav>
-                <section class="location">
+                <section class="search-row">
                     <span id="air-pollution" class="current-location"></span>
                     <section class="search">
                         <label for="search-field" style="display: none">Поиск</label>
@@ -32,17 +32,20 @@
                 </section>
             </header>
         <main>
-            <article class="info-container">
-                <section class="info">
+            <article class="today-weather-info-container">
+                <section class="weather-info">
                     <p id="chosen-location"></p>
                     <p id="today-weekday"></p>
                     <p id="weather-description"></p>
-                    <figure>
-                        <img id = "weather-icon">
-                    </figure>
-                    <p id="current-temperature"></p>
+                    <secion class="weather-abbreviation">
+                        <figure>
+                            <img id = "weather-icon">
+                        </figure>
+                        <p id="current-temperature"></p>
+                    </section>
+                    
                 </section>
-                <section class="info">
+                <section class="weather-info">
                     <p id="today-precipitation"></p>
                     <p id="today-humidity"></p>
                     <p id="today-wind-speed"></p>
