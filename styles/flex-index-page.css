@@ -176,13 +176,6 @@ figure {
     margin: 0;
 }
 
-.precipitation .item:nth-child(odd):after {
-    margin-top: 21px;
-    height: 21px;
-}
-
-
-
 .air-pollution {
     display: inline-block;
     width: 65%;
