@@ -31,9 +31,23 @@
     display: inline-block;
 }
 
+.graph-container {
+    width: 90%;
+    margin: auto;
+}
+
 .graph-signatures {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.graph {
+    display: none;
+}
+
+.shown {
+    display: flex;
+    justify-content: space-around;
 }
 
 .week-forecast {
@@ -43,47 +57,31 @@
 }
 
 .week-forecast .item {
-    display: flex;
-    flex-direction: column;
     color: #bbbbbb;
-
 }
 
 .item {
     display: flex;
     flex-direction: column;
-    width: 85px;
+    align-items: center;
     font-weight: bolder;
-    margin: 5px 15px;
-}
-
-.item p {
-    margin: 15px 5px;
 }
 
 .precipitation .item {
-    width: 120px;
+    width: 13%;
     margin: 0;
     color: #257feb;
     height: 70px;
-    display: flex;
-    flex-direction: column;
     justify-content: flex-end;
 }
-
 
 .wind .item img {
     width: 50%;
 }
 
-
-
 figure {
     display: inline-block;
 }
-
-
-
 
 .info:nth-child(2) {
     width: 55%;
@@ -92,8 +90,6 @@ figure {
 .info:first-child {
     width: 35%;
 }
-
-
 
 .info #current-temperature {
     display: inline-block;
@@ -120,10 +116,6 @@ figure {
     text-decoration: none;
 }
 
-
-
-
-
 .max {
     color: #878787;
 }
@@ -148,11 +140,6 @@ figure {
     height: 50px;
     width: 20px;
     display: block;
-    margin-left: 33px;
-}
-
-.temperature .above-zero {
-    border-bottom: 0.5px black solid;
 }
 
 .precipitation {
@@ -169,7 +156,7 @@ figure {
     content: "";
     background-color: #e8f1fc;
     height: 50px;
-    width: 120px;
+    width: 100%;
     display: block;
     border-top: 2px solid #257feb;
     margin: 0;
@@ -184,11 +171,35 @@ figure {
     display: inline-block;
     width: 25%;
 }
-.graph {
-    display: none;
-}
-.shown {
-    display: flex;
-    justify-content: center;
-}
 
+
+@media screen and (max-width: 767px) {
+    .shown {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .item {
+        flex-direction: row;    
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .week-forecast {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .graph-signatures {
+        order: -1;
+        flex-direction: column;
+    }
+
+    .graph-container {
+        display: flex;
+    }
+
+    .graph-container .item {
+        height: 12%;
+    }
+}
