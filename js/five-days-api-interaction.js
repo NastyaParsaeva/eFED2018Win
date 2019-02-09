@@ -18,8 +18,8 @@ function extractForcastParameters(list) {
     for (let i = 0; i < list.length; i += 2) {
         const dayPartWeather = createDayPartWeather(list[i]);
         const dayPartName = definePartOfDay(list[i].dt);        
-        const date = new Date(list[i].dt * 1000)
-            .toLocaleString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' });
+        const date = capitalizeFirstLetter(new Date(list[i].dt * 1000)
+            .toLocaleString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' }));
         const dayIndex = daylyWeatherArray.findIndex(dayWeather => dayWeather.date === date);
 
         if (dayIndex >= 0) {
@@ -50,7 +50,8 @@ function extractSunDetails(data) {
 
 function extractCurrentParams(data) {
     return {
-        today: new Date(data.dt * 1000).toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' }),
+        today: capitalizeFirstLetter(new Date(data.dt * 1000).
+            toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' })),
         city: data.name,
         country: data.sys.country,
         temp: Math.round(data.main.temp),
@@ -117,11 +118,19 @@ const page = {
         insertElementIntoDom('precepitation-container', precipitationHtml);
         insertElementIntoDom('day-switcher', dayNamesListHtml);
 
-        document.getElementById('daily-weather-container').firstChild.classList.add('shown');
-        document.getElementById('day-switcher').firstChild.classList.add('selected');
+        // document.getElementById('daily-weather-container').firstChild.classList.add('shown');
+        addClassNameForFirstChild('daily-weather-container', 'shown');
+        addClassNameForFirstChild('wind-container', 'shown');
+        addClassNameForFirstChild('precepitation-container', 'shown');
+        addClassNameForFirstChild('day-switcher', 'selected');
+        // document.getElementById('day-switcher').firstChild.classList.add('selected');
 
-        slider.reinitializeSlider();
+        slider.initializeSlider();
     },
 };
 
 page.init();
+
+function addClassNameForFirstChild(parentId, newClass) {
+    document.getElementById(parentId).firstChild.classList.add(newClass);
+}
