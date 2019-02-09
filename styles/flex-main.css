@@ -8,7 +8,8 @@ html {
     text-align: center;
     max-width: 1040px;
     margin: 0px auto;
-    border: 2px solid #979797;   
+    border: 2px solid #979797;  
+    font-size: 16px;
 }
 
 header .navigation {
@@ -56,7 +57,7 @@ header .navigation {
     display: inline-block;
 }
 #search-field {
-    width: 300px;
+    /* width: 10%; */
     height: 26px;
     margin: 5px;
     font-size: 1em;    
