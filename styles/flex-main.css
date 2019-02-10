@@ -78,3 +78,10 @@ footer p {
     background-color: #d7d7d7;
     margin: 10px;
 }
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 14px;
+    }
+    
+}

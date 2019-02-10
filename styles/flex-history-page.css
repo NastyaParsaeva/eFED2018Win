@@ -27,10 +27,6 @@ main section {
 
 @media screen and (max-width: 1024px) { 
 
-    html {
-        font-size: 14px;
-    }
-
     main {
         flex-direction: row;
         align-items: center;
@@ -43,11 +39,5 @@ main section {
     }
     main span {
         width: 100%;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    html {
-        font-size: 12px;
     }
 }
