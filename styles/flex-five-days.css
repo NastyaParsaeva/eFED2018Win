@@ -210,6 +210,11 @@ figure {
         display: inline-block;
     }
 
+    .arrow {
+        padding: 1%;
+        cursor: pointer;
+    }
+
     .slider-signatures {
         order: -1;
     }

@@ -35,14 +35,20 @@
 .graph-container {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
 .graph-signatures {
     display: flex;
     justify-content: space-around;
+    color: #bbbbbb;
 }
+
+.graph-signatures .item{
+    margin-top: 25px;
+}
+
 
 .graph {
     display: none;
@@ -73,6 +79,10 @@
     width: 42px;
 }
 
+.wind figure {
+    margin-top: 25px;
+}
+
 .precipitation .item {
     width: 13%;
     margin: 0;
@@ -82,7 +92,7 @@
 }
 
 .wind .item img {
-    width: 50%;
+    width: 100%;
 }
 
 figure {
@@ -108,12 +118,11 @@ figure {
 }
 
 .graph-controller .menu-link {
-    padding: 0px 15px;
+    padding: 10px 15px;
     margin: 5px 5px;
     border: 1px solid #979797;
     font-size: 1em;
     max-width: 150px;
-    height: 35px;
     text-align: center;
 }
 
@@ -171,15 +180,13 @@ figure {
 
 
 @media screen and (max-width: 767px) {
-    /* .shown {
+    .shown {
         display: flex;
-        flex-direction: column;
-        width: 100%;
-    } */
+    }
 
-    /* .item {
-        
-    } */
+    #air-pollution {
+        font-size: 12px
+    }
 
     .week-forecast {
         flex-direction: column;
@@ -193,40 +200,16 @@ figure {
         justify-content: space-between;
     }
 
-
-    /* .graph-signatures {
-        order: -1;
-        flex-direction: column;
-        flex-basis: 35%;
-        align-items: center;
+    .weather-abbreviation,
+    .graph-controller,
+    .weather-info p {
+        margin: 5%;
     }
 
-    .graph-container {
-        flex-direction: row;
-        align-content: space-around;
-        width: 95%;
+    .graph-signatures .item {
+        margin-top: 5%;
+        width: 75%;
+        height: 75%;
     }
-
-    .graph-container .item {
-        height: 65px; 
-        width: 100%;
-    }
-
-    .column {
-        transform: rotate(90deg);
-        -webkit-transform-origin: center left;
-        -ms-transform-origin: center left;
-        transform-origin: center left;
-        transform: rotateZ(90deg);
-        order: -1;
-    }
-
-    .precipitation .column {
-        width: 65px;
-    }
-
-    .precipitation .item {
-        justify-content: flex-start;
-    } */
 
 }

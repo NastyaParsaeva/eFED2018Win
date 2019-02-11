@@ -21,7 +21,7 @@ function createPartDayWindHtml(weatherData) {
 function createPartDayPrecipitationHtml(weatherData) {
     if (weatherData) {
         return `<section class = "item">
-                      <p class="high">${weatherData.precipitation}</p>
+                      <p class=${weatherData.precipitationLevel}>${weatherData.precipitation}</p>
                   </section>`;
     }
     return '';

@@ -32,7 +32,7 @@
                 <section class="search">
                     <label for="search-field" style="display: none">Поиск</label>
                     <span class="magnifier">&nbsp;</span>
-                    <input id="search-field" type="text" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
+                    <input id="search-field" type="search" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
                 </section>
             </section>
         </header>
@@ -43,130 +43,133 @@
             <section id="weather-container" class="weather-container">
                 <section id="five-days-container" class="five-days-container">
                     <div class="slides-with-arrows">
-                        <!-- <figure class="arrow">
-                            <img id="prev-day" src="assets\left-arrow.png" alt="Предыдущий день"> 
-                        </figure> -->
                         <section id="daily-weather-container" class="daily-weather-container">
                             <section class = "day-weather shown">
                                 <p class="day-name">Пт, 18 мая</p>
-                                <!-- <div class="weather-items-container"></div> -->
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Ночь</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature normal">+8</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Утро</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+16</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">День</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature hot">+21</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Вечер</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+17</p>
-                                </section>
+                                <div class="weather-items-container">                                
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Ночь</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature normal">+8</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Утро</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+16</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">День</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature hot">+21</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Вечер</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+17</p>
+                                    </section>
+                                </div>
                             </section>
                             <section class = "day-weather">
                                 <p class="day-name">Сб, 19 мая</p>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Ночь</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature normal">+8</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Утро</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+16</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">День</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature hot">+21</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Вечер</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+17</p>
-                                </section>
+                                <div class="weather-items-container">
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Ночь</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature normal">+8</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Утро</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+16</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">День</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature hot">+21</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Вечер</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+17</p>
+                                    </section>
+                                </div>
                             </section>
                             <section class = "day-weather">
                                 <p class="day-name">Вс, 20 мая</p>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Ночь</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature normal">+8</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Утро</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+16</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">День</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature hot">+21</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Вечер</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+17</p>
-                                </section>
+                                <div class="weather-items-container">
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Ночь</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature normal">+8</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Утро</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+16</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">День</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature hot">+21</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Вечер</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+17</p>
+                                    </section>
+                                </div>
                             </section>
                             <section class = "day-weather">
                                 <p class="day-name">Пн, 21 мая</p>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Ночь</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature normal">+8</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Утро</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+16</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">День</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature hot">+21</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Вечер</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+17</p>
-                                </section>
+                                <div class="weather-items-container">
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Ночь</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature normal">+8</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Утро</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+16</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">День</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature hot">+21</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Вечер</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+17</p>
+                                    </section>
+                                </div>
                             </section>
                             <section class = "day-weather">
                                 <p class="day-name">Вт, 22 мая</p>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Ночь</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature normal">+8</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Утро</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+16</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">День</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature hot">+21</p>
-                                </section>
-                                <section class = "part-day-weather item">
-                                    <p class="part-day-name">Вечер</p>
-                                    <img src = "assets\Cloudy Weather.png" alt = "облачно">
-                                    <p class = "temperature warm">+17</p>
-                                </section>
+                                <div class="weather-items-container">
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Ночь</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature normal">+8</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Утро</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+16</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">День</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature hot">+21</p>
+                                    </section>
+                                    <section class = "part-day-weather item">
+                                        <p class="part-day-name">Вечер</p>
+                                        <img src = "assets\Cloudy Weather.png" alt = "облачно">
+                                        <p class = "temperature warm">+17</p>
+                                    </section>
+                                </div>
                             </section>
                         </section>
-                        <!-- <figure id = "next-day-container" class="arrow">
-                            <img id = "next-day" src="assets\right-arrow.png" alt="Следующий день">
-                        </figure> -->
                     </div>
                 </section>
                 <nav class="slider-signatures">
