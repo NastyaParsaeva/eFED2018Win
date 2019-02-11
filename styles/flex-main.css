@@ -12,11 +12,13 @@ html {
     font-size: 16px;
 }
 
-header .navigation {
+header ul {
     display: flex;
+    height: 45px;
     background-color: #d9d9d9;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: wrap
 }
 
 .menu-link {
@@ -25,7 +27,6 @@ header .navigation {
     background-color: #f7f8f8;
     display: inline-block;
     border: 1px solid #979797;
-    
 }
 
 .menu-link a {
@@ -44,22 +45,23 @@ header .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    height: 45px;
+    padding: 0 15px;
 }
 
 .current-location {
-    margin-left: 20px;
+    display: flex;
+    align-items: center;
 }
 
-.magnifier {
+/* .magnifier {
     background-image: url("../assets/magnifier.png");
     width: 22px;
     display: inline-block;
-}
+} */
+
 #search-field {
-    /* width: 10%; */
     height: 26px;
-    margin: 5px;
     font-size: 1em;    
     border-radius: 5px;
     background-color: #e5e5e5;
@@ -83,5 +85,18 @@ footer p {
     html {
         font-size: 14px;
     }
-    
+
+    /* .search-row {
+        flex-direction: column;
+        height: 90px;
+        align-items: flex-start;
+        justify-content: space-around;
+        padding: 0 2%;
+    } */
+}
+
+@media screen and (max-width:400px) {
+    header .menu-link {
+        margin: 5px auto;
+    }    
 }

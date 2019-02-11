@@ -9,8 +9,6 @@ figure {
 
 .weather-container {
     margin: 0px auto;
-    /* border-collapse: collapse; */
-    /* border: 1px solid #979797; */
     display: flex;
     flex-direction: column;
     width: 95%;
@@ -192,12 +190,12 @@ figure {
 
 
 
-
+/* 
 
 .current-weather {
     float: left;
     margin: -10px 20px 0 0;
-}
+} */
 
 
 

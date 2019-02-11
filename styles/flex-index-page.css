@@ -171,18 +171,15 @@ figure {
 
 
 @media screen and (max-width: 767px) {
-    .shown {
+    /* .shown {
         display: flex;
         flex-direction: column;
         width: 100%;
-    }
+    } */
 
-    .item {
-        flex-direction: row;    
-        align-items: center;
-        justify-content: space-around;
-        flex-basis: 65%;
-    }
+    /* .item {
+        
+    } */
 
     .week-forecast {
         flex-direction: column;
@@ -190,11 +187,14 @@ figure {
     }
 
     .week-forecast .item {
-        width: 95%;
+        width: 90%;
+        flex-direction: row;    
+        align-items: center;
+        justify-content: space-between;
     }
 
 
-    .graph-signatures {
+    /* .graph-signatures {
         order: -1;
         flex-direction: column;
         flex-basis: 35%;
@@ -214,6 +214,10 @@ figure {
 
     .column {
         transform: rotate(90deg);
+        -webkit-transform-origin: center left;
+        -ms-transform-origin: center left;
+        transform-origin: center left;
+        transform: rotateZ(90deg);
         order: -1;
     }
 
@@ -223,6 +227,6 @@ figure {
 
     .precipitation .item {
         justify-content: flex-start;
-    }
+    } */
 
 }
