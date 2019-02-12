@@ -35,6 +35,6 @@ function createWindGraphItemHtml(windSpeed, windDirection) {
                 <p>${windSpeed} м/с</p>
                 <figure>
                     <img src="assets/${windDirection}.png" alt="направление ветра">
-                <figure>
+                </figure>
             </section>`;
 }
