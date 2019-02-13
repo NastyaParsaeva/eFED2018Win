@@ -101,12 +101,12 @@ figure {
     display: flex;
     flex-direction: column;
     width: 25%;
+    border: 1px solid #979797;
 }
 
 .weather-items-container {
     display: flex;
     justify-content: center;
-    /* border: #979797 solid 1px; */
 }
 
 .arrow,
@@ -185,24 +185,6 @@ figure {
     font-size: 0.95em;
 }
 
-
-
-
-
-
-/* 
-
-.current-weather {
-    float: left;
-    margin: -10px 20px 0 0;
-} */
-
-
-
-
-
-
-
 @media screen and (max-width: 1042px) {
 
     .arrow,
@@ -222,6 +204,10 @@ figure {
     .part-day-weather {
         display: inline-block;    
         width: 45px;
+    }
+
+    #day-switcher {
+        border: 0.5px solid #979797;
     }
 
     .day-weather {

@@ -203,7 +203,7 @@ figure {
     .weather-abbreviation,
     .graph-controller,
     .weather-info p {
-        margin: 5%;
+        margin: 10px;
     }
 
     .graph-signatures .item {
@@ -212,4 +212,7 @@ figure {
         height: 75%;
     }
 
+    .weather-info:first-child {
+        flex-basis: 50%;
+    }
 }
