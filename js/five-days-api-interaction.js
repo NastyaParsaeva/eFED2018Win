@@ -130,7 +130,3 @@ const page = {
 };
 
 page.init();
-
-function addClassNameForFirstChild(parentId, newClass) {
-    document.getElementById(parentId).firstChild.classList.add(newClass);
-}
