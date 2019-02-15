@@ -62,6 +62,7 @@ function extractCurrentParams(data) {
 
 const page = {
     init() {
+        showSpinner();
         this.getWeatherInfoForCurrentPage(DEFAULT_CITY);
         const searchField = document.getElementById('search-field');
         slider.initializeArrowEventListeners();
@@ -69,6 +70,7 @@ const page = {
             const city = event.target.value;
             this.getWeatherInfoForCurrentPage(city);
         });
+        hideSpinner();
     },
 
     getWeatherInfoForCurrentPage(city) {

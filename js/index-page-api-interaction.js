@@ -4,6 +4,8 @@ const indexPage = {
     defaultCoords: '56,53',
     coords: '',
     init() {
+        showSpinner();
+        // hideSpinner();
         this.getWeatherInfoForCurrentPage(this.defaultCity, this.defaultCoords);
         const searchField = document.getElementById('search-field');
         slider.initSlider();
@@ -11,6 +13,7 @@ const indexPage = {
             const city = event.target.value;
             this.getWeatherInfoForCurrentPage(city, coords);
         });
+        hideSpinner();
     },
 
     getWeatherInfoForCurrentPage(city, coords) {

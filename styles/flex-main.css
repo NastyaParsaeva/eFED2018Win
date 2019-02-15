@@ -12,6 +12,58 @@ html {
     font-size: 16px;
 }
 
+.overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000a1;
+    position: fixed;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.spinner-dot {
+    width: 25px;
+    height: 25px;
+    margin: 1%;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0 0 20px white;
+}
+
+.spinner-dot.first {
+    animation: .5s bounce1 infinite linear alternate;
+}
+
+.spinner-dot.second {
+    animation: 1s bounce2 infinite linear;
+}
+
+.spinner-dot.third {
+    animation: .5s bounce3 infinite linear alternate;
+}
+
+@keyframes bounce1 {
+    0% { transform: translate(0, 0) }
+    100% { transform: translate(0, 100%) }
+}
+
+@keyframes bounce3 {
+    0% { transform: translate(0, 100%) }
+    100% { transform: translate(0, 0) }
+}
+
+@keyframes bounce2 {
+    0% { transform: translate(0, 50%) }
+    25% { transform: translate(0, 100%)}
+    50% { transform: translate(0, 50%) }
+    75% {transform: translate(0, 0)}
+    100% { transform: translate(0, 50%) }
+}
+
 header ul {
     display: flex;
     height: 45px;

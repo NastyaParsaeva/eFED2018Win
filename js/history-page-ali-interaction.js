@@ -55,6 +55,7 @@ const page = {
     defaultCity: 'Izhevsk',
 
     init() {
+        showSpinner();
         this.getHistoricalReviewMock(this.defaultCity, this.renderHistoricalReview);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
@@ -64,6 +65,7 @@ const page = {
             }
             this.getHistoricalReviewMock(city, this.renderHistoricalReview);
         });
+        hideSpinner();
     },
 
     getHistoricalReviewMock(city, callback) {

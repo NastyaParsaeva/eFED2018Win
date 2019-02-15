@@ -100,3 +100,14 @@ function createIconLink(iconId) {
 function addClassNameForFirstChild(parentId, newClass) {
     document.getElementById(parentId).firstChild.classList.add(newClass);
 }
+
+function showSpinner() {
+    document.getElementById('overlay').style.display = 'flex';
+}
+
+function hideSpinner() {
+    // document.getElementById('overlay').style.display = 'none';    
+    setTimeout(() => {
+        document.getElementById('overlay').style.display = 'none';    
+    }, 1000);
+}
