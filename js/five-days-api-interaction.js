@@ -1,5 +1,4 @@
 /* eslint no-undef: 0 */
-const DEFAULT_CITY = 'izhevsk';
 
 function createDayPartWeather(weather) {
     const precipitation = getPrecipitationVolume(weather).toFixed(1);
@@ -61,15 +60,26 @@ function extractCurrentParams(data) {
 }
 
 const page = {
+
+    defaultCity: 'izhevsk',
+
     init() {
-        showSpinner();
-        this.getWeatherInfoForCurrentPage(DEFAULT_CITY);
+        // showSpinner();
+        // this.getWeatherInfoForCurrentPage(DEFAULT_CITY);
+        this.loadContent(this.defaultCity);
         const searchField = document.getElementById('search-field');
         slider.initializeArrowEventListeners();
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
-            this.getWeatherInfoForCurrentPage(city);
+            this.loadContent(city);
+            // this.getWeatherInfoForCurrentPage(city);
         });
+        hideSpinner();
+    },
+
+    loadContent(city) {
+        showSpinner();
+        this.getWeatherInfoForCurrentPage(city);
         hideSpinner();
     },
 

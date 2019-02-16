@@ -4,15 +4,18 @@ const indexPage = {
     defaultCoords: '56,53',
     coords: '',
     init() {
-        showSpinner();
-        // hideSpinner();
-        this.getWeatherInfoForCurrentPage(this.defaultCity, this.defaultCoords);
-        const searchField = document.getElementById('search-field');
+        this.loadContent(this.defaultCity, this.defaultCoords);
         slider.initSlider();
+        const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
-            this.getWeatherInfoForCurrentPage(city, coords);
+            this.loadContent(city, coords);
         });
+    },
+
+    loadContent(city, coords) {
+        showSpinner();
+        this.getWeatherInfoForCurrentPage(city, coords);
         hideSpinner();
     },
 
