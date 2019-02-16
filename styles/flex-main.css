@@ -100,7 +100,7 @@ header ul {
     align-items: center;
     align-content: center;
     height: 45px;
-    padding: 0 3%;
+    padding: 0 15px;
 }
 
 .current-location {
@@ -114,7 +114,17 @@ header ul {
     width: 350px;
     border-radius: 5px;
     padding-left: 25px;
-    background: #e5e5e5 url("../assets/magnifier.png") no-repeat 0 center;
+    /* background: #e5e5e5 url("../assets/magnifier.png") no-repeat 0 center; */
+}
+
+#search-field-label::before {
+    width: 22px;
+    height: 22px;
+    content: url("../assets/magnifier.png");
+    right: 340px;
+    top: 57px;
+    display: inline-block;
+    position: absolute;
 }
 
 #search-field:focus {
@@ -151,15 +161,19 @@ footer p {
         width: 26px;
 	    color: transparent;
         cursor: pointer;
-        z-index: 9;
+        z-index: 5;
     }
 
     #search-field:focus {
-        width: 94%;
+        width: 96%;
         z-index: 9;
         position: absolute;
-        right: 3%;
+        right: 2%;
         top: 57px;
+    }
+
+    #search-field-label::before {
+        right: 19px;
     }
 
     footer {
@@ -184,5 +198,13 @@ footer p {
 @media screen and (max-width:400px) {
     header .menu-link {
         margin: 5px auto;
-    }    
+    } 
+    
+    .search-row {
+        padding: 0 3%;
+    }
+
+    #search-field-label::before {
+        right: 4%;
+    }
 }
