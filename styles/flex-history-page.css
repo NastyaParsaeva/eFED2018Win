@@ -1,7 +1,7 @@
 
 main {
     display: flex;
-    margin-top: 70px;
+    padding-top: 70px;
     height: 600px;
     align-content: flex-start;
     flex-direction: column;

@@ -12,7 +12,7 @@ html {
     font-size: 16px;
 }
 
-.overlay {
+.entire-overlay {
     top: 0;
     bottom: 0;
     left: 0;
@@ -23,6 +23,17 @@ html {
     align-items: center;
     justify-content: center;
     z-index: 10;
+}
+
+.main-overlay {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    position: fixed;
+    display: none;
+    z-index: 5;
 }
 
 .spinner-dot {
@@ -62,6 +73,15 @@ html {
     50% { transform: translate(0, 50%) }
     75% {transform: translate(0, 0)}
     100% { transform: translate(0, 50%) }
+}
+
+header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0;
+    z-index: 9;
+    overflow: hidden;
 }
 
 header ul {
@@ -134,7 +154,10 @@ header ul {
 }
 
 main {
-    margin-top: 25px;
+    margin-top: 92px;
+    position: relative;
+    margin-bottom: 40px;
+    overflow: auto;
 }
 
 footer {
@@ -144,6 +167,9 @@ footer {
     border-bottom: 1px solid #979797;
     vertical-align: middle;
     bottom: 0px;
+    position: fixed;
+    z-index: 9;
+    overflow: hidden;
 }
 
 footer p {
@@ -174,25 +200,7 @@ footer p {
 
     #search-field-label::before {
         right: 19px;
-    }
-
-    footer {
-        position: fixed;
-    }
-
-    header {
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        right: 0;
-        z-index: 6;;
-    }
-
-    main {
-        position: relative;
-        top: 92px;
-        bottom: -38px;
-    }
+    } 
 }
 
 @media screen and (max-width:400px) {

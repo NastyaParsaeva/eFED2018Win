@@ -102,12 +102,14 @@ function addClassNameForFirstChild(parentId, newClass) {
 }
 
 function showSpinner() {
-    document.getElementById('overlay').style.display = 'flex';
+    document.getElementById('entire-overlay').style.display = 'flex';
+    document.getElementById('main-overlay').style.display = 'flex';
 }
 
 function hideSpinner() {
     // document.getElementById('overlay').style.display = 'none';    
     setTimeout(() => {
-        document.getElementById('overlay').style.display = 'none';    
+        document.getElementById('entire-overlay').style.display = 'none';    
+        document.getElementById('main-overlay').style.display = 'none';    
     }, 1000);
 }

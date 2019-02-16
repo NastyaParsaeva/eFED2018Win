@@ -1,6 +1,7 @@
 main {
     display: flex;
     align-items: center;
+    padding-top: 3%;
 }
 
 figure {
@@ -181,6 +182,9 @@ figure {
     margin-bottom: 30px;
 }
 
+aside {
+    margin-bottom: 40px;
+}
 .moon-calendar-additional-description {
     font-size: 0.95em;
 }
