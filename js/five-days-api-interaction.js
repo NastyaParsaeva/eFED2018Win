@@ -64,15 +64,12 @@ const page = {
     defaultCity: 'izhevsk',
 
     init() {
-        // showSpinner();
-        // this.getWeatherInfoForCurrentPage(DEFAULT_CITY);
         this.loadContent(this.defaultCity);
         const searchField = document.getElementById('search-field');
         slider.initializeArrowEventListeners();
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
             this.loadContent(city);
-            // this.getWeatherInfoForCurrentPage(city);
         });
         hideSpinner();
     },
