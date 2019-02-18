@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-html {
+body {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     max-width: 1040px;
@@ -76,12 +76,9 @@ html {
 }
 
 header {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0;
     z-index: 9;
     overflow: hidden;
+    width: 100%;
 }
 
 header .navigation { 
@@ -162,13 +159,18 @@ header .menu-link {
     /* background: #e5e5e5 url("../assets/magnifier.png") no-repeat 0 center; */
 }
 
-#search-field-label::before {
+.search-field-container {
+    width: 370px;
+    position: relative;
+}
+
+#search-field-label::after {
     width: 22px;
     height: 22px;
     content: url("../assets/magnifier.png");
-    right: 340px;
-    top: 57px;
-    display: inline-block;
+    left: 17px;
+    top: 3px;
+    display: block;
     position: absolute;
 }
 
@@ -178,21 +180,11 @@ header .menu-link {
     cursor: auto;
 }
 
-main {
-    margin-top: 92px;
-    position: relative;
-    margin-bottom: 40px;
-    overflow: auto;
-}
-
 footer {
-    width: 100%;
     background-color: #d7d7d7;
     border-top: 1px solid #979797;
     border-bottom: 1px solid #979797;
     vertical-align: middle;
-    bottom: 0px;
-    position: fixed;
     z-index: 9;
     overflow: hidden;
 }
@@ -202,6 +194,28 @@ footer p {
     margin: 10px;
 }
 
+@media screen and (max-width: 1040px) {
+    header {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        right: 0;
+    }
+
+    main {
+        margin-top: 92px;
+        position: relative;
+        margin-bottom: 40px;
+        overflow: auto;
+    }
+    
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+}
 
 @media screen and (max-width: 767px) {
     html {
@@ -214,11 +228,25 @@ footer p {
         width: unset;
     }
 
+    .search-field-container {
+        position: static;
+        text-align: end;
+        width: unset;
+    }
+
+    #search-field-label::after {
+        right: 20px;
+        top: 58px;
+        left: auto;
+    }
+
+
     #search-field {
         width: 26px;
 	    color: transparent;
         cursor: pointer;
         z-index: 5;
+        /* background: #e5e5e5 url("../assets/magnifier.png") no-repeat 0 center; */
     }
 
     #search-field:focus {
@@ -229,9 +257,9 @@ footer p {
         top: 57px;
     }
 
-    #search-field-label::before {
-        right: 19px;
-    } 
+    /* #search-field-label::after {
+        content: "";
+    }  */
 }
 
 @media screen and (max-width:400px) {
@@ -243,7 +271,7 @@ footer p {
         padding: 0 3%;
     }
 
-    #search-field-label::before {
+    #search-field-label::after {
         right: 4%;
     }
 }
