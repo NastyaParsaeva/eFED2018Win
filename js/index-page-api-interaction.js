@@ -70,8 +70,11 @@ const indexPage = {
 
     renderGrahps(data) {
         const graphsDataArray = extractGraphsData(data);
-        const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
 
+        const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
+        const minTemp = findMinTemperature(graphsDataArray);
+        const tempChartStep = findTemperatureChartStep(minTemp, graphsDataArray);
+        
         let graphSignaturesHtml = '',
             tempGraphHtml = '',
             precipitationGraphHtml = '',
@@ -79,7 +82,7 @@ const indexPage = {
 
         graphsDataArray.forEach((graphDataItem) => {
             graphSignaturesHtml += createGraphSignaturesHtml(graphDataItem.time);
-            tempGraphHtml += createTempGrapItemhHtml(graphDataItem.temp);
+            tempGraphHtml += createTempGrapItemHtml(minTemp, tempChartStep, graphDataItem.temp);
             precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation, maxPrecLevel);
             windGraphHtml += createWindGraphItemHtml(graphDataItem.windSpeed, graphDataItem.windDirection);
         });
@@ -123,7 +126,7 @@ function extractFiveDaysForecastData(data) {
 }
 
 function extractGraphsData(data) {
-    weatherFor24Hours = data.list.slice(0, 8);
+    const weatherFor24Hours = data.list.slice(0, 8);
     return weatherFor24Hours.map((element) => ({
         time: new Date(element.dt * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
         temp: Math.round(element.main.temp),
@@ -131,4 +134,21 @@ function extractGraphsData(data) {
         windSpeed: Math.round(element.wind.speed),
         windDirection: getWindDirection(element.wind.deg),
     }));
+}
+
+function findMinTemperature(data) {
+    return data.reduce((min, value) => {
+        return Math.min(min, value.temp);
+    }, data[0].temp);
+}
+
+function findTemperatureChartStep(min, data) {
+    const max = findMaxTemperature(data);
+    return Math.floor(50 / (max - min));
+}
+
+function findMaxTemperature(data) {
+    return data.reduce((max, value) => {
+        return Math.max(max, value.temp);
+    }, data[0].temp);
 }

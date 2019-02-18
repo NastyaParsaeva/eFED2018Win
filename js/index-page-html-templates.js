@@ -14,10 +14,12 @@ function createGraphSignaturesHtml(time) {
             </section>`;
 }
 
-function createTempGrapItemhHtml(temp) {
-    const columnHeight = 50 / 70 * temp;
+function createTempGrapItemHtml(minTemp, tempChartStep, tempValue) {
+    
+    const columnHeight = Math.abs((tempValue - minTemp)) * tempChartStep + 10;
+    console.log(columnHeight);
     return `<section class="item">
-                <p class="value">${temp}</p>
+                <p class="value">${tempValue}</p>
                 <p class="column" style="height:${columnHeight}px;"></p>
             </section>`;
 }
