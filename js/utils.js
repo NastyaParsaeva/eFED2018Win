@@ -15,6 +15,27 @@ function getDataFromApi(url, callback1, callback2) {
     xhr.send();
 }
 
+function getDataFromApiThroughFetch(url, callback1, callback2) {
+    fetch(url)  
+        .then(function(response) {  
+            if (response.status === 404) {  
+                console.log('Looks like there was a problem. Status Code: ' +  
+                  response.status);  
+                return;  
+            }
+            response.json().then(function(data) {  
+                callback1(data);
+                if (callback2) callback2(data);
+            });  
+        })  
+        .catch(function(error) {  
+            console.log(error);
+        });
+}
+
+function cityNotFound(query) {
+    insertElementIntoDom(getElementById('main-content'), createCityNotFoundErrorMessage);
+}
 function setAttributesForImage(id, iconLink, altText) {
     const elem = document.getElementById(id);
     elem.setAttribute('src', iconLink);
