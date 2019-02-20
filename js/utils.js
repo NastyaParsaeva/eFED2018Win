@@ -94,7 +94,7 @@ function capitalizeFirstLetter(word) {
 }
 
 function createIconLink(iconId) {
-    return `http://openweathermap.org/img/w/${iconId}.png`;
+    return `https://openweathermap.org/img/w/${iconId}.png`;
 }
 
 function addClassNameForFirstChild(parentId, newClass) {
