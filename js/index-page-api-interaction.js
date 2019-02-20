@@ -4,13 +4,19 @@ const indexPage = {
     defaultCoords: '56,53',
     coords: '',
     init() {
-        this.getWeatherInfoForCurrentPage(this.defaultCity, this.defaultCoords);
-        const searchField = document.getElementById('search-field');
+        this.loadContent(this.defaultCity, this.defaultCoords);
         slider.initSlider();
+        const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
-            this.getWeatherInfoForCurrentPage(city, coords);
+            this.loadContent(city, coords);
         });
+    },
+
+    loadContent(city, coords) {
+        showSpinner();
+        this.getWeatherInfoForCurrentPage(city, coords);
+        hideSpinner();
     },
 
     getWeatherInfoForCurrentPage(city, coords) {
@@ -40,7 +46,7 @@ const indexPage = {
         insertElementIntoDom('today-weekday', capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', { weekday: 'long' })));
         insertElementIntoDom('weather-description', capitalizeFirstLetter(jsonData.weather[0].description));
         setAttributesForImage('weather-icon', createIconLink(jsonData.weather[0].icon), jsonData.weather[0].description);
-        insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)} °C`);
+        insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)}°C`);
         insertElementIntoDom('today-humidity', `Влажность: ${jsonData.main.humidity} %`);
         insertElementIntoDom('today-wind-speed', `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`);
         insertElementIntoDom('today-precipitation', `Осадки: ${getPrecipitationVolume(jsonData)} мм`);
@@ -65,6 +71,10 @@ const indexPage = {
     renderGrahps(data) {
         const graphsDataArray = extractGraphsData(data);
 
+        const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
+        const minTemp = findMinTemperature(graphsDataArray);
+        const tempChartStep = findTemperatureChartStep(minTemp, graphsDataArray);
+        
         let graphSignaturesHtml = '',
             tempGraphHtml = '',
             precipitationGraphHtml = '',
@@ -72,8 +82,8 @@ const indexPage = {
 
         graphsDataArray.forEach((graphDataItem) => {
             graphSignaturesHtml += createGraphSignaturesHtml(graphDataItem.time);
-            tempGraphHtml += createTempGrapItemhHtml(graphDataItem.temp);
-            precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation);
+            tempGraphHtml += createTempGrapItemHtml(minTemp, tempChartStep, graphDataItem.temp);
+            precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation, maxPrecLevel);
             windGraphHtml += createWindGraphItemHtml(graphDataItem.windSpeed, graphDataItem.windDirection);
         });
 
@@ -116,7 +126,7 @@ function extractFiveDaysForecastData(data) {
 }
 
 function extractGraphsData(data) {
-    weatherFor24Hours = data.list.slice(0, 8);
+    const weatherFor24Hours = data.list.slice(0, 8);
     return weatherFor24Hours.map((element) => ({
         time: new Date(element.dt * 1000).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }),
         temp: Math.round(element.main.temp),
@@ -124,4 +134,21 @@ function extractGraphsData(data) {
         windSpeed: Math.round(element.wind.speed),
         windDirection: getWindDirection(element.wind.deg),
     }));
+}
+
+function findMinTemperature(data) {
+    return data.reduce((min, value) => {
+        return Math.min(min, value.temp);
+    }, data[0].temp);
+}
+
+function findTemperatureChartStep(min, data) {
+    const max = findMaxTemperature(data);
+    return Math.floor(50 / (max - min));
+}
+
+function findMaxTemperature(data) {
+    return data.reduce((max, value) => {
+        return Math.max(max, value.temp);
+    }, data[0].temp);
 }

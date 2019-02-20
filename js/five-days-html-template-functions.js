@@ -21,24 +21,26 @@ function createPartDayWindHtml(weatherData) {
 function createPartDayPrecipitationHtml(weatherData) {
     if (weatherData) {
         return `<section class = "item">
-                      <p class="${weatherData.precipitationLevel}">${weatherData.precipitation}</p>
+                      <p class=${weatherData.precipitationLevel}>${weatherData.precipitation}</p>
                   </section>`;
     }
     return '';
 }
 
 function createDayWeatherHtml(dayWeather) {
-    return `<section class = "day-weather">
+    return `<section class = "day-weather slide">
                 <p class="day-name">${dayWeather.date}</p>
-                ${createPartDayWeatherHtml('Ночь', dayWeather.night)}
-                ${createPartDayWeatherHtml('Утро', dayWeather.morning)}
-                ${createPartDayWeatherHtml('День', dayWeather.day)}
-                ${createPartDayWeatherHtml('Вечер', dayWeather.evening)}
+                <div class="weather-items-container">
+                    ${createPartDayWeatherHtml('Ночь', dayWeather.night)}
+                    ${createPartDayWeatherHtml('Утро', dayWeather.morning)}
+                    ${createPartDayWeatherHtml('День', dayWeather.day)}
+                    ${createPartDayWeatherHtml('Вечер', dayWeather.evening)}
+                </div>
             </section>`;
 }
 
 function createDayWindHtml(dayWind) {
-    return `<section class = "day-wind">
+    return `<section class = "day-wind slide">
                 ${createPartDayWindHtml(dayWind.night)}
                 ${createPartDayWindHtml(dayWind.morning)}
                 ${createPartDayWindHtml(dayWind.day)}
@@ -47,7 +49,7 @@ function createDayWindHtml(dayWind) {
 }
 
 function createDayPrecipitationHtml(dayPrecip) {
-    return `<section class = "day-precepitation">
+    return `<section class = "day-precepitation slide">
                 ${createPartDayPrecipitationHtml(dayPrecip.night)}
                 ${createPartDayPrecipitationHtml(dayPrecip.morning)}
                 ${createPartDayPrecipitationHtml(dayPrecip.day)}

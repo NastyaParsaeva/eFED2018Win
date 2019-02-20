@@ -5,7 +5,7 @@ function mapToMonthData(data) {
         for(let i=0;i<12;i++) {
             months[i] ? months[i].push(year[i]) : months[i] = [];
         }
-    })
+    });
     console.log(months);
     return months;
 }
@@ -19,8 +19,8 @@ function getMinMaxForMonth(monthData) {
     monthData.forEach(month=> {
         minSum += month.min;
         maxSum += month.max;
-        absMax = Math.max(absMax, month.max) 
-        absMin = Math.min(absMin, month.min)
+        absMax = Math.max(absMax, month.max);
+        absMin = Math.min(absMin, month.min);
     });
 
     return {
@@ -28,7 +28,7 @@ function getMinMaxForMonth(monthData) {
         absMin,
         avMax: Math.round(maxSum / monthData.length),
         avMin: Math.round(minSum / monthData.length),
-    }
+    };
 }
 
 function extractHistoryTableData2(data) {
@@ -36,7 +36,7 @@ function extractHistoryTableData2(data) {
     const months = mapToMonthData(data);
     const minMaxPerMonth = months.map(month => {
         return getMinMaxForMonth(month);
-    })
+    });
     return minMaxPerMonth;
 }
 
@@ -55,16 +55,27 @@ const page = {
     defaultCity: 'Izhevsk',
 
     init() {
-        this.getHistoricalReviewMock(this.defaultCity, this.renderHistoricalReview);
+        // showSpinner();
+        // this.getHistoricalReviewMock(this.defaultCity, this.renderHistoricalReview);
+        this.loadContent(this.defaultCity);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {
             let city = capitalizeFirstLetter(event.target.value);
             if (city !== 'Izhevsk' && city !== 'London' && city !== 'Vladivostok') {
                 city = getRandomCity();
             }
-            this.getHistoricalReviewMock(city, this.renderHistoricalReview);
+            this.loadContent(city);
+            // this.getHistoricalReviewMock(city, this.renderHistoricalReview);
         });
+        
     },
+
+    loadContent(city) {
+        showSpinner();
+        this.getHistoricalReviewMock(city, this.renderHistoricalReview);
+        hideSpinner();
+    },
+
 
     getHistoricalReviewMock(city, callback) {
         this.renderCity(city);

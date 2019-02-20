@@ -1,5 +1,4 @@
 /* eslint no-undef: 0 */
-const DEFAULT_CITY = 'izhevsk';
 
 function createDayPartWeather(weather) {
     const precipitation = getPrecipitationVolume(weather).toFixed(1);
@@ -18,8 +17,8 @@ function extractForcastParameters(list) {
     for (let i = 0; i < list.length; i += 2) {
         const dayPartWeather = createDayPartWeather(list[i]);
         const dayPartName = definePartOfDay(list[i].dt);        
-        const date = new Date(list[i].dt * 1000)
-            .toLocaleString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' });
+        const date = capitalizeFirstLetter(new Date(list[i].dt * 1000)
+            .toLocaleString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' }));
         const dayIndex = daylyWeatherArray.findIndex(dayWeather => dayWeather.date === date);
 
         if (dayIndex >= 0) {
@@ -50,7 +49,8 @@ function extractSunDetails(data) {
 
 function extractCurrentParams(data) {
     return {
-        today: new Date(data.dt * 1000).toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' }),
+        today: capitalizeFirstLetter(new Date(data.dt * 1000).
+            toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' })),
         city: data.name,
         country: data.sys.country,
         temp: Math.round(data.main.temp),
@@ -60,14 +60,24 @@ function extractCurrentParams(data) {
 }
 
 const page = {
+
+    defaultCity: 'izhevsk',
+
     init() {
-        this.getWeatherInfoForCurrentPage(defaultCity);
+        this.loadContent(this.defaultCity);
         const searchField = document.getElementById('search-field');
         slider.initializeArrowEventListeners();
         searchField.addEventListener('change', (event) => {
             const city = event.target.value;
-            this.getWeatherInfoForCurrentPage(city);
+            this.loadContent(city);
         });
+        hideSpinner();
+    },
+
+    loadContent(city) {
+        showSpinner();
+        this.getWeatherInfoForCurrentPage(city);
+        hideSpinner();
     },
 
     getWeatherInfoForCurrentPage(city) {
@@ -117,10 +127,14 @@ const page = {
         insertElementIntoDom('precepitation-container', precipitationHtml);
         insertElementIntoDom('day-switcher', dayNamesListHtml);
 
-        document.getElementById('daily-weather-container').firstChild.classList.add('shown');
-        document.getElementById('day-switcher').firstChild.classList.add('selected');
+        // document.getElementById('daily-weather-container').firstChild.classList.add('shown');
+        addClassNameForFirstChild('daily-weather-container', 'shown');
+        addClassNameForFirstChild('wind-container', 'shown');
+        addClassNameForFirstChild('precepitation-container', 'shown');
+        addClassNameForFirstChild('day-switcher', 'selected');
+        // document.getElementById('day-switcher').firstChild.classList.add('selected');
 
-        slider.reinitializeSlider();
+        slider.initializeSlider();
     },
 };
 

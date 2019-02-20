@@ -1,0 +1,43 @@
+
+main {
+    display: flex;
+    padding-top: 70px;
+    height: 600px;
+    align-content: flex-start;
+    flex-direction: column;
+}
+
+main .table-row:nth-child(2n) span:nth-child(2n),
+main  .table-row:nth-child(2n+1) span:nth-child(2n+1) {
+    background-color: #c5c5c5;
+}
+
+main span {
+    display: flex;
+    width: 8%;
+    height: 40px;
+    font-size: 0.95em;
+    align-items: center;
+    justify-content: center;
+}
+
+main section {
+    display: flex;
+}
+
+@media screen and (max-width: 1024px) { 
+
+    main {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+    }
+    main section {
+        flex-direction: column;
+        width: 25%;
+    }
+    main span {
+        width: 100%;
+    }
+}

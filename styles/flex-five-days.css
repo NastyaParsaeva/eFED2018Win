@@ -1,0 +1,268 @@
+main {
+    display: flex;
+    align-items: center;
+    padding-top: 3%;
+}
+
+figure {
+    display: inline-block;
+}
+
+.weather-container {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.item {
+    width: 45px;
+    font-size: 0.95em;
+}
+
+.wind-container {
+    display: flex;
+    justify-content: center;
+}
+
+.day-wind {
+    border: 1px solid #979797;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.day-wind .item p {
+    background-color: #d9d9d9;
+    margin: 10px 7px;
+    width: 30px;
+    transform: skewX(-40deg);
+}
+
+.day-wind .item span {
+    transform: skewX(40deg);
+    display: inline-block;
+}
+
+.precepitation-container {
+    display: flex;
+    justify-content: center;
+}
+
+.day-precepitation {
+    border: 1px solid #979797;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.day-precepitation .item p {
+    height: 110px;
+    vertical-align: bottom;
+    display: table-cell;
+    width: 45px;
+}
+
+.middle {
+    background-image:url("../assets/Group.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    /* padding-top: 90px; */
+}
+
+.high {
+    background-image:url("../assets/Group_2.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.daily-weather-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.five-days-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.slides-with-arrows {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-name {
+    border-bottom: #979797 solid 1px;
+    padding: 10px; 
+}
+
+.day-weather {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    border: 1px solid #979797;
+}
+
+.weather-items-container {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow,
+.slider-signatures {
+    display: none;
+}
+
+.part-day-name {
+    padding: 5px 0;
+}
+
+.temperature {
+    margin: 20px 4px;
+    border: 1px solid #979797;
+}
+
+.normal {
+    background-color:#baeb87;
+}
+.warm {
+    background-color: #f7e638;
+}
+.hot {
+    background-color: #f3a633;
+}
+
+.additional-weather-parameter {
+    background-color: #d9d9d9;
+    padding: 10px; 
+    border: 1px solid #979797;
+}
+
+.moon-calendar-header {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f1f1f1;
+    border: 1px solid #979797;
+    width: 95%;
+    margin: 15px auto;
+}
+
+.moon-calendar-header p {
+    padding: 11px;
+}
+
+.moon-calendar-name {
+   flex-basis: 50%;
+}
+
+.moon-calendar-component-container {
+    display: flex;
+    justify-content: center;
+}
+
+.moon-calendar-component {
+    width: 50%;
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.moon-calendar-component figure {
+    display: inline-block;
+    margin: 15px;
+}
+
+.moon-calendar-description {
+    display: inline-block;
+    text-align: left;
+}
+
+.moon-calendar-description p {
+    margin-bottom: 30px;
+}
+
+aside {
+    margin-bottom: 40px;
+}
+.moon-calendar-additional-description {
+    font-size: 0.95em;
+}
+
+@media screen and (max-width: 1042px) {
+
+    .arrow,
+    .slider-signatures {
+        display: inline-block;
+    }
+
+    .arrow {
+        padding: 1%;
+        cursor: pointer;
+    }
+
+    .slider-signatures {
+        order: -1;
+    }
+
+    .part-day-weather {
+        display: inline-block;    
+        width: 45px;
+    }
+
+    #day-switcher {
+        border: 0.5px solid #979797;
+    }
+
+    .day-weather {
+        border: #979797 solid 1px;
+        display: none;
+    }
+    
+    .day-precepitation,
+    .day-wind {
+        display:none;
+    }
+
+    .day-precepitation.shown,
+    .day-wind.shown{
+        display: flex;
+    }
+
+    .day-weather.shown {
+        display: inline-block;
+    }
+    
+    .slide {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .weather-items-container {
+        justify-content: space-around;
+    }
+
+    .moon-calendar-header {
+        justify-content: center;
+    }
+
+    .moon-calendar-header p {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .moon-calendar-name {
+        order: -1;
+    }
+
+    .moon-calendar-component-container {
+        justify-content: flex-start;
+        padding-left: 20px;
+        
+    }
+
+    .moon-calendar-component {
+        width: 100%;
+    }
+}

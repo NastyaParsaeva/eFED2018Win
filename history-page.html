@@ -8,9 +8,9 @@
         <meta name="robots" content="index,nofollow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-            @import url("styles/main.css");
+            @import url("styles/flex-main.css");
         </style>
-        <link rel="stylesheet" type="text/css" href="styles/history-page.css">
+        <link rel="stylesheet" type="text/css" href="styles/flex-history-page.css">
     </head>
     <body>
         <header>
@@ -21,12 +21,11 @@
                     <li class="menu-link selected"><a href="history-page.html">История погоды</a></li>
                 </ul>
             </nav>
-            <section class="location">
+            <section class="search-row">
                 <span id="location" class="current-location">Ижевск, Россия</span>
-                <section class="search">
-                    <label for="search-field" style="display: none">Поиск</label>
-                    <span class="magnifier">&nbsp;</span>
-                    <input id="search-field" type="text" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
+                <section class="search-field-container">
+                    <label for="search-field" id="search-field-label">&nbsp;</label>
+                    <input id="search-field" type="search" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
                 </section>
             </section>
         </header>
@@ -111,6 +110,12 @@
         <footer>
             <p lang="en">2019 © Copyright</p>  
         </footer>
+        <div class="main-overlay" id="main-overlay"></div>
+        <div class="entire-overlay" id="entire-overlay">
+            <div class="spinner-dot first"></div>
+            <div class="spinner-dot second"></div>
+            <div class="spinner-dot third"></div>            
+        </div>
         <script src="js/utils.js"></script>
         <script src="js/history-page-html-template-functions.js"></script>
         <script src="mocks/HistoricalReviewMock.js"></script>

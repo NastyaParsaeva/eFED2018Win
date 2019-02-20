@@ -34,6 +34,16 @@ function getPrecipitationVolume(data) {
     return 0;
 }
 
+function findMaxPrecipitationLevelBiggerThan5(graphsDataArray) {
+    let maxPrec = 0;
+    graphsDataArray.forEach(dayData => {
+        if (dayData.precipitation > maxPrec) {
+            maxPrec = dayData.precipitation;
+        }
+    });
+    return (maxPrec > 5) ? maxPrec : undefined;
+}
+
 function getWindDirection(degree) {
     if (degree <= 23 || degree > 338) {
         return 'north';
@@ -85,4 +95,21 @@ function capitalizeFirstLetter(word) {
 
 function createIconLink(iconId) {
     return `http://openweathermap.org/img/w/${iconId}.png`;
+}
+
+function addClassNameForFirstChild(parentId, newClass) {
+    document.getElementById(parentId).firstChild.classList.add(newClass);
+}
+
+function showSpinner() {
+    document.getElementById('entire-overlay').style.display = 'flex';
+    document.getElementById('main-overlay').style.display = 'flex';
+}
+
+function hideSpinner() {
+    // document.getElementById('overlay').style.display = 'none';    
+    setTimeout(() => {
+        document.getElementById('entire-overlay').style.display = 'none';    
+        document.getElementById('main-overlay').style.display = 'none';    
+    }, 1000);
 }
