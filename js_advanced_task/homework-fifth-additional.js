@@ -9,11 +9,17 @@ function sumWith(number) {
 
 const curriedSumWith = sumWith.bind({
     currentValue: 3,
-    sumWith: function(number) {
-        this.currentValue +=2;
-        return this.currentValue + number;
-    }
 });
 
 const number = 2;
 console.log(curriedSumWith(number));
+
+const curriedSumWithAdditional = sumWith.bind({
+    currentValue: -1,
+}, 2)
+
+console.log(curriedSumWithAdditional());
+console.log(curriedSumWithAdditional());
+console.log(curriedSumWithAdditional());
+console.log(curriedSumWithAdditional());
+console.log(curriedSumWithAdditional());
