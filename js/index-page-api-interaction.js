@@ -27,19 +27,16 @@ const indexPage = {
 
     getWeatherDetails(city, callback) {
         const url = `${WEATHER_DETAILS_ENDPOINT}${city}`;
-        // getDataFromApi(url, callback);
         getDataFromApiThroughFetch(url, callback);
     },
 
     getAirPollution(coords, callback) {
         const url = `${AIR_POLLUTION_ENDPOINT[0]}${coords}${AIR_POLLUTION_ENDPOINT[1]}`;
-        // getDataFromApi(url, callback);
         getDataFromApiThroughFetch(url, callback);
     },
 
     getFiveDaysWeather(city, callback1, callback2) {
         url = `${FIVE_DAY_WEATHER_ENDPOINT}${city}`;
-        // getDataFromApi(url, callback1, callback2);
         getDataFromApiThroughFetch(url, callback1, callback2);
     },
 
