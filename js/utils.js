@@ -1,20 +1,24 @@
-function getDataFromApi(url, callback1, callback2) {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-        if (this.readyState === 4 && this.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            if (callback1) {
-                callback1(response);
+function getDataFromApiThroughFetch(url, callback1, callback2) {
+    fetch(url)  
+        .then(function(response) {  
+            if (response.status === 404) {  
+                console.log('Looks like there was a problem. Status Code: ' +  
+                  response.status); 
             }
-            if (callback2) {
-                callback2(response);
-            }
-        }
-    };
-    xhr.open('GET', url, true);
-    xhr.send();
+            return response.json();  
+        })
+        .then(response => {
+            callback1(response);
+            if (callback2) callback2(response);
+        })  
+        .catch(function(error) {  
+            console.log(error);
+        });
 }
 
+function cityNotFound(query) {
+    insertElementIntoDom(getElementById('main-content'), createCityNotFoundErrorMessage);
+}
 function setAttributesForImage(id, iconLink, altText) {
     const elem = document.getElementById(id);
     elem.setAttribute('src', iconLink);
@@ -94,7 +98,7 @@ function capitalizeFirstLetter(word) {
 }
 
 function createIconLink(iconId) {
-    return `http://openweathermap.org/img/w/${iconId}.png`;
+    return `https://openweathermap.org/img/w/${iconId}.png`;
 }
 
 function addClassNameForFirstChild(parentId, newClass) {

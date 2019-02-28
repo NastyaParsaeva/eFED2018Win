@@ -40,3 +40,7 @@ function createWindGraphItemHtml(windSpeed, windDirection) {
                 </figure>
             </section>`;
 }
+
+function createCityNotFoundErrorMessage(query) {
+    return `Город ${query} не найден. Попробуйте изменить запрос.`;
+}

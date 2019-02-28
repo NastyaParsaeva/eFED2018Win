@@ -87,12 +87,12 @@ const page = {
 
     getFiveDaysForecast(city, callback) {
         const url = `${FIVE_DAY_WEATHER_ENDPOINT}${city}`;
-        getDataFromApi(url, callback);
+        getDataFromApiThroughFetch(url, callback);
     },
 
     getWeatherDetails(city, callback1, callback2) {
         const url = `${WEATHER_DETAILS_ENDPOINT}${city}`;
-        getDataFromApi(url, callback1, callback2);
+        getDataFromApiThroughFetch(url, callback1, callback2);
     },
 
     renderSunDetails(data) {
@@ -127,12 +127,10 @@ const page = {
         insertElementIntoDom('precepitation-container', precipitationHtml);
         insertElementIntoDom('day-switcher', dayNamesListHtml);
 
-        // document.getElementById('daily-weather-container').firstChild.classList.add('shown');
         addClassNameForFirstChild('daily-weather-container', 'shown');
         addClassNameForFirstChild('wind-container', 'shown');
         addClassNameForFirstChild('precepitation-container', 'shown');
         addClassNameForFirstChild('day-switcher', 'selected');
-        // document.getElementById('day-switcher').firstChild.classList.add('selected');
 
         slider.initializeSlider();
     },

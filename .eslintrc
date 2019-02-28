@@ -20,9 +20,9 @@
                         "error",
                         "always"
                     ],
-                    "no-plusplus": [
-                        "error", 
-                        { "allowForLoopAfterthoughts": true }
-                    ]
+                    // "no-plusplus": [
+                    //     "error", 
+                    //     { "allowForLoopAfterthoughts": true }
+                    // ]
     }
 }
