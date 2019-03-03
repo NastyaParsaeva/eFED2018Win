@@ -19,6 +19,7 @@ function getDataFromApiThroughFetch(url, callback1, callback2) {
 function cityNotFound(query) {
     insertElementIntoDom(getElementById('main-content'), createCityNotFoundErrorMessage);
 }
+
 function setAttributesForImage(id, iconLink, altText) {
     const elem = document.getElementById(id);
     elem.setAttribute('src', iconLink);
@@ -68,6 +69,24 @@ function getWindDirection(degree) {
     } else {
         return null;
     }
+}
+
+function findTemperatureChartStep(min, data) {
+    const max = findMaxTemperature(data);
+    return Math.floor(50 / (max - min));
+}
+
+function findMinTemperature(data) {
+    return data.reduce((min, value) => {
+        return Math.min(min, value.temp);
+    }, data[0].temp);
+};
+
+
+function findMaxTemperature(data) {
+    return data.reduce((max, value) => {
+        return Math.max(max, value.temp);
+    }, data[0].temp);
 }
 
 function definePartOfDay(timeInSec) {

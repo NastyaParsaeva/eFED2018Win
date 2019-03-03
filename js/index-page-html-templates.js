@@ -17,7 +17,6 @@ function createGraphSignaturesHtml(time) {
 function createTempGrapItemHtml(minTemp, tempChartStep, tempValue) {
     
     const columnHeight = Math.abs((tempValue - minTemp)) * tempChartStep + 10;
-    console.log(columnHeight);
     return `<section class="item">
                 <p class="value">${tempValue}</p>
                 <p class="column" style="height:${columnHeight}px;"></p>
@@ -43,4 +42,46 @@ function createWindGraphItemHtml(windSpeed, windDirection) {
 
 function createCityNotFoundErrorMessage(query) {
     return `Город ${query} не найден. Попробуйте изменить запрос.`;
+}
+
+function createMainContentHtml() {
+    return `<article class="today-weather-info-container">
+                <section class="weather-info">
+                    <p id="chosen-location"></p>
+                    <p id="today-weekday"></p>
+                    <p id="weather-description"></p>
+                    <secion class="weather-abbreviation">
+                        <figure>
+                            <img id = "weather-icon">
+                        </figure>
+                        <p id="current-temperature"></p>
+                    </section>
+                    
+                </section>
+                <section class="weather-info">
+                    <p id="today-precipitation"></p>
+                    <p id="today-humidity"></p>
+                    <p id="today-wind-speed"></p>
+                    <nav class="graph-controller">
+                        <ul>
+                            <li class="menu-link selected">Температура</li>
+                            <li class="menu-link">Осадки</li>
+                            <li class="menu-link">Ветер</li>
+                        </ul>
+                    </nav>
+                </section>
+            </article>
+
+            <div class="graph-container">
+                <article id="temperature-graph-container" class="temperature graph shown">
+                </article>
+                <article id="precipitation-graph-container" class="precipitation graph">
+                </article>
+                <article id="wind-graph-container" class="wind graph">
+                </article>
+                <article id="graph-signatures-container" class="graph-signatures">
+                </article>
+            </div>
+            <article id = "week-forecast-container" class="week-forecast">
+            </article>`;
 }
