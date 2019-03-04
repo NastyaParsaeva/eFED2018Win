@@ -10,7 +10,7 @@ function Fetcher() {
 
 Fetcher.prototype.getDataFromApiThroughFetch = function(url, renderFunction1, transformFunction1, 
     renderFunction2, transformFunction2) {
-    fetch(url)  
+    return fetch(url)  
         .then(function(response) {  
             if (response.status === 404) {  
                 console.log('City not found. Try to find another city. ' +  
@@ -19,10 +19,10 @@ Fetcher.prototype.getDataFromApiThroughFetch = function(url, renderFunction1, tr
             // console.log(`{get data from api response ${response}`);
             return response.json();  
         })
-        .then(response => {
-            renderFunction1(response, transformFunction1);
-            if (renderFunction2) renderFunction2(response, transformFunction2);
-        })
+        // .then(response => {
+        //     renderFunction1(response, transformFunction1);
+        //     if (renderFunction2) renderFunction2(response, transformFunction2);
+        // })
         .catch(function(error) {  
             console.log(`Error happened ${error.stack}`);
         });

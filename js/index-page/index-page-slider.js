@@ -1,24 +1,26 @@
 const slider = {
-    initSlider() {
-        this.graphs = document.querySelectorAll('.graph');
-        this.buttons = document.querySelectorAll('.graph-controller .menu-link');
+    initSlider(slidesCssQuery, controlsCssQuery) {
+        // this.slides = document.querySelectorAll('.graph');
+        // this.controls = document.querySelectorAll('.graph-controller .menu-link');
+        this.slides = document.querySelectorAll(slidesCssQuery);
+        this.controls = document.querySelectorAll(controlsCssQuery);
         this.currentGraphNumber = 0;
         this.initListeners();
     },
 
     initListeners() {
-        for (let i = 0; i < this.buttons.length; i++) {
-            this.buttons[i].addEventListener('click', () => {
+        for (let i = 0; i < this.controls.length; i++) {
+            this.controls[i].addEventListener('click', () => {
                 this.changeGraph(i);
             });
         }
     },
 
     changeGraph(index) {
-        this.graphs[this.currentGraphNumber].classList.remove('shown');
-        this.buttons[this.currentGraphNumber].classList.remove('selected');
+        this.slides[this.currentGraphNumber].classList.remove('shown');
+        this.controls[this.currentGraphNumber].classList.remove('selected');
         this.currentGraphNumber = index;
-        this.graphs[this.currentGraphNumber].classList.add('shown');
-        this.buttons[this.currentGraphNumber].classList.add('selected');
+        this.slides[this.currentGraphNumber].classList.add('shown');
+        this.controls[this.currentGraphNumber].classList.add('selected');
     },
 };

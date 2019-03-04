@@ -6,19 +6,11 @@ function IndexPageFetcher() {
 IndexPageFetcher.prototype = Object.create(Fetcher.prototype);
 
 IndexPageFetcher.prototype.getWeatherDetails = function(city, renderFunction) {
-    const completeUrl = this.createCompleteUrl('/data/2.5/weather?units=metric&lang=ru&APPID=', city);
-    console.log(completeUrl);
-    // let promise = new Promise((getDataFromApiThroughFetch, reject) => {
-    //     getDataFromApiThroughFetch(completeUrl);
-    // });
-    // promise
-    //     .then(result => {
-    //         console.log(result);
-    //         callback(result);
-    //     });
-
-    
-    this.getDataFromApiThroughFetch(completeUrl, renderFunction);
+    const completeUrl = this.createCompleteUrl(WEATHER_DETAILS_ENDPOINT, city);
+    this.getDataFromApiThroughFetch(completeUrl)
+        .then(response => {
+            renderFunction(response);
+        });
 };
 
 IndexPageFetcher.prototype.getAirPollution = function(coords, callback) {
@@ -30,14 +22,10 @@ IndexPageFetcher.prototype.getAirPollution = function(coords, callback) {
 
 IndexPageFetcher.prototype.getFiveDaysWeather = function(city, renderFunction1, transformFunction1, 
     renderFunction2, transformFunction2) {
-    // url = `${FIVE_DAY_WEATHER_ENDPOINT}${city}`;
-    const completeUrl = this.createCompleteUrl('/data/2.5/forecast?units=metric&lang=ru&APPID=', city);
-    // console.log(completeUrl, callback1, callback2);
-    this.getDataFromApiThroughFetch(completeUrl, renderFunction1, transformFunction1, 
-        renderFunction2, transformFunction2);
+    const url = this.createCompleteUrl(FIVE_DAY_WEATHER_ENDPOINT, city);
+    this.getDataFromApiThroughFetch(url)
+        .then(response => {
+            renderFunction1(response, transformFunction1);
+            renderFunction2(response, transformFunction2);
+        });
 };
-
-// const myIndexPageFetcher = new IndexPageFetcher();
-// myIndexPageFetcher.getWeatherDetails('Izhevsk', (x) => console.log(`callback successfully catched ${x}`));
-
-// myIndexPageFetcher.getFiveDaysWeather('moscow');

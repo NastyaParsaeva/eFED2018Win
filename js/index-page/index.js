@@ -1,6 +1,7 @@
 const indexPageFetcher = new IndexPageFetcher();
 const indexPageTransformer = new IndexPageTransformer();
 const indexPageRenderer = new IndexPageRenderer();
+let indexPageSlider;
 
 const DEFAULT_CITY = 'izhevsk';
 const DEFAULT_COORDS = '56,53';
@@ -11,24 +12,19 @@ function init() {
     indexPageRenderer.renderMain(createMainContentHtml);
     indexPageRenderer.renderFooter();
     loadContent(DEFAULT_CITY, DEFAULT_COORDS);
-    // slider.initSlider();
-    // const searchField = document.getElementById('search-field');
-    // searchField.addEventListener('change', (event) => {
-    //     const city = event.target.value;
-    //     this.loadContent(city, coords);
-    // });
+    indexPageSlider = new Slider('.graph', '.graph-controller .menu-link');
+    
+    const searchField = document.getElementById('search-field');
+    searchField.addEventListener('change', (event) => {
+        const city = event.target.value;
+        this.loadContent(city, coords);
+    });
 };
 
 init();
 
-
 function loadContent(city, coords) {
     showSpinner();
-    // this.getWeatherDetails(city, this.renderWeatherDetails);
-    // this.getAirPollution(coords, this.renderAirPollution);
-    // this.getFiveDaysWeather(city, this.renderWeatherForecast, this.renderGrahps);
-
-    
     
     indexPageFetcher.getWeatherDetails(city, indexPageRenderer.renderWeatherDetails);
     indexPageFetcher.getAirPollution(coords, indexPageRenderer.renderAirPollution);
