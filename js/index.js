@@ -24,9 +24,15 @@ init();
 
 function loadContent(city, coords) {
     showSpinner();
+    // this.getWeatherDetails(city, this.renderWeatherDetails);
+    // this.getAirPollution(coords, this.renderAirPollution);
+    // this.getFiveDaysWeather(city, this.renderWeatherForecast, this.renderGrahps);
+
+    
+    
     indexPageFetcher.getWeatherDetails(city, indexPageRenderer.renderWeatherDetails);
     indexPageFetcher.getAirPollution(coords, indexPageRenderer.renderAirPollution);
-    indexPageFetcher.getFiveDaysWeather(city, indexPageTransformer.extractFiveDaysForecastData, 
-        indexPageTransformer.extractGraphsData);
+    indexPageFetcher.getFiveDaysWeather(city, indexPageRenderer.renderWeatherForecast, indexPageTransformer.extractFiveDaysForecastData, 
+        indexPageRenderer.renderGrahps, indexPageTransformer.extractGraphsData);
     hideSpinner();
 };

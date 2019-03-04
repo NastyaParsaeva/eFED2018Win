@@ -23,8 +23,8 @@ IndexPageRenderer.prototype.renderAirPollution = function(jsonData) {
     insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
 };
 
-IndexPageRenderer.prototype.renderWeatherForecast = function(transformerObject, jsonData) {
-    const fiveDaysForecastArray = transformerObject.extractFiveDaysForecastData(jsonData);
+IndexPageRenderer.prototype.renderWeatherForecast = function(jsonData, transformFunction) {
+    const fiveDaysForecastArray = transformFunction(jsonData);
     let daysForecastHTML = '';
     fiveDaysForecastArray.forEach((day) => {
         daysForecastHTML += createDayForecastHtml(day);
@@ -32,8 +32,8 @@ IndexPageRenderer.prototype.renderWeatherForecast = function(transformerObject, 
     this.insertElementIntoDom('week-forecast-container', daysForecastHTML);
 };
 
-IndexPageRenderer.prototype.renderGrahps = function(transformerObject, data) {
-    const graphsDataArray = transformerObject.extractGraphsData(data);
+IndexPageRenderer.prototype.renderGrahps = function(data, transformFunction) {
+    const graphsDataArray = transformFunction(data);
 
     const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
     const minTemp = findMinTemperature(graphsDataArray);
