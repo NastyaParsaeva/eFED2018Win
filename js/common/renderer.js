@@ -33,4 +33,4 @@ Renderer.prototype.renderMain = function(mainContentTemplateFunction) {
     const main = document.createElement('main');
     main.innerHTML = mainContentTemplateFunction();
     document.body.appendChild(main);
-}
+};
