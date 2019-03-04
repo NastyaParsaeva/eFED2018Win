@@ -2,18 +2,6 @@ function FiveDaysPageTransformer() {}
 
 FiveDaysPageTransformer.prototype = Object.create(Transformer.prototype);
 
-FiveDaysPageTransformer.prototype.createDayPartWeather = function(weather) {
-    const precipitation = getPrecipitationVolume(weather).toFixed(1);
-    return {
-        iconLink: createIconLink(weather.weather[0].icon),
-        temp: Math.round(weather.main.temp),
-        windSpeed: Math.round(weather.wind.speed),
-        precipitation,
-        precipitationLevel: getPrecipitationLevel(precipitation),
-        description: weather.weather[0].description,
-    };
-};
-
 FiveDaysPageTransformer.prototype.extractForcastParameters = function(list) {
     const daylyWeatherArray = [];
     for (let i = 0; i < list.length; i += 2) {
@@ -58,5 +46,18 @@ FiveDaysPageTransformer.prototype.extractCurrentParams = function(data) {
         temp: Math.round(data.main.temp),
         weatherIcon: createIconLink(data.weather[0].icon),
         weatherDescription: data.weather[0].description,
+    };
+};
+
+
+function createDayPartWeather(weather) {
+    const precipitation = getPrecipitationVolume(weather).toFixed(1);
+    return {
+        iconLink: createIconLink(weather.weather[0].icon),
+        temp: Math.round(weather.main.temp),
+        windSpeed: Math.round(weather.wind.speed),
+        precipitation,
+        precipitationLevel: getPrecipitationLevel(precipitation),
+        description: weather.weather[0].description,
     };
 };

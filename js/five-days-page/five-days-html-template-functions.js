@@ -84,3 +84,22 @@ function createFiveDaysMainContentHtml() {
                 <img id = "next-day" src="assets\right-arrow.png" alt="Следующий день">
             </figure>`;
 }
+
+function fiveDaysAsideContentHtml() {
+    return `<section class="moon-calendar-header">
+                <p id="today"class="today"></p> 
+                <p class="moon-calendar-name"></p>
+            </section>  
+            <section class="moon-calendar-component-container">
+                <section class="moon-calendar-component">
+                    <figure>
+                        <img src="assets/Sun.png" alt="День" >      
+                    </figure>
+                    <section class="moon-calendar-description">
+                        <p id="day-length"></p>
+                        <p id="sunrise"></p>
+                        <p id="sunset"></p>
+                    </section>
+                </section>
+            </section>`;
+}

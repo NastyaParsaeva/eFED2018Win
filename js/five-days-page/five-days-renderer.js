@@ -2,6 +2,13 @@ function FiveDaysPageRenderer() {}
 
 FiveDaysPageRenderer.prototype = Object.create(Renderer.prototype);
 
+
+FiveDaysPageRenderer.prototype.renderAsideElement = function() {
+    const aside = document.createElement('aside');
+    aside.innerHTML = fiveDaysAsideContentHtml();
+    document.body.appendChild(aside);
+};
+
 FiveDaysPageRenderer.prototype.renderSunDetails = function(data, transformFunction) {
     const sunDetails = transformFunction(data);
     insertElementIntoDom('sunrise', `Восход - ${sunDetails.sunrise}`);

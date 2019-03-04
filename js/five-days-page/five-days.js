@@ -10,6 +10,7 @@ const DEFAULT_COORDS = '56,53';
 function init() {
     fiveDaysRenderer.renderHeader();
     fiveDaysRenderer.renderMain(createFiveDaysMainContentHtml);
+    fiveDaysRenderer.renderAsideElement();
     fiveDaysRenderer.renderFooter();
     loadContent(DEFAULT_CITY, DEFAULT_COORDS);
     indexPageSlider = new Slider('.graph', '.graph-controller .menu-link');
