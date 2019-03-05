@@ -63,29 +63,31 @@ function createDayNamesListHtml(date) {
 
 function createFiveDaysMainContentHtml() {
     return  `<figure class="arrow">
-                <img id="prev-day" src="assets\left-arrow.png" alt="Предыдущий день"> 
+                <img id="prev-day" src="assets/left-arrow.png" alt="Предыдущий день"> 
             </figure>
             <section id="weather-container" class="weather-container">
                 <section id="five-days-container" class="five-days-container">
                     <section id="daily-weather-container" class="daily-weather-container">
                     </section>
-                <nav class="slider-signatures">
-                    <ul id = "day-switcher">
-                    </ul>
-                </nav>
-                <p id = "wind-forecast-label" class="additional-weather-parameter">Максимальная скорость ветра, м/с</p>
-                <section id = "wind-container" class="wind-container">
-                </section>
-                <p id = "precepitation-forecast-label" class="additional-weather-parameter">Осадки, мм</p>
-                <section id="precepitation-container"class="precepitation-container">
+                    <nav class="slider-signatures">
+                        <ul id = "day-switcher">
+                        </ul>
+                    </nav>
+                    <p id = "wind-forecast-label" class="additional-weather-parameter">Максимальная скорость ветра, м/с</p>
+                    <section id = "wind-container" class="wind-container">
+                    </section>
+                    <p id = "precepitation-forecast-label" class="additional-weather-parameter">Осадки, мм</p>
+                    <section id="precepitation-container"class="precepitation-container">
+                    </section>
                 </section>
             </section>
             <figure id = "next-day-container" class="arrow">
-                <img id = "next-day" src="assets\right-arrow.png" alt="Следующий день">
+                <img id = "next-day" src="assets/right-arrow.png" alt="Следующий день">
             </figure>`;
 }
 
 function fiveDaysAsideContentHtml() {
+
     return `<section class="moon-calendar-header">
                 <p id="today"class="today"></p> 
                 <p class="moon-calendar-name"></p>

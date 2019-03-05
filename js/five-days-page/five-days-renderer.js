@@ -36,15 +36,14 @@ FiveDaysPageRenderer.prototype.renderFiveDaysForecast = function(data, transform
         precipitationHtml += createDayPrecipitationHtml(weather);
         dayNamesListHtml += createDayNamesListHtml(weather.date);
     });
+    insertElementIntoDom('day-switcher', dayNamesListHtml);
     insertElementIntoDom('daily-weather-container', dayWeatherHtml);
     insertElementIntoDom('wind-container', windHtml);
     insertElementIntoDom('precepitation-container', precipitationHtml);
-    insertElementIntoDom('day-switcher', dayNamesListHtml);
-
+    
+    addClassNameForFirstChild('day-switcher', 'selected');
     addClassNameForFirstChild('daily-weather-container', 'shown');
     addClassNameForFirstChild('wind-container', 'shown');
     addClassNameForFirstChild('precepitation-container', 'shown');
-    addClassNameForFirstChild('day-switcher', 'selected');
-
-    slider.initializeSlider();
+    
 };

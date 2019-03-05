@@ -1,6 +1,4 @@
-function IndexPageRenderer() {
-
-}
+function IndexPageRenderer() {}
 
 IndexPageRenderer.prototype = Object.create(Renderer.prototype);
 

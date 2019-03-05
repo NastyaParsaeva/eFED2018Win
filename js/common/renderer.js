@@ -3,9 +3,7 @@ Renderer – получает данные и отображает их в DOM
 Renderer – Базовый класс он умеет отрисовывать футер и хедер. 
 От него наследуются три класса 5 дней погода, Исторические данные и погода на сегодня
 */
-function Renderer() {
-
-}
+function Renderer() {}
 
 Renderer.prototype.setAttributesForImage = function(id, iconLink, altText) {
     const elem = document.getElementById(id);
@@ -17,9 +15,9 @@ Renderer.prototype.insertElementIntoDom = function(destinationId, data) {
     document.getElementById(destinationId).innerHTML = data;
 };
 
-Renderer.prototype.renderHeader = function() {
+Renderer.prototype.renderHeader = function(getHeaderUniqueContent) {
     const header = document.createElement('header');
-    header.innerHTML = createHeaderCommonContent();
+    header.innerHTML = createHeaderCommonContent(getHeaderUniqueContent);
     document.body.appendChild(header); 
 };
 

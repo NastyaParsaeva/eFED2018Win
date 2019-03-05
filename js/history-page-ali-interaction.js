@@ -55,8 +55,6 @@ const page = {
     defaultCity: 'Izhevsk',
 
     init() {
-        // showSpinner();
-        // this.getHistoricalReviewMock(this.defaultCity, this.renderHistoricalReview);
         this.loadContent(this.defaultCity);
         const searchField = document.getElementById('search-field');
         searchField.addEventListener('change', (event) => {

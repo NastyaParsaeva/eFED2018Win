@@ -1,13 +1,9 @@
 
 function FiveDaysSlider() {
-    this.daySlides = document.getElementsByClassName('day-weather');
-    this.windSlides = document.getElementsByClassName('day-wind');
-    this.precSlides = document.getElementsByClassName('day-precepitation');
-    this.slideNav = document.querySelectorAll('#day-switcher .menu-link');
-    this.current = 0;
     this.next = document.getElementById('next-day');
     this.prev = document.getElementById('prev-day');
-    this.initSlideNavListeners();
+    this.initializeArrowEventListeners();
+    this.initializeSlider();
 }
 
 FiveDaysSlider.prototype = Object.create(Slider.prototype);
@@ -21,6 +17,7 @@ FiveDaysSlider.prototype.previousSlide = function() {
 },
 
 FiveDaysSlider.prototype.changeSlide = function(index) {
+    console.log(`changeSlide ${this.slideNav}`);
     this.removeDomClassName(this.daySlides, this.current, 'shown');
     this.removeDomClassName(this.windSlides, this.current, 'shown');
     this.removeDomClassName(this.precSlides, this.current, 'shown');
@@ -30,6 +27,25 @@ FiveDaysSlider.prototype.changeSlide = function(index) {
     this.addDomClassName(this.windSlides, this.current, 'shown');
     this.addDomClassName(this.precSlides, this.current, 'shown');
     this.addDomClassName(this.slideNav, this.current, 'selected');
+};
+FiveDaysSlider.prototype.initializeSlider = function() {
+    this.daySlides = document.getElementsByClassName('day-weather');
+    console.log(this.daySlides);
+    this.windSlides = document.getElementsByClassName('day-wind');
+    console.log(this.windSlides);
+    this.precSlides = document.getElementsByClassName('day-precepitation');
+    console.log(this.precSlides);
+    // // this.slideNav = document.getElementsByClassName('menu-link');
+    // this.slideNav = document.querySelectorAll('.menu-link');
+    this.slideNav = document.querySelectorAll('#day-switcher .menu-link');
+    console.log(this.slideNav);
+    this.current = 0;
+
+    for (let i = 0; i < this.slideNav.length; i++) {
+        this.slideNav[i].addEventListener('click', () => {
+            this.changeSlide(i);
+        });
+    }
 };
 
 FiveDaysSlider.prototype.initializeArrowEventListeners = function() {

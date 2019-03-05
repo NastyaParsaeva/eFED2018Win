@@ -2,7 +2,7 @@ function createFooterContent() {
     return '<p lang="en">2019 © Copyright</p>';
 }
 
-function createHeaderCommonContent() {
+function createHeaderCommonContent(getUniqueInfoFromSearchField) {
     return `<nav>
                 <ul class="navigation">
                     <li class="menu-link selected"><a href="index.html">Сегодня</a></li>
@@ -11,7 +11,9 @@ function createHeaderCommonContent() {
                 </ul>
             </nav>
             <section class="search-row">
-                <span id="air-pollution" class="current-location"></span>
+                <div id="varying-info-from-search-row">
+                ${getUniqueInfoFromSearchField()}
+                </div>
                 <section class="search-field-container">
                     <label for="search-field" id="search-field-label">&nbsp;</label>
                     <input id="search-field" type="search" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>

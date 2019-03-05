@@ -14,6 +14,7 @@ Slider.prototype.initSlideNavListeners = function() {
 };
 
 Slider.prototype.changeSlide = function(index) {
+    console.log(`slider change slide`);
     this.removeDomClassName(this.slides, this.current, 'shown');
     this.removeDomClassName(this.slideNav, this.current, 'selected');
     this.current = index;

@@ -12,26 +12,25 @@ function init() {
     fiveDaysRenderer.renderMain(createFiveDaysMainContentHtml);
     fiveDaysRenderer.renderAsideElement();
     fiveDaysRenderer.renderFooter();
-    loadContent(DEFAULT_CITY, DEFAULT_COORDS);
-    indexPageSlider = new Slider('.graph', '.graph-controller .menu-link');
     
+    loadContent(DEFAULT_CITY, DEFAULT_COORDS);
+    fiveDaysPageSlider = new FiveDaysSlider();
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
-        this.loadContent(city, coords);
+        this.loadContent(city);
     });
 };
 
 init();
 
-
-function loadContent(city, coords) {
+function loadContent(city) {
     showSpinner();
     
     fiveDaysFetcher.getFiveDaysForecast(city, fiveDaysRenderer.renderFiveDaysForecast, 
         fiveDaysTransformer.extractForcastParameters);
     fiveDaysFetcher.getWeatherDetails(city, fiveDaysRenderer.renderSunDetails, fiveDaysTransformer.extractSunDetails,
         fiveDaysRenderer.renderCurrentParams, fiveDaysTransformer.extractCurrentParams);
-
+    
     hideSpinner();
 };
