@@ -70,7 +70,7 @@ function createFiveDaysMainContentHtml() {
                     <section id="daily-weather-container" class="daily-weather-container">
                     </section>
                     <nav class="slider-signatures">
-                        <ul id = "day-switcher">
+                        <ul id = "day-switcher" class="day-switcher">
                         </ul>
                     </nav>
                     <p id = "wind-forecast-label" class="additional-weather-parameter">Максимальная скорость ветра, м/с</p>
@@ -87,7 +87,6 @@ function createFiveDaysMainContentHtml() {
 }
 
 function fiveDaysAsideContentHtml() {
-
     return `<section class="moon-calendar-header">
                 <p id="today"class="today"></p> 
                 <p class="moon-calendar-name"></p>
@@ -104,4 +103,11 @@ function fiveDaysAsideContentHtml() {
                     </section>
                 </section>
             </section>`;
+}
+
+function createFiveDaysPageUniqueInfoFromSearchRowContent() {
+    return `<figure class="current-weather">
+                <img id="current-weather-icon" src="assets\cloud-image.png" alt="Облачно">    
+            </figure>
+            <span id="current-location">34° Ижевск, Россия</span>`;
 }

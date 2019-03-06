@@ -29,19 +29,20 @@ FiveDaysSlider.prototype.changeSlide = function(index) {
     this.addDomClassName(this.slideNav, this.current, 'selected');
 };
 FiveDaysSlider.prototype.initializeSlider = function() {
+    console.log('initializeSlider');
     this.daySlides = document.getElementsByClassName('day-weather');
     console.log(this.daySlides);
     this.windSlides = document.getElementsByClassName('day-wind');
-    console.log(this.windSlides);
     this.precSlides = document.getElementsByClassName('day-precepitation');
-    console.log(this.precSlides);
-    // // this.slideNav = document.getElementsByClassName('menu-link');
-    // this.slideNav = document.querySelectorAll('.menu-link');
-    this.slideNav = document.querySelectorAll('#day-switcher .menu-link');
+    this.slideNav = document.getElementById('day-switcher').getElementsByClassName('menu-link');
     console.log(this.slideNav);
     this.current = 0;
+    this.initializeSlideNavListeners();
+};
 
+FiveDaysSlider.prototype.initializeSlideNavListeners = function() {
     for (let i = 0; i < this.slideNav.length; i++) {
+        console.log(`slideNav[i] ${slideNav[i]}`);
         this.slideNav[i].addEventListener('click', () => {
             this.changeSlide(i);
         });
