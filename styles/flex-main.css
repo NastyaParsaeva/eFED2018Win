@@ -156,10 +156,12 @@ header .menu-link {
     padding: 0 15px;
 }
 
-.current-location {
+#unique-info-in-search-row {
     display: flex;
     align-items: center;
 }
+
+
 
 #search-field {
     height: 28px;
@@ -216,8 +218,6 @@ footer p {
         width: unset;
     }
 
-
-    
     footer {
         position: fixed;
         bottom: 0;

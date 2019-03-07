@@ -85,3 +85,7 @@ function createMainContentHtml() {
             <article id = "week-forecast-container" class="week-forecast">
             </article>`;
 }
+
+function createUniqueInfoForSearchRowContent() {
+    return '<span id="air-pollution" class="current-location"></span>';
+};

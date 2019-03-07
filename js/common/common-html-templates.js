@@ -2,7 +2,7 @@ function createFooterContent() {
     return '<p lang="en">2019 © Copyright</p>';
 }
 
-function createHeaderCommonContent(getUniqueInfoFromSearchField) {
+function createHeaderCommonContent(getUniqueInfoForSearchRow) {
     return `<nav>
                 <ul class="navigation">
                     <li class="menu-link selected"><a href="index.html">Сегодня</a></li>
@@ -11,8 +11,8 @@ function createHeaderCommonContent(getUniqueInfoFromSearchField) {
                 </ul>
             </nav>
             <section class="search-row">
-                <div id="varying-info-from-search-row">
-                ${getUniqueInfoFromSearchField()}
+                <div id="unique-info-in-search-row">
+                ${getUniqueInfoForSearchRow()}
                 </div>
                 <section class="search-field-container">
                     <label for="search-field" id="search-field-label">&nbsp;</label>

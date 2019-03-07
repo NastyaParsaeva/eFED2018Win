@@ -8,7 +8,7 @@ const DEFAULT_COORDS = '56,53';
 // coords: '',
 
 function init() {
-    indexPageRenderer.renderHeader();
+    indexPageRenderer.renderHeader(createUniqueInfoForSearchRowContent);
     indexPageRenderer.renderMain(createMainContentHtml);
     indexPageRenderer.renderFooter();
     loadContent(DEFAULT_CITY, DEFAULT_COORDS);
@@ -23,11 +23,15 @@ function init() {
 
 init();
 
-function loadContent(city, coords) {
+function loadContent(city) {
     showSpinner();
-    
-    indexPageFetcher.getWeatherDetails(city, indexPageRenderer.renderWeatherDetails);
-    indexPageFetcher.getAirPollution(coords, indexPageRenderer.renderAirPollution);
+    // indexPageFetcher.getWeatherDetails(city, indexPageRenderer.renderWeatherDetails);
+
+    indexPageFetcher.getWeatherDetailsAndReturnCoords(city, indexPageRenderer.renderWeatherDetails)
+        .then((coords) => {
+            indexPageFetcher.getAirPollution(coords, indexPageRenderer.renderAirPollution);
+        });
+    // indexPageFetcher.getAirPollution(coords, indexPageRenderer.renderAirPollution);
     indexPageFetcher.getFiveDaysWeather(city, indexPageRenderer.renderWeatherForecast, indexPageTransformer.extractFiveDaysForecastData, 
         indexPageRenderer.renderGrahps, indexPageTransformer.extractGraphsData);
     hideSpinner();

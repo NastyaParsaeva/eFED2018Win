@@ -5,19 +5,21 @@ function IndexPageFetcher() {
 
 IndexPageFetcher.prototype = Object.create(Fetcher.prototype);
 
-IndexPageFetcher.prototype.getWeatherDetails = function(city, renderFunction) {
+IndexPageFetcher.prototype.getWeatherDetailsAndReturnCoords = function(city, renderFunction) {
     const completeUrl = this.createCompleteUrl(WEATHER_DETAILS_ENDPOINT, city);
-    this.getDataFromApiThroughFetch(completeUrl)
+    return this.getDataFromApiThroughFetch(completeUrl)
         .then(response => {
             renderFunction(response);
+            return coords;
         });
 };
 
-IndexPageFetcher.prototype.getAirPollution = function(coords, callback) {
-    const url = `${AIR_POLLUTION_ENDPOINT[0]}${coords}${AIR_POLLUTION_ENDPOINT[1]}`;
-    
-    //const AIR_POLLUTION_ENDPOINT = ['https://api.openweathermap.org/pollution/v1/co/', `/current.json?appid=${APP_ID}`];
-    this.getDataFromApiThroughFetch(url, callback);
+IndexPageFetcher.prototype.getAirPollution = function(coords, renderFunction) {
+    const url = `${ this.baseUrl }${ AIR_POLLUTION_ENDPOINT[0] }${ coords }${ AIR_POLLUTION_ENDPOINT[1] }${ this.appId }`;
+    this.getDataFromApiThroughFetch(url)
+        .then(response => {
+            renderFunction(response);
+        });
 };
 
 IndexPageFetcher.prototype.getFiveDaysWeather = function(city, renderFunction1, transformFunction1, 
