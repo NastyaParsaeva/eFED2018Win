@@ -4,11 +4,13 @@ function FiveDaysPageFetcher() {
 
 FiveDaysPageFetcher.prototype = Object.create(Fetcher.prototype);
 
-FiveDaysPageFetcher.prototype.getFiveDaysForecast = function(city, renderFunction, transformFunction) {
+FiveDaysPageFetcher.prototype.getFiveDaysForecast = function(city, renderFunction, transformFunction, slider) {
     const url = this.createCompleteUrl(FIVE_DAY_WEATHER_ENDPOINT, city);
     this.getDataFromApiThroughFetch(url)
         .then(response => {
             renderFunction(response, transformFunction); 
+            slider.initializeSliderElements();
+            // console.log(slider);
         });
 };
 

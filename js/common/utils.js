@@ -136,3 +136,15 @@ function hideSpinner() {
         document.getElementById('main-overlay').style.display = 'none';    
     }, 1000);
 }
+
+function getElementsByQuery(cssQuery) {
+    return document.querySelectorAll(cssQuery);
+};
+
+function addDomClassName(elementsArray, id, className) {
+    elementsArray[id].classList.add(className);
+};
+
+function removeDomClassName(elementsArray, id, className) {
+    elementsArray[id].classList.remove(className);
+};

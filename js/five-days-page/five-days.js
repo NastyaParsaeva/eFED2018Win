@@ -1,34 +1,36 @@
 const fiveDaysFetcher = new FiveDaysPageFetcher();
 const fiveDaysTransformer = new FiveDaysPageTransformer();
 const fiveDaysRenderer = new FiveDaysPageRenderer();
-let fiveDaysSlider;
 
 const DEFAULT_CITY = 'izhevsk';
-const DEFAULT_COORDS = '56,53';
-// coords: '',
 
 function init() {
     fiveDaysRenderer.renderHeader(createFiveDaysPageUniqueInfoFromSearchRowContent);
     fiveDaysRenderer.renderMain(createFiveDaysMainContentHtml);
     fiveDaysRenderer.renderAsideElement();
     fiveDaysRenderer.renderFooter();
-    loadContent(DEFAULT_CITY);
+    const slider = new FiveDaysSlider();
+    loadContent(DEFAULT_CITY, slider);
+    // setTimeout(console.log(slider), 10000);
+    
     const searchField = document.getElementById('search-field');
-    fiveDaysPageSlider = new FiveDaysSlider();
+    // fiveDaysPageSlider = new FiveDaysSlider();
+
     
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
-        this.loadContent(city);
+        this.loadContent(city, slider);
     });
 };
 
 init();
 
-function loadContent(city) {
+function loadContent(city, slider) {
     showSpinner();   
     fiveDaysFetcher.getFiveDaysForecast(city, fiveDaysRenderer.renderFiveDaysForecast, 
-        fiveDaysTransformer.extractForcastParameters);
+        fiveDaysTransformer.extractForcastParameters, slider);
     fiveDaysFetcher.getWeatherDetails(city, fiveDaysRenderer.renderSunDetails, fiveDaysTransformer.extractSunDetails,
         fiveDaysRenderer.renderCurrentParams, fiveDaysTransformer.extractCurrentParams);
+    
     hideSpinner();
 };

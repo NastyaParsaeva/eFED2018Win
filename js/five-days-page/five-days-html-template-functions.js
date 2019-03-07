@@ -89,7 +89,7 @@ function createFiveDaysMainContentHtml() {
 function fiveDaysAsideContentHtml() {
     return `<section class="moon-calendar-header">
                 <p id="today"class="today"></p> 
-                <p class="moon-calendar-name"></p>
+                <p class="moon-calendar-name">Солнце и луна</p>
             </section>  
             <section class="moon-calendar-component-container">
                 <section class="moon-calendar-component">
@@ -107,7 +107,7 @@ function fiveDaysAsideContentHtml() {
 
 function createFiveDaysPageUniqueInfoFromSearchRowContent() {
     return `<figure class="current-weather">
-                <img id="current-weather-icon" src="assets\cloud-image.png" alt="Облачно">    
+                <img id="current-weather-icon">    
             </figure>
-            <span id="current-location">34° Ижевск, Россия</span>`;
+            <span id="current-location"></span>`;
 }
