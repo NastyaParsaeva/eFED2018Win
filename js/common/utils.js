@@ -49,6 +49,16 @@ function findMaxPrecipitationLevelBiggerThan5(graphsDataArray) {
     return (maxPrec > 5) ? maxPrec : undefined;
 }
 
+function findMaxPrecLevel(graphsDataArray) {
+    let maxPrec = 0;
+    graphsDataArray.forEach(dayData => {
+        if (dayData.precipitation > maxPrec) {
+            maxPrec = dayData.precipitation;
+        }
+    });
+    return (maxPrec > 1) ? maxPrec : 1;
+}
+
 function getWindDirection(degree) {
     if (degree <= 23 || degree > 338) {
         return 'north';
@@ -73,7 +83,7 @@ function getWindDirection(degree) {
 
 function findTemperatureChartStep(min, data) {
     const max = findMaxTemperature(data);
-    return Math.floor(50 / (max - min));
+    return Math.floor(60 / (max - min));
 }
 
 function findMinTemperature(data) {

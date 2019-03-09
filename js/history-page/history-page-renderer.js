@@ -9,10 +9,10 @@ HistoryPageRenderer.prototype.renderCity = function(city) {
 HistoryPageRenderer.prototype.renderHistoricalReview = function(data, transformFunction) {
     const historyTableData = transformFunction(data);
 
-    let averageMaxHtml = createSpanHtml('Средний максимум');
-    let averageMinHtml = createSpanHtml('Средний минимум');
-    let highestMaxHtml = createSpanHtml('Рекордный максимум');
-    let lowestMinHtml = createSpanHtml('Рекордный минимум');
+    let averageMaxHtml = createSpanHtml('Средний максимум'),
+        averageMinHtml = createSpanHtml('Средний минимум'),
+        highestMaxHtml = createSpanHtml('Рекордный максимум'),
+        lowestMinHtml = createSpanHtml('Рекордный минимум');
 
     for (let i = 0; i < 12; i++) { 
         averageMaxHtml += createTableDataHtml(historyTableData[i].avMax);

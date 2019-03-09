@@ -16,7 +16,7 @@ mapToMonthData = function(data) {
     const years = Object.values(data);
     const months = [];
     years.forEach((year)=> {
-        for(let i=0;i<12;i++) {
+        for(let i = 0; i < 12; i++) {
             months[i] ? months[i].push(year[i]) : months[i] = [];
         }
     });
@@ -25,10 +25,10 @@ mapToMonthData = function(data) {
 };
 
 getMinMaxForMonth = function(monthData) {
-    let absMin = monthData[0].min;
-    let absMax = monthData[0].max;
-    let minSum = 0;
-    let maxSum = 0;
+    let absMin = monthData[0].min,
+        absMax = monthData[0].max,
+        minSum = 0,
+        maxSum = 0;
     
     monthData.forEach(month=> {
         minSum += month.min;

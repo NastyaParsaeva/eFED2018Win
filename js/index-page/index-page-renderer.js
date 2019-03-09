@@ -33,7 +33,10 @@ IndexPageRenderer.prototype.renderWeatherForecast = function(jsonData, transform
 IndexPageRenderer.prototype.renderGrahps = function(data, transformFunction) {
     const graphsDataArray = transformFunction(data);
 
-    const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
+    // const maxPrecLevel = findMaxPrecipitationLevelBiggerThan5(graphsDataArray);
+
+    const maxPrecLevel = findMaxPrecLevel(graphsDataArray);
+
     const minTemp = findMinTemperature(graphsDataArray);
     const tempChartStep = findTemperatureChartStep(minTemp, graphsDataArray);
     

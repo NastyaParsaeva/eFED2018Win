@@ -23,11 +23,11 @@ function createTempGrapItemHtml(minTemp, tempChartStep, tempValue) {
             </section>`;
 }
 
-function createPrecipitationGraphItemHtml(precipitation, maxPrec = 5) {
-    const columnHeight = Math.round(precipitation * 100 / maxPrec);
+function createPrecipitationGraphItemHtml(precipitation, maxPrec) {
+    const columnHeight = Math.round(precipitation * 70 / maxPrec) + 2;
     return `<section class="item">
                 <p class="value">${precipitation} мм</p>
-                <p class="column" style="height:${columnHeight}%"></p>
+                <p class="column" style="height:${columnHeight}px"></p>
             </section>`;
 }
 
