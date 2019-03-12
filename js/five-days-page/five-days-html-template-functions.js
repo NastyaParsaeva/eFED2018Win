@@ -86,7 +86,7 @@ function createFiveDaysMainContentHtml() {
             </figure>`;
 }
 
-function fiveDaysAsideContentHtml() {
+function createFiveDaysAsideContentHtml() {
     return `<section class="moon-calendar-header">
                 <p id="today"class="today"></p> 
                 <p class="moon-calendar-name">Солнце и луна</p>

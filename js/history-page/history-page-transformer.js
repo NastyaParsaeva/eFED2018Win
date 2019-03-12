@@ -1,16 +1,13 @@
-function HistoryPageTransformer() {}
-
-HistoryPageTransformer.prototype = Object.create(Transformer.prototype);
-
-HistoryPageTransformer.prototype.extractHistoryTableData = function(data) {
-    // console.log(this);
-    const months = mapToMonthData(data);
-    const minMaxPerMonth = months.map(month => {
-        return getMinMaxForMonth(month);
-    });
-    return minMaxPerMonth;
-};
-
+class HistoryPageTransformer extends Transformer {
+    
+    extractHistoryTableData(data) {
+        const months = mapToMonthData(data);
+        const minMaxPerMonth = months.map(month => {
+            return getMinMaxForMonth(month);
+        });
+        return minMaxPerMonth;
+    }
+}
 
 mapToMonthData = function(data) {
     const years = Object.values(data);
@@ -20,7 +17,6 @@ mapToMonthData = function(data) {
             months[i] ? months[i].push(year[i]) : months[i] = [];
         }
     });
-    console.log(months);
     return months;
 };
 

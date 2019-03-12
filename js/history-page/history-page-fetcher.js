@@ -1,7 +1,9 @@
-function HistoryPageFetcher() {
+class HistoryPageFetcher extends Fetcher {
+
+    getHistoricalReviewMock(city, renderCityFunction, renderFunction, transformFunction) {
+        renderCityFunction(city);
+        renderFunction(historicalReviewMock[city], transformFunction);
+    }
 }
 
-HistoryPageFetcher.prototype.getHistoricalReviewMock = function(city, renderCityFunction, renderFunction, transformFunction) {
-    renderCityFunction(city);
-    renderFunction(historicalReviewMock[city], transformFunction);
-};
+

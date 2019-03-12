@@ -15,7 +15,6 @@ function createGraphSignaturesHtml(time) {
 }
 
 function createTempGrapItemHtml(minTemp, tempChartStep, tempValue) {
-    
     const columnHeight = Math.abs((tempValue - minTemp)) * tempChartStep + 10;
     return `<section class="item">
                 <p class="value">${tempValue}</p>
