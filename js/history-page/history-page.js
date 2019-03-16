@@ -8,14 +8,11 @@ function init() {
     historyPageRenderer.renderHeader(createHistoryPageUniqueInfoFromSearchRowContent);
     historyPageRenderer.renderMain(createHistoryPageMainContentHtml);
     historyPageRenderer.renderFooter();
-    loadContent(DEFAULT_CITY);
+    loadContent(getProperCity(sessionStorage.getItem('city')) || DEFAULT_CITY);
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
-        let city = capitalizeFirstLetter(event.target.value);
-        if (city !== 'Izhevsk' && city !== 'London' && city !== 'Vladivostok') {
-            city = getRandomCity();
-        }
-        this.loadContent(city);
+        
+        loadContent(getProperCity(event.target.value));
     });
 };
 
@@ -33,6 +30,15 @@ function getRandomCity() {
     case 1: return 'London';
     case 2: return 'Vladivostok';
     }
+}
+
+function getProperCity(city) {
+    city = capitalizeFirstLetter(city);
+    if (city !== 'Izhevsk' && city !== 'London' && city !== 'Vladivostok') {
+        city = getRandomCity();
+    }
+    saveCityInSessionStorage(city);
+    return city;
 }
 
 init();

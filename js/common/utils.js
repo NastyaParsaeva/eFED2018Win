@@ -158,3 +158,7 @@ function addDomClassName(elementsArray, id, className) {
 function removeDomClassName(elementsArray, id, className) {
     elementsArray[id].classList.remove(className);
 };
+
+function saveCityInSessionStorage(city) {
+    sessionStorage.setItem('city', city);
+}

@@ -10,10 +10,12 @@ function init() {
     fiveDaysRenderer.renderAsideElement();
     fiveDaysRenderer.renderFooter();
     const slider = new FiveDaysSlider();
-    loadContent(DEFAULT_CITY, slider);
+    // loadContent(DEFAULT_CITY, slider);
+    loadContent(sessionStorage.getItem('city') || DEFAULT_CITY, slider);
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
+        saveCityInSessionStorage(city);
         this.loadContent(city, slider);
     });
 };

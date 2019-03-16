@@ -8,12 +8,12 @@ function init() {
     indexPageRenderer.renderHeader(createUniqueInfoForSearchRowContent);
     indexPageRenderer.renderMain(createMainContentHtml);
     indexPageRenderer.renderFooter();
-    loadContent(DEFAULT_CITY);
+    loadContent(sessionStorage.getItem('city') || DEFAULT_CITY);
     const indexPageSlider = new Slider('.graph', '.graph-controller .menu-link');
-    
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
+        saveCityInSessionStorage(city);
         this.loadContent(city);
     });
 };
