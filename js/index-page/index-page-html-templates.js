@@ -2,7 +2,7 @@ function createDayForecastHtml(day) {
     return `<section class="item">
                 <p class="day-name">${day.dayName}</p>
                 <figure>
-                    <img src="${day.icon}" alt="${day.description}">
+                    <img src="${day.icon}" alt="${day.description}" title="${day.description}">
                 </figure>
                 <p class="future-temp"><span class="max">${day.maxTemp} °</span> ${day.minTemp} °</p>
             </section>`;
@@ -34,7 +34,7 @@ function createWindGraphItemHtml(windSpeed, windDirection) {
     return `<section class="item">
                 <p>${windSpeed} м/с</p>
                 <figure>
-                    <img src="assets/${windDirection}.png" alt="направление ветра">
+                    <img src="assets/${windDirection}.png" alt="направление ветра" title="${windDirection}">
                 </figure>
             </section>`;
 }
@@ -88,3 +88,7 @@ function createMainContentHtml() {
 function createUniqueInfoForSearchRowContent() {
     return '<span id="air-pollution" class="current-location"></span>';
 };
+
+function windDirectionToRussian() {
+
+}

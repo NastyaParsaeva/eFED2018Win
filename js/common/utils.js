@@ -24,6 +24,7 @@ function setAttributesForImage(id, iconLink, altText) {
     const elem = document.getElementById(id);
     elem.setAttribute('src', iconLink);
     elem.setAttribute('alt', altText);
+    elem.setAttribute('title', altText);
 }
 
 function insertElementIntoDom(destinationId, data) {

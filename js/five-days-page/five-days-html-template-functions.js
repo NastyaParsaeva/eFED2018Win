@@ -2,8 +2,8 @@ function createPartDayWeatherHtml(name, weatherData) {
     if (weatherData) {
         return `<section class = "part-day-weather item">
                       <p class="part-day-name">${name}</p>
-                      <img src = "${weatherData.iconLink}" alt = "${weatherData.description}">
-                      <p class = "temperature normal">${weatherData.temp}</p>
+                      <img src="${weatherData.iconLink}" alt="${weatherData.description}" title="${weatherData.description}">
+                      <p class="temperature normal">${weatherData.temp}</p>
                   </section>`;
     }
     return '';
