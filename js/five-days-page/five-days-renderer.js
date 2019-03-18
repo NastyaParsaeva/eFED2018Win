@@ -6,22 +6,19 @@ class FiveDaysPageRenderer extends Renderer {
         document.body.appendChild(aside);
     }
 
-    renderSunDetails(data, transformFunction) {
-        const sunDetails = transformFunction(data);
+    renderSunDetails(sunDetails) {
         insertElementIntoDom('sunrise', `Восход - ${sunDetails.sunrise}`);
         insertElementIntoDom('sunset', `Заход - ${sunDetails.sunset}`);
         insertElementIntoDom('day-length', `Долгота дня - ${sunDetails.hoursDiff} ч ${sunDetails.minutesDiff} мин`);
     }
 
-    renderCurrentParams(data, transformFunction) {
-        const currentParams = transformFunction(data);
+    renderCurrentParams(currentParams) {
         insertElementIntoDom('current-location', `${currentParams.temp}° ${currentParams.city}, ${currentParams.country}`);
         insertElementIntoDom('today', `${currentParams.today}, сегодня`);
         setAttributesForImage('current-weather-icon', currentParams.weatherIcon, currentParams.weatherDescription);
     }
 
-    renderFiveDaysForecast(data, transformFunction) {
-        const dailyWeatherArray = transformFunction(data.list);
+    renderFiveDaysForecast(dailyWeatherArray) {
         let dayWeatherHtml = '', windHtml = '', precipitationHtml = '', dayNamesListHtml = '';
         dailyWeatherArray.forEach((weather) => {
             dayWeatherHtml += createDayWeatherHtml(weather);

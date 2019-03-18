@@ -1,6 +1,7 @@
 class FiveDaysPageTransformer extends Transformer {
 
-    extractForcastParameters(list) {
+    extractForcastParameters(data) {
+        const list = data.list;
         const daylyWeatherArray = [];
         for (let i = 0; i < list.length; i += 2) {
             const dayPartWeather = createDayPartWeather(list[i]);
