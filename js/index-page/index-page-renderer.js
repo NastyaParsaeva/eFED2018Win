@@ -12,9 +12,6 @@ class IndexPageRenderer extends Renderer {
     }
 
     renderAirPollution(airPollutionObject) {
-        // const airPollutionObject = jsonData.data.find((airPollutionObject) => {
-        //     return Math.floor(airPollutionObject.pressure) === 215;
-        // });
         insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
     }
 
