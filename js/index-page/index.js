@@ -14,19 +14,27 @@ function init() {
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
         saveCityInSessionStorage(city);
-        this.loadContent(city);
+        loadContent(city);
     });
 };
-
-init();
 
 function loadContent(city) {
     showSpinner();
     indexPageFetcher.getWeatherDetailsAndReturnCoords(city, indexPageRenderer.renderWeatherDetails)
-        .then((coords) => {
-            indexPageFetcher.getAirPollution(coords, indexPageRenderer.renderAirPollution);
+        .then(response => {
+            indexPageRenderer.renderWeatherDetails(indexPageTransformer.extractWeatherDetails(response));
+            const coords = indexPageTransformer.extractCityCoords(response);
+            indexPageFetcher.getAirPollution(coords)
+                .then(response => {
+                    indexPageRenderer.renderAirPollution(indexPageTransformer.extractAirPollution(response)); 
+                });
+        });    
+    indexPageFetcher.getFiveDaysWeather(city)
+        .then(response => {
+            indexPageRenderer.renderWeatherForecast(indexPageTransformer.extractFiveDaysForecastData(response));
+            indexPageRenderer.renderGrahps(indexPageTransformer.extractGraphsData(response));
         });
-    indexPageFetcher.getFiveDaysWeather(city, indexPageRenderer.renderWeatherForecast, indexPageTransformer.extractFiveDaysForecastData, 
-        indexPageRenderer.renderGrahps, indexPageTransformer.extractGraphsData);
     hideSpinner();
 };
+
+init();

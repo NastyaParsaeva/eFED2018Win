@@ -23,6 +23,7 @@ class Fetcher {
     createCompleteUrl(link, parameter) {
         return `${this.baseUrl}${link}${this.appId}&q=${parameter}`;
     }
+
 }
 
 

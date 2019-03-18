@@ -1,25 +1,24 @@
 class IndexPageRenderer extends Renderer {
     
-    renderWeatherDetails(jsonData) {
-        insertElementIntoDom('chosen-location', `${jsonData.name}, ${jsonData.sys.country}`);
-        insertElementIntoDom('today-weekday', capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', { weekday: 'long' })));
-        insertElementIntoDom('weather-description', capitalizeFirstLetter(jsonData.weather[0].description));
-        setAttributesForImage('weather-icon', createIconLink(jsonData.weather[0].icon), jsonData.weather[0].description);
-        insertElementIntoDom('current-temperature', `${Math.round(jsonData.main.temp)}°C`);
-        insertElementIntoDom('today-humidity', `Влажность: ${jsonData.main.humidity} %`);
-        insertElementIntoDom('today-wind-speed', `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`);
-        insertElementIntoDom('today-precipitation', `Осадки: ${getPrecipitationVolume(jsonData)} мм`);
+    renderWeatherDetails(weatherDetails) {
+        insertElementIntoDom('chosen-location', weatherDetails.location);
+        insertElementIntoDom('today-weekday', weatherDetails.weekday);
+        insertElementIntoDom('weather-description', weatherDetails.weatherDescription);
+        setAttributesForImage('weather-icon', weatherDetails.iconLink, weatherDetails.weatherDescription);
+        insertElementIntoDom('current-temperature', weatherDetails.temperature);
+        insertElementIntoDom('today-humidity', weatherDetails.humidity);
+        insertElementIntoDom('today-wind-speed', weatherDetails.windSpeed);
+        insertElementIntoDom('today-precipitation', weatherDetails.precipitation);
     }
 
-    renderAirPollution(jsonData) {
-        const airPollutionObject = jsonData.data.find((airPollutionObject) => {
-            return Math.floor(airPollutionObject.pressure) === 215;
-        });
+    renderAirPollution(airPollutionObject) {
+        // const airPollutionObject = jsonData.data.find((airPollutionObject) => {
+        //     return Math.floor(airPollutionObject.pressure) === 215;
+        // });
         insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
     }
 
-    renderWeatherForecast(jsonData, transformFunction) {
-        const fiveDaysForecastArray = transformFunction(jsonData);
+    renderWeatherForecast(fiveDaysForecastArray) {
         let daysForecastHTML = '';
         fiveDaysForecastArray.forEach((day) => {
             daysForecastHTML += createDayForecastHtml(day);
@@ -27,8 +26,7 @@ class IndexPageRenderer extends Renderer {
         insertElementIntoDom('week-forecast-container', daysForecastHTML);
     }
 
-    renderGrahps(data, transformFunction) {
-        const graphsDataArray = transformFunction(data);
+    renderGrahps(graphsDataArray) {
         const maxPrecLevel = findMaxPrecLevel(graphsDataArray);
         const minTemp = findMinTemperature(graphsDataArray);
         const tempChartStep = findTemperatureChartStep(minTemp, graphsDataArray);

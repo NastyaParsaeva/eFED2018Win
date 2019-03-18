@@ -39,4 +39,27 @@ class IndexPageTransformer extends Transformer {
             windDirection: getWindDirection(element.wind.deg),
         }));
     }
+
+    extractWeatherDetails(jsonData) {
+        return {
+            location: `${jsonData.name}, ${jsonData.sys.country}`,
+            weekday: capitalizeFirstLetter(new Date(jsonData.dt * 1000).toLocaleString('ru-RU', { weekday: 'long' })),
+            weatherDescription: capitalizeFirstLetter(jsonData.weather[0].description),
+            iconLink: createIconLink(jsonData.weather[0].icon),
+            temperature: `${Math.round(jsonData.main.temp)}°C`,
+            humidity: `Влажность: ${jsonData.main.humidity} %`,
+            windSpeed: `Ветер: ${jsonData.wind.speed.toFixed(1)} м/с`,
+            precipitation: `Осадки: ${getPrecipitationVolume(jsonData)} мм`
+        };
+    }
+
+    extractCityCoords(jsonData) {
+        return `${Math.floor(jsonData.coord.lat)},${Math.floor(jsonData.coord.lon)}`;
+    }
+
+    extractAirPollution(jsonData) {
+        return jsonData.data.find((airPollutionObject) => {
+            return Math.floor(airPollutionObject.pressure) === 215;
+        });
+    }
 }
