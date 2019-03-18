@@ -32,6 +32,11 @@ class Renderer {
         main.innerHTML = mainContentTemplateFunction();
         document.body.appendChild(main);
     }
+
+    // renderCityNotFoundError() {
+        
+    //     main.innerHTML = createCityNotFoundErrorMessage();
+    // }
 }
 
 
