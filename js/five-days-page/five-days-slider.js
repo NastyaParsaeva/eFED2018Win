@@ -12,24 +12,24 @@ class FiveDaysSlider {
         (this.current !== 0) ? this.changeSlide(this.current - 1) : this.changeSlide(this.slidesArrayContainer.daySlides.length - 1);
     }
     changeSlide(index) {
-        removeDomClassName(this.slideNav, this.current, 'selected');
+        Utils.removeDomClassName(this.slideNav, this.current, 'selected');
         for (let slidesType in this.slidesArrayContainer) {
-            removeDomClassName(this.slidesArrayContainer[slidesType], this.current, 'shown');
+            Utils.removeDomClassName(this.slidesArrayContainer[slidesType], this.current, 'shown');
         }
         this.current = index;
         for (let slidesType in this.slidesArrayContainer) {
-            addDomClassName(this.slidesArrayContainer[slidesType], this.current, 'shown');
+            Utils.addDomClassName(this.slidesArrayContainer[slidesType], this.current, 'shown');
         }
-        addDomClassName(this.slideNav, this.current, 'selected');
+        Utils.addDomClassName(this.slideNav, this.current, 'selected');
     }
     initializeSliderElements() {
         this.current = 0;
         this.slidesArrayContainer = {
-            daySlides: getElementsByQuery('.day-weather'),
-            windSlides: getElementsByQuery('.day-wind'),
-            precSlides: getElementsByQuery('.day-precepitation')
+            daySlides: Utils.getElementsByQuery('.day-weather'),
+            windSlides: Utils.getElementsByQuery('.day-wind'),
+            precSlides: Utils.getElementsByQuery('.day-precepitation')
         };
-        this.slideNav = getElementsByQuery('.day-switcher .menu-link');
+        this.slideNav = Utils.getElementsByQuery('.day-switcher .menu-link');
         this.initializeSlideNavListeners();
     }
     initializeArrowEventListeners() {

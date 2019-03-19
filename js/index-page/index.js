@@ -13,13 +13,13 @@ function init() {
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
-        saveCityInSessionStorage(city);
+        Utils.saveCityInSessionStorage(city);
         loadContent(city);
     });
 };
 
 function loadContent(city) {
-    showSpinner();
+    Utils.showSpinner();
     indexPageFetcher.getWeatherDetailsAndReturnCoords(city, indexPageRenderer.renderWeatherDetails)
         .then(response => {
             indexPageRenderer.renderWeatherDetails(indexPageTransformer.extractWeatherDetails(response));
@@ -34,7 +34,7 @@ function loadContent(city) {
             indexPageRenderer.renderWeatherForecast(indexPageTransformer.extractFiveDaysForecastData(response));
             indexPageRenderer.renderGrahps(indexPageTransformer.extractGraphsData(response));
         });
-    hideSpinner();
+    Utils.hideSpinner();
 };
 
 init();

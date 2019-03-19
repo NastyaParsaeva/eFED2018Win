@@ -1,18 +1,18 @@
 class IndexPageRenderer extends Renderer {
     
     renderWeatherDetails(weatherDetails) {
-        insertElementIntoDom('chosen-location', weatherDetails.location);
-        insertElementIntoDom('today-weekday', weatherDetails.weekday);
-        insertElementIntoDom('weather-description', weatherDetails.weatherDescription);
-        setAttributesForImage('weather-icon', weatherDetails.iconLink, weatherDetails.weatherDescription);
-        insertElementIntoDom('current-temperature', weatherDetails.temperature);
-        insertElementIntoDom('today-humidity', weatherDetails.humidity);
-        insertElementIntoDom('today-wind-speed', weatherDetails.windSpeed);
-        insertElementIntoDom('today-precipitation', weatherDetails.precipitation);
+        Utils.insertElementIntoDom('chosen-location', weatherDetails.location);
+        Utils.insertElementIntoDom('today-weekday', weatherDetails.weekday);
+        Utils.insertElementIntoDom('weather-description', weatherDetails.weatherDescription);
+        Utils.setAttributesForImage('weather-icon', weatherDetails.iconLink, weatherDetails.weatherDescription);
+        Utils.insertElementIntoDom('current-temperature', weatherDetails.temperature);
+        Utils.insertElementIntoDom('today-humidity', weatherDetails.humidity);
+        Utils.insertElementIntoDom('today-wind-speed', weatherDetails.windSpeed);
+        Utils.insertElementIntoDom('today-precipitation', weatherDetails.precipitation);
     }
 
     renderAirPollution(airPollutionObject) {
-        insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
+        Utils.insertElementIntoDom('air-pollution', `Загрязнение воздуха: ${airPollutionObject.value}`);
     }
 
     renderWeatherForecast(fiveDaysForecastArray) {
@@ -20,13 +20,13 @@ class IndexPageRenderer extends Renderer {
         fiveDaysForecastArray.forEach((day) => {
             daysForecastHTML += createDayForecastHtml(day);
         });
-        insertElementIntoDom('week-forecast-container', daysForecastHTML);
+        Utils.insertElementIntoDom('week-forecast-container', daysForecastHTML);
     }
 
     renderGrahps(graphsDataArray) {
-        const maxPrecLevel = findMaxPrecLevel(graphsDataArray);
-        const minTemp = findMinTemperature(graphsDataArray);
-        const tempChartStep = findTemperatureChartStep(minTemp, graphsDataArray);
+        const maxPrecLevel = Utils.findMaxPrecLevel(graphsDataArray);
+        const minTemp = Utils.findMinTemperature(graphsDataArray);
+        const tempChartStep = Utils.findTemperatureChartStep(minTemp, graphsDataArray);
         let graphSignaturesHtml = '', tempGraphHtml = '', precipitationGraphHtml = '', windGraphHtml = '';
         graphsDataArray.forEach((graphDataItem) => {
             graphSignaturesHtml += createGraphSignaturesHtml(graphDataItem.time);
@@ -34,9 +34,9 @@ class IndexPageRenderer extends Renderer {
             precipitationGraphHtml += createPrecipitationGraphItemHtml(graphDataItem.precipitation, maxPrecLevel);
             windGraphHtml += createWindGraphItemHtml(graphDataItem.windSpeed, graphDataItem.windDirection);
         });
-        insertElementIntoDom('graph-signatures-container', graphSignaturesHtml);
-        insertElementIntoDom('temperature-graph-container', tempGraphHtml);
-        insertElementIntoDom('precipitation-graph-container', precipitationGraphHtml);
-        insertElementIntoDom('wind-graph-container', windGraphHtml);
+        Utils.insertElementIntoDom('graph-signatures-container', graphSignaturesHtml);
+        Utils.insertElementIntoDom('temperature-graph-container', tempGraphHtml);
+        Utils.insertElementIntoDom('precipitation-graph-container', precipitationGraphHtml);
+        Utils.insertElementIntoDom('wind-graph-container', windGraphHtml);
     }
 }

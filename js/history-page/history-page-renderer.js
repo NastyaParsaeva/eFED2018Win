@@ -1,7 +1,7 @@
 class HistoryPageRenderer extends Renderer {
     
     renderCity(city) {
-        insertElementIntoDom('location', city);
+        Utils.insertElementIntoDom('location', city);
     }
 
     renderHistoricalReview(data, transformFunction) {
@@ -13,9 +13,9 @@ class HistoryPageRenderer extends Renderer {
             highestMaxHtml += createTableDataHtml(historyTableData[i].absMax);
             lowestMinHtml += createTableDataHtml(historyTableData[i].absMin);
         }
-        insertElementIntoDom('average-max', averageMaxHtml);
-        insertElementIntoDom('average-min', averageMinHtml);
-        insertElementIntoDom('highest-max', highestMaxHtml);
-        insertElementIntoDom('lowest-min', lowestMinHtml);
+        Utils.insertElementIntoDom('average-max', averageMaxHtml);
+        Utils.insertElementIntoDom('average-min', averageMinHtml);
+        Utils.insertElementIntoDom('highest-max', highestMaxHtml);
+        Utils.insertElementIntoDom('lowest-min', lowestMinHtml);
     }
 }

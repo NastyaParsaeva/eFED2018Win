@@ -14,7 +14,7 @@ function init() {
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
         const city = event.target.value;
-        saveCityInSessionStorage(city);
+        Utils.saveCityInSessionStorage(city);
         this.loadContent(city, slider);
     });
 };
@@ -22,7 +22,7 @@ function init() {
 init();
 
 function loadContent(city, slider) {
-    showSpinner();   
+    Utils.showSpinner();   
     fiveDaysFetcher.getFiveDaysForecast(city)
         .then(response => {
             fiveDaysRenderer.renderFiveDaysForecast(fiveDaysTransformer.extractForcastParameters(response));
@@ -33,5 +33,5 @@ function loadContent(city, slider) {
             fiveDaysRenderer.renderSunDetails(fiveDaysTransformer.extractSunDetails(response));
             fiveDaysRenderer.renderCurrentParams(fiveDaysTransformer.extractCurrentParams(response));
         });
-    hideSpinner();
+    Utils.hideSpinner();
 };

@@ -7,15 +7,15 @@ class FiveDaysPageRenderer extends Renderer {
     }
 
     renderSunDetails(sunDetails) {
-        insertElementIntoDom('sunrise', `Восход - ${sunDetails.sunrise}`);
-        insertElementIntoDom('sunset', `Заход - ${sunDetails.sunset}`);
-        insertElementIntoDom('day-length', `Долгота дня - ${sunDetails.hoursDiff} ч ${sunDetails.minutesDiff} мин`);
+        Utils.insertElementIntoDom('sunrise', `Восход - ${sunDetails.sunrise}`);
+        Utils.insertElementIntoDom('sunset', `Заход - ${sunDetails.sunset}`);
+        Utils.insertElementIntoDom('day-length', `Долгота дня - ${sunDetails.hoursDiff} ч ${sunDetails.minutesDiff} мин`);
     }
 
     renderCurrentParams(currentParams) {
-        insertElementIntoDom('current-location', `${currentParams.temp}° ${currentParams.city}, ${currentParams.country}`);
-        insertElementIntoDom('today', `${currentParams.today}, сегодня`);
-        setAttributesForImage('current-weather-icon', currentParams.weatherIcon, currentParams.weatherDescription);
+        Utils.insertElementIntoDom('current-location', `${currentParams.temp}° ${currentParams.city}, ${currentParams.country}`);
+        Utils.insertElementIntoDom('today', `${currentParams.today}, сегодня`);
+        Utils.setAttributesForImage('current-weather-icon', currentParams.weatherIcon, currentParams.weatherDescription);
     }
 
     renderFiveDaysForecast(dailyWeatherArray) {
@@ -26,14 +26,14 @@ class FiveDaysPageRenderer extends Renderer {
             precipitationHtml += createDayPrecipitationHtml(weather);
             dayNamesListHtml += createDayNamesListHtml(weather.date);
         });
-        insertElementIntoDom('day-switcher', dayNamesListHtml);
-        insertElementIntoDom('daily-weather-container', dayWeatherHtml);
-        insertElementIntoDom('wind-container', windHtml);
-        insertElementIntoDom('precepitation-container', precipitationHtml);
-        addClassNameForFirstChild('day-switcher', 'selected');
-        addClassNameForFirstChild('daily-weather-container', 'shown');
-        addClassNameForFirstChild('wind-container', 'shown');
-        addClassNameForFirstChild('precepitation-container', 'shown');
+        Utils.insertElementIntoDom('day-switcher', dayNamesListHtml);
+        Utils.insertElementIntoDom('daily-weather-container', dayWeatherHtml);
+        Utils.insertElementIntoDom('wind-container', windHtml);
+        Utils.insertElementIntoDom('precepitation-container', precipitationHtml);
+        Utils.addClassNameForFirstChild('day-switcher', 'selected');
+        Utils.addClassNameForFirstChild('daily-weather-container', 'shown');
+        Utils.addClassNameForFirstChild('wind-container', 'shown');
+        Utils.addClassNameForFirstChild('precepitation-container', 'shown');
     }
 }
 

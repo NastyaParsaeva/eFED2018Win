@@ -5,8 +5,8 @@ class FiveDaysPageTransformer extends Transformer {
         const daylyWeatherArray = [];
         for (let i = 0; i < list.length; i += 2) {
             const dayPartWeather = createDayPartWeather(list[i]);
-            const dayPartName = definePartOfDay(list[i].dt);
-            const date = capitalizeFirstLetter(new Date(list[i].dt * 1000)
+            const dayPartName = Utils.definePartOfDay(list[i].dt);
+            const date = Utils.capitalizeFirstLetter(new Date(list[i].dt * 1000)
                 .toLocaleString('ru-RU', { weekday: 'short', day: 'numeric', month: 'short' }));
             const dayIndex = daylyWeatherArray.findIndex(dayWeather => dayWeather.date === date);
             if (dayIndex >= 0) {
@@ -35,25 +35,25 @@ class FiveDaysPageTransformer extends Transformer {
     }
     extractCurrentParams(data) {
         return {
-            today: capitalizeFirstLetter(new Date(data.dt * 1000).
+            today: Utils.capitalizeFirstLetter(new Date(data.dt * 1000).
                 toLocaleString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' })),
             city: data.name,
             country: data.sys.country,
             temp: Math.round(data.main.temp),
-            weatherIcon: createIconLink(data.weather[0].icon),
+            weatherIcon: Utils.createIconLink(data.weather[0].icon),
             weatherDescription: data.weather[0].description,
         };
     }
 }
 
 function createDayPartWeather(weather) {
-    const precipitation = getPrecipitationVolume(weather).toFixed(1);
+    const precipitation = Utils.getPrecipitationVolume(weather).toFixed(1);
     return {
-        iconLink: createIconLink(weather.weather[0].icon),
+        iconLink: Utils.createIconLink(weather.weather[0].icon),
         temp: Math.round(weather.main.temp),
         windSpeed: Math.round(weather.wind.speed),
         precipitation,
-        precipitationLevel: getPrecipitationLevel(precipitation),
+        precipitationLevel: Utils.getPrecipitationLevel(precipitation),
         description: weather.weather[0].description,
     };
 };
