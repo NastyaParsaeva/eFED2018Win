@@ -138,6 +138,8 @@ header .menu-link {
 .menu-link a {
     color: black;
     text-decoration: none;
+    display: block;
+    text-align: center
 }
 
 .selected {
@@ -156,10 +158,12 @@ header .menu-link {
     padding: 0 15px;
 }
 
-.current-location {
+#unique-info-in-search-row {
     display: flex;
     align-items: center;
 }
+
+
 
 #search-field {
     height: 28px;
@@ -216,8 +220,6 @@ footer p {
         width: unset;
     }
 
-
-    
     footer {
         position: fixed;
         bottom: 0;
@@ -228,7 +230,7 @@ footer p {
 }
 
 @media screen and (max-width: 767px) {
-    html {
+    body {
         font-size: 14px;
     }
 
@@ -266,13 +268,13 @@ footer p {
         right: 2%;
         top: 57px;
     }
-
-    /* #search-field-label::after {
-        content: "";
-    }  */
 }
 
 @media screen and (max-width:400px) {
+    body {
+        font-size: 13px;
+    }
+
     header .menu-link {
         margin: 5px 3px;
     } 

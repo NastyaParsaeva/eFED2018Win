@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
     <head>
         <title>Five-day weather forecast</title>
@@ -12,240 +12,26 @@
             @import url("styles/flex-main.css");
         </style>
         <link rel="stylesheet" type="text/css" href="styles\flex-index-page.css">
+        
     </head>
     <body>
-        <header>
-                <nav>
-                    <ul class="navigation">
-                        <li class="menu-link selected"><a href="index.html">Сегодня</a></li>
-                        <li class="menu-link"><a href="five-days-weather.html">5 дней</a></li>
-                        <li class="menu-link"><a href="history-page.html">История погоды</a></li>
-                    </ul>
-                </nav>
-                <section class="search-row">
-                    <span id="air-pollution" class="current-location"></span>
-                    <section class="search-field-container">
-                        <label for="search-field" id="search-field-label">&nbsp;</label>
-                        <input id="search-field" type="search" pattern="[А-ЯЁ]{1}[^0-9]+" placeholder="Поиск"/>
-                    </section>
-                </section>
-            </header>
-        <main>
-            
-            <article class="today-weather-info-container">
-                <section class="weather-info">
-                    <p id="chosen-location"></p>
-                    <p id="today-weekday"></p>
-                    <p id="weather-description"></p>
-                    <secion class="weather-abbreviation">
-                        <figure>
-                            <img id = "weather-icon">
-                        </figure>
-                        <p id="current-temperature"></p>
-                    </section>
-                    
-                </section>
-                <section class="weather-info">
-                    <p id="today-precipitation"></p>
-                    <p id="today-humidity"></p>
-                    <p id="today-wind-speed"></p>
-                    <nav class="graph-controller">
-                        <ul>
-                            <li class="menu-link selected">Температура</li>
-                            <li class="menu-link">Осадки</li>
-                            <li class="menu-link">Ветер</li>
-                        </ul>
-                    </nav>
-                </section>
-            </article>
-
-            <div class="graph-container">
-                <article id="temperature-graph-container" class="temperature graph shown">
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-                <section class="item">
-                    <p class="value">14</p>
-                    <p class="column"></p>
-                </section>
-            </article>
-            <article id="precipitation-graph-container" class="precipitation graph">
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section>  
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> 
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> 
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> 
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> 
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> 
-                <section class="item">
-                    <p class="value">24 мм</p>
-                    <p class="column"></p>
-                </section> 
-            </article>
-            <article id="wind-graph-container" class="wind graph">
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-                <section class="item">
-                    <p>7 м/с</p>
-                    <img src="assets\wind_direction.png" alt="направление ветра">
-                </section>
-            </article>
-    
-            <article id="graph-signatures-container" class="graph-signatures">
-                <section class="item">
-                    <p>17:00</p>
-                </section>
-                <section class="item">
-                    <p>20:00</p>
-                </section>
-                <section class="item">
-                    <p>23:00</p>
-                </section>
-                <section class="item">
-                    <p>02:00</p>
-                </section>
-                <section class="item">
-                    <p>05:00</p>
-                </section>
-                <section class="item">
-                    <p>08:00</p>
-                </section>
-                <section class="item">
-                    <p>11:00</p>
-                </section>
-                <section class="item">
-                    <p>14:00</p>
-                </section>
-            </article>
-            </div>
-            
-            <article id = "week-forecast-container" class="week-forecast">
-                <section class="item">
-                    <p class="day-name">ср</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">чт</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">пт</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">сб</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">вс</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">пн</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">вт</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-                <section class="item">
-                    <p class="day-name">ср</p>
-                    <img src="assets\Cloudy Weather.png" alt="Облачно">
-                    <p class="future-temp"><span class="max">22 °</span> 13 °</p>
-                </section>
-            </article>
-        </main>
-        <footer>
-            <p lang="en">2019 © Copyright</p>
-        </footer>
         <div class="main-overlay" id="main-overlay"></div>
         <div class="entire-overlay" id="entire-overlay">
             <div class="spinner-dot first"></div>
             <div class="spinner-dot second"></div>
             <div class="spinner-dot third"></div>            
         </div>
-        <script src="js/endpoint-consts.js"></script>
-        <script src="js/utils.js"></script>
-        <script src="js/index-page-html-templates.js"></script>
-        <script src="js/index-page-slider.js"></script>
-        <script src="js/index-page-api-interaction.js"></script>
+        <script src="js/common/endpoint-consts.js"></script>
+        <script src="js/common/utils.js"></script>
+        <script src="js/common/common-html-templates.js"></script>
+        <script src="js/common/fetcher.js"></script>
+        <script src="js/common/renderer.js"></script>
+        <script src="js/common/transformer.js"></script>
+        <script src="js/common/slider.js"></script>
+        <script src="js/index-page/index-page-html-templates.js"></script>
+        <script src='js/index-page/index-page-fetcher.js'></script>
+        <script src='js/index-page/index-page-transformer.js'></script>
+        <script src='js/index-page/index-page-renderer.js'></script>
+        <script src='js/index-page/index.js'></script>
     </body>
 </html>
