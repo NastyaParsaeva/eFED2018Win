@@ -1,7 +1,8 @@
 class Slider {
-    constructor(slidesCssQuery, slideNavCssQuery) {
-        this.slides = Utils.getElementsByQuery(slidesCssQuery);
-        this.slideNav = Utils.getElementsByQuery(slideNavCssQuery);
+
+    initSlider() {
+        this.slides = Utils.getElementsByQuery('.graph');
+        this.slideNav = Utils.getElementsByQuery('.graph-controller .menu-link');
         this.current = 0;
         this.initializeSlideNavListeners();
     }

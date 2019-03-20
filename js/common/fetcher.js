@@ -11,13 +11,14 @@ class Fetcher {
         return fetch(url)
             .then(function (response) {
                 if (response.status === 404) {
-                    console.log('City not found. Try to find another city. ' +
-                        response.status);
+                    throw new CityNotFoundError();
                 }
                 return response.json();
             })
             .catch(function (error) {
-                console.log(`Error happened ${error.stack}`);
+                if (error instanceof CityNotFoundError) {
+                    return null;
+                }
             });
     }
     createCompleteUrl(link, parameter) {

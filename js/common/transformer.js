@@ -10,8 +10,6 @@ class Transformer {
 
     shouldShowErrorMessage(response) {
         if (response.status === 404) {
-            console.log('City not found. Try to find another city. ' +
-            response.status);
             return true;
         }
         return false;

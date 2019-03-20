@@ -1,10 +1,10 @@
 
 class FiveDaysSlider {
-    constructor() {
-        this.next = document.getElementById('next-day');
-        this.prev = document.getElementById('prev-day');
-        this.initializeArrowEventListeners();
-    }
+    // constructor() {
+    //     this.next = document.getElementById('next-day');
+    //     this.prev = document.getElementById('prev-day');
+    //     this.initializeArrowEventListeners();
+    // }
     nextSlide() {
         this.changeSlide((this.current + 1) % this.slidesArrayContainer.daySlides.length);
     }
@@ -23,6 +23,10 @@ class FiveDaysSlider {
         Utils.addDomClassName(this.slideNav, this.current, 'selected');
     }
     initializeSliderElements() {
+        this.next = document.getElementById('next-day');
+        this.prev = document.getElementById('prev-day');
+        this.initializeArrowEventListeners();
+
         this.current = 0;
         this.slidesArrayContainer = {
             daySlides: Utils.getElementsByQuery('.day-weather'),
