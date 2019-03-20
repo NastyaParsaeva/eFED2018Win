@@ -27,10 +27,18 @@ class Renderer {
         document.body.appendChild(footer);
     }
 
-    renderMain(mainContentTemplateFunction) {
+    renderMain() {
         const main = document.createElement('main');
-        main.innerHTML = mainContentTemplateFunction();
+        main.id = 'main-content';
         document.body.appendChild(main);
+    }
+
+    renderMainContent(mainContentTemplateFunction) {
+        this.insertElementIntoDom('main-content', mainContentTemplateFunction());
+    }
+
+    renderCityNotFoundError(htmlError) {
+        this.insertElementIntoDom('main-content', htmlError);
     }
 }
 

@@ -39,10 +39,6 @@ function createWindGraphItemHtml(windSpeed, windDirection) {
             </section>`;
 }
 
-function createCityNotFoundErrorMessage(query) {
-    return `Город ${query} не найден. Попробуйте изменить запрос.`;
-}
-
 function createMainContentHtml() {
     return `<article class="today-weather-info-container">
                 <section class="weather-info">

@@ -1,15 +1,14 @@
 const fiveDaysFetcher = new FiveDaysPageFetcher();
 const fiveDaysTransformer = new FiveDaysPageTransformer();
 const fiveDaysRenderer = new FiveDaysPageRenderer();
-
+const slider = new FiveDaysSlider();
 const DEFAULT_CITY = 'izhevsk';
 
 function init() {
     fiveDaysRenderer.renderHeader(createFiveDaysPageUniqueInfoFromSearchRowContent);
-    fiveDaysRenderer.renderMain(createFiveDaysMainContentHtml);
+    fiveDaysRenderer.renderMain();
     fiveDaysRenderer.renderAsideElement();
     fiveDaysRenderer.renderFooter();
-    const slider = new FiveDaysSlider();
     loadContent(sessionStorage.getItem('city') || DEFAULT_CITY, slider);
     const searchField = document.getElementById('search-field');
     searchField.addEventListener('change', (event) => {
@@ -22,16 +21,28 @@ function init() {
 init();
 
 function loadContent(city, slider) {
-    Utils.showSpinner();   
-    fiveDaysFetcher.getFiveDaysForecast(city)
-        .then(response => {
-            fiveDaysRenderer.renderFiveDaysForecast(fiveDaysTransformer.extractForcastParameters(response));
+    Utils.showSpinner();
+    fiveDaysRenderer.renderMainContent(createFiveDaysMainContentHtml);
+    fiveDaysRenderer.renderAsideElementContent(createFiveDaysAsideContentHtml());
+    Promise.all([fiveDaysFetcher.getFiveDaysForecast(city), fiveDaysFetcher.getWeatherDetails(city)])
+    .then(result => {
+        if (result.some(element => !element)) {
+            fiveDaysRenderer.renderCityNotFoundError(createCityNotFoundErrorMessage(city));
+            fiveDaysRenderer.renderAsideElementContent('');
+            return false;
+        } else {
+            const fiveDaysWeather = result[0];
+            fiveDaysRenderer.renderFiveDaysForecast(fiveDaysTransformer.extractForcastParameters(fiveDaysWeather));
+            const weatherDetails = result[1];
+            fiveDaysRenderer.renderSunDetails(fiveDaysTransformer.extractSunDetails(weatherDetails));
+            fiveDaysRenderer.renderCurrentParams(fiveDaysTransformer.extractCurrentParams(weatherDetails));
+            return true;
+        }
+    })
+    .then((result) => {
+        if (result) {
             slider.initializeSliderElements();
-        });
-    fiveDaysFetcher.getWeatherDetails(city)
-        .then(response => {
-            fiveDaysRenderer.renderSunDetails(fiveDaysTransformer.extractSunDetails(response));
-            fiveDaysRenderer.renderCurrentParams(fiveDaysTransformer.extractCurrentParams(response));
-        });
-    Utils.hideSpinner();
+        }
+        Utils.hideSpinner();
+    })
 };

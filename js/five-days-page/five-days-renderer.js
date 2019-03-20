@@ -2,8 +2,13 @@ class FiveDaysPageRenderer extends Renderer {
     
     renderAsideElement() {
         const aside = document.createElement('aside');
-        aside.innerHTML = createFiveDaysAsideContentHtml();
+        aside.id = 'aside-content';
         document.body.appendChild(aside);
+    }
+
+    renderAsideElementContent(contentHtml) {
+        this.insertElementIntoDom('aside-content', contentHtml)
+        
     }
 
     renderSunDetails(sunDetails) {

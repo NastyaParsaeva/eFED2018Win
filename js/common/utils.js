@@ -1,26 +1,5 @@
 class Utils{
-    // getDataFromApiThroughFetch(url, callback1, callback2) {
-    //     fetch(url)  
-    //         .then(function(response) {  
-    //             if (response.status === 404) {  
-    //                 console.log('Looks like there was a problem. Status Code: ' +  
-    //                   response.status); 
-    //             }
-    //             return response.json();  
-    //         })
-    //         .then(response => {
-    //             callback1(response);
-    //             if (callback2) callback2(response);
-    //         })  
-    //         .catch(function(error) {  
-    //             console.log(error);
-    //         });
-    // }
-    
-    static cityNotFound(query) {
-        // this.insertElementIntoDom(getElementById('main-content'), createUtils.cityNotFoundErrorMessage);
-    }
-    
+        
     static setAttributesForImage(id, iconLink, altText) {
         const elem = document.getElementById(id);
         elem.setAttribute('src', iconLink);

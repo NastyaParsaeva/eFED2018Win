@@ -22,5 +22,5 @@ function createHeaderCommonContent(getUniqueInfoForSearchRow) {
 }
 
 function createCityNotFoundErrorMessage(city) {
-    return `<div class="CityNotFoundError">Город по запросу ${city} не найден. Попробуйте уточнить запрос.</div>`;
+    return `<div class="CityNotFoundError">Город по запросу «${city}» не найден. Попробуйте уточнить запрос.</div>`;
 }

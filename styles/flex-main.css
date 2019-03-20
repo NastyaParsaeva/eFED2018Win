@@ -36,6 +36,14 @@ body {
     z-index: 5;
 }
 
+.CityNotFoundError {
+    font-size: 2em;
+    font-weight: lighter;
+    height: 650px;
+    margin: 0px auto;
+    display: block;
+}
+
 .spinner-dot {
     width: 25px;
     height: 25px;
@@ -285,5 +293,8 @@ footer p {
 
     #search-field-label::after {
         right: 4%;
+    }
+    .CityNotFoundError {
+        padding: 5px;
     }
 }
